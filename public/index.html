@@ -1,279 +1,174 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-    <title>Privacy Wijzer Gehandicaptenzorg</title>
+    <title>Privacy Wijzer</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         :root {
-            --bg: #0f172a;
-            --card-bg: rgba(30, 41, 59, 0.8);
-            --accent: #38bdf8;
-            --text: #f1f5f9;
-            --critical: #ef4444;
-            --high: #f97316;
-            --medium: #eab308;
-            --low: #22c55e;
+            --bg: #ffffff;
+            --text: #1a1a1a;
+            --subtle: #f4f4f5;
+            --accent: #000000;
+            --border: #e4e4e7;
+            --meta: #71717a;
         }
-
-        * { box-sizing: border-box; }
 
         body {
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            background: radial-gradient(circle at top right, #1e293b, #0f172a);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg);
             color: var(--text);
-            padding: 15px;
-            max-width: 800px;
-            margin: auto;
-            min-height: 100vh;
-            line-height: 1.5;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
         }
 
-        header { text-align: center; padding: 30px 0; }
-        
-        h1 { 
-            font-size: 2.2rem; 
-            margin-bottom: 10px; 
-            background: linear-gradient(to right, #38bdf8, #818cf8); 
-            -webkit-background-clip: text; 
-            -webkit-text-fill-color: transparent;
-            line-height: 1.1;
+        .container {
+            width: 100%;
+            max-width: 650px;
         }
 
-        .search-container { 
-            position: sticky; 
-            top: 10px; 
-            z-index: 100; 
-            backdrop-filter: blur(15px); 
-            background: rgba(15, 23, 42, 0.5);
-            padding: 10px;
-            border-radius: 15px;
+        header { margin-bottom: 40px; }
+        h1 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; margin: 0; }
+        header p { color: var(--meta); font-size: 0.9rem; margin-top: 5px; }
+
+        .search-container {
+            position: sticky;
+            top: 0;
+            background: var(--bg);
+            padding: 10px 0 20px 0;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 20px;
         }
 
-        input { 
-            width: 100%; 
-            padding: 18px; 
-            font-size: 1.1rem; 
-            border-radius: 12px; 
-            border: 1px solid rgba(255,255,255,0.2); 
-            background: var(--card-bg); 
-            color: #fff; 
+        input {
+            width: 100%;
+            padding: 12px 0;
+            font-size: 1.1rem;
+            border: none;
+            border-bottom: 2px solid var(--border);
+            background: transparent;
             outline: none;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: border-color 0.2s;
         }
 
-        .quick-tags { 
-            display: flex; 
-            gap: 8px; 
-            flex-wrap: wrap; 
-            margin-top: 12px; 
-        }
+        input:focus { border-color: var(--accent); }
 
-        .tag-btn { 
-            background: rgba(56, 189, 248, 0.1); 
-            border: 1px solid var(--accent); 
-            color: var(--accent); 
-            padding: 8px 12px; 
-            border-radius: 20px; 
-            cursor: pointer; 
+        .quick-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 15px; }
+        .tag-btn {
+            background: var(--subtle);
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
             font-size: 0.8rem;
-            white-space: nowrap;
+            cursor: pointer;
+            color: var(--text);
         }
 
-        .tag-btn:hover {
-            background: var(--accent);
-            color: #000;
+        .result {
+            padding: 25px 0;
+            border-bottom: 1px solid var(--border);
         }
 
-        .result { 
-            background: var(--card-bg); 
-            padding: 20px; 
-            margin: 20px 0; 
-            border-radius: 18px; 
-            border: 1px solid rgba(255,255,255,0.1);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-        }
+        .category { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--meta); font-weight: 600; }
+        h3 { font-size: 1.2rem; margin: 8px 0; font-weight: 600; }
+        p { font-size: 1rem; line-height: 1.6; color: #3f3f46; margin-bottom: 15px; }
 
-        .category-badge { 
-            font-size: 0.7rem; 
-            background: rgba(56, 189, 248, 0.15); 
-            color: var(--accent); 
-            padding: 4px 10px; 
-            border-radius: 6px; 
-            text-transform: uppercase; 
-            font-weight: bold;
-            margin-bottom: 12px; 
-            display: inline-block; 
-        }
+        .footer-card { display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; }
+        .source-link { color: var(--accent); font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--accent); }
 
-        h3 { color: var(--accent); margin: 0 0 10px 0; font-size: 1.3rem; }
+        .empty-state { text-align: center; padding: 100px 0; color: var(--meta); font-size: 0.9rem; }
 
-        .meta { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            margin-top: 20px; 
-            padding-top: 15px; 
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .risk { 
-            padding: 4px 10px; 
-            border-radius: 6px; 
-            font-size: 0.75rem; 
-            font-weight: 900; 
-            text-transform: uppercase; 
-        }
-
-        .risk-critical { background: var(--critical); color: #fff; }
-        .risk-high { background: var(--high); color: #fff; }
-        .risk-medium { background: var(--medium); color: #000; }
-        .risk-low { background: var(--low); color: #fff; }
-
-        .source-link { 
-            display: block; 
-            width: 100%; 
-            text-align: center; 
-            margin-top: 15px; 
-            color: var(--accent); 
-            text-decoration: none; 
-            font-weight: 600; 
-            padding: 12px; 
-            border: 1px solid var(--accent); 
-            border-radius: 10px;
-            background: rgba(56, 189, 248, 0.05);
-            transition: 0.2s;
-        }
-
-        .source-link:hover {
-            background: rgba(56, 189, 248, 0.15);
-        }
-
-        .empty-state { text-align: center; padding: 60px 20px; color: #64748b; }
-
-        footer { 
-            text-align: center; 
-            margin-top: 40px; 
-            padding: 20px; 
-            border-top: 1px solid rgba(255,255,255,0.1); 
-            font-size: 0.8rem; 
-            color: #64748b; 
-        }
-
-        /* Mobiele aanpassingen */
-        @media (max-width: 600px) {
-            h1 { font-size: 1.8rem; }
-            .meta { flex-direction: column; align-items: flex-start; gap: 10px; }
-            .result { padding: 15px; }
-            input { padding: 15px; font-size: 1rem; }
-        }
+        footer { margin-top: 100px; padding: 40px 0; border-top: 1px solid var(--border); font-size: 0.8rem; color: var(--meta); text-align: center; }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>Privacy Wijzer</h1>
-    <p>Gehandicaptenzorg Editie</p>
-</header>
+<div class="container">
+    <header>
+        <h1>Privacy Wijzer</h1>
+        <p>Gehandicaptenzorg — Snel naslagwerk</p>
+    </header>
 
-<div class="search-container">
-    <input id="search" placeholder="Zoek op Wzd, foto, dossier..." autocomplete="off">
-    <div class="quick-tags">
-        <button class="tag-btn" onclick="quickSearch('Wzd')">Zorg & Dwang</button>
-        <button class="tag-btn" onclick="quickSearch('foto')">WhatsApp</button>
-        <button class="tag-btn" onclick="quickSearch('dossier')">Bewaartermijn</button>
-        <button class="tag-btn" onclick="quickSearch('vertegenwoordiger')">Wie tekent?</button>
+    <div class="search-container">
+        <input id="search" placeholder="Zoek op onderwerp..." autocomplete="off">
+        <div class="quick-tags">
+            <button class="tag-btn" onclick="quickSearch('Wzd')">Wzd</button>
+            <button class="tag-btn" onclick="quickSearch('foto')">WhatsApp</button>
+            <button class="tag-btn" onclick="quickSearch('dossier')">Bewaartermijn</button>
+        </div>
     </div>
-</div>
 
-<div id="results">
-    <div class="empty-state">Typ minimaal 2 letters om te zoeken...</div>
-</div>
+    <div id="results">
+        <div class="empty-state">Begin met typen (min. 2 tekens)</div>
+    </div>
 
-<footer>
-    <p>Deze applicatie verwerkt geen persoonsgegevens.</p>
-    <a href="https://jouwdomein.nl/privacy" style="color:var(--accent); text-decoration:none;">Privacyverklaring</a>
-</footer>
+    <footer>
+        Geen gegevensverwerking • <a href="#" style="color:var(--meta)">Privacy</a>
+    </footer>
+</div>
 
 <script>
-// De database met uitgebreide, simpele antwoorden en links
 const database = [
     { 
-        "category": "Wet zorg en dwang (Wzd)", 
-        "question": "Mag ik een camera of sensor gebruiken in de kamer?", 
-        "answer": "Toezicht via camera's of sensoren in de gehandicaptenzorg valt onder de Wet zorg en dwang (Wzd). Dit mag alleen als er een ernstig risico is voor de cliënt en dit is vastgelegd in het zorgplan na overleg met de gedragsdeskundige en de vertegenwoordiger. Het is dus nooit 'zomaar' toegestaan.", 
-        "risk": "high", 
-        "laws": "Wzd / AVG",
+        "category": "Wzd", 
+        "question": "Camera of sensor in de kamer?", 
+        "answer": "Toezicht via camera's of sensoren valt onder de Wet zorg en dwang. Dit mag alleen bij ernstig risico voor de cliënt en moet vastgelegd zijn in het zorgplan na overleg met de gedragsdeskundige en vertegenwoordiger.", 
+        "laws": "Wzd",
         "url": "https://www.dwangindezorg.nl/wzd/onvrijwillige-zorg/vormen"
     },
     { 
-        "category": "Communicatie", 
-        "question": "Mag ik foto's van cliënten delen via WhatsApp?", 
-        "answer": "Nee, standaard WhatsApp is niet veilig genoeg. Gebruik alleen beveiligde apps (zoals Siilo of de zakelijke variant van je organisatie). Zorg dat je altijd expliciete toestemming hebt van de cliënt of de wettelijk vertegenwoordiger voordat je een foto maakt of deelt.", 
-        "risk": "critical", 
-        "laws": "AVG Artikel 32",
+        "category": "Privacy", 
+        "question": "Foto's delen via WhatsApp?", 
+        "answer": "Standaard WhatsApp is niet veilig voor cliëntgegevens. Gebruik uitsluitend beveiligde organisatie-apps en zorg voor expliciete toestemming van de cliënt of vertegenwoordiger.", 
+        "laws": "AVG Art. 32",
         "url": "https://www.vgn.nl/artikel/handreiking-privacy-de-gehandicaptenzorg"
     },
     { 
-        "category": "Bewaartermijnen", 
-        "question": "Hoe lang bewaar ik het dossier van een cliënt?", 
-        "answer": "De wettelijke bewaartermijn is minimaal 20 jaar. Deze termijn gaat pas in na de laatste wijziging in het dossier of nadat de zorg officieel is gestopt. Gooi dus nooit zomaar oude dagrapportages weg zonder dit te checken.", 
-        "risk": "medium", 
+        "category": "Dossier", 
+        "question": "Hoe lang bewaren?", 
+        "answer": "De wettelijke termijn is minimaal 20 jaar na de laatste wijziging of beëindiging van de zorgovereenkomst.", 
         "laws": "WGBO",
         "url": "https://www.knmg.nl/advies-richtlijnen/dossier-bewaren"
-    },
-    { 
-        "category": "Vertegenwoordiging", 
-        "question": "Wie tekent het zorgplan als een cliënt dat niet kan?", 
-        "answer": "Als een cliënt wilsonbekwaam is voor het nemen van beslissingen, tekent de wettelijk vertegenwoordiger. De volgorde is: 1. Curator/Mentor, 2. Schriftelijk gemachtigde, 3. Partner, 4. Ouder/Kind/Broer/Zus. Zonder de juiste handtekening is het plan juridisch niet geldig.", 
-        "risk": "high", 
-        "laws": "WGBO / Mentorschap",
-        "url": "https://www.goedvertegenwoordigd.nl/"
     }
 ];
 
-// Functie om de resultaten te tonen
 function displayResults(data) {
     const container = document.getElementById('results');
     if (data.length === 0) {
-        container.innerHTML = '<div class="empty-state">Geen resultaten gevonden voor deze zoekopdracht.</div>';
+        container.innerHTML = '<div class="empty-state">Niets gevonden.</div>';
         return;
     }
 
     container.innerHTML = data.map(d => `
         <div class="result">
-            <span class="category-badge">${d.category}</span>
+            <div class="category">${d.category}</div>
             <h3>${d.question}</h3>
             <p>${d.answer}</p>
-            <div class="meta">
-                <span style="font-size:0.8rem; color:#94a3b8;">Bron: ${d.laws}</span>
-                <span class="risk risk-${d.risk}">${d.risk}</span>
+            <div class="footer-card">
+                <span style="color:var(--meta)">Bron: ${d.laws}</span>
+                <a href="${d.url}" target="_blank" class="source-link">Lees meer</a>
             </div>
-            <a href="${d.url || '#'}" target="_blank" class="source-link">🔗 Bekijk officiële bron</a>
         </div>
     `).join('');
 }
 
-// Quick Search functie voor de knoppen
 function quickSearch(term) {
     const input = document.getElementById('search');
     input.value = term;
     handleSearch(term);
 }
 
-// De eigenlijke zoekfunctie
 function handleSearch(query) {
     const val = query.toLowerCase();
     const container = document.getElementById('results');
 
-    // Als de tekst korter is dan 2 tekens, tonen we niets
     if (val.length < 2) {
-        container.innerHTML = '<div class="empty-state">Typ minimaal 2 letters om te zoeken...</div>';
+        container.innerHTML = '<div class="empty-state">Begin met typen...</div>';
         return;
     }
     
-    // Filteren in de database
     const filtered = database.filter(d => 
         d.question.toLowerCase().includes(val) || 
         d.answer.toLowerCase().includes(val) ||
@@ -283,8 +178,8 @@ function handleSearch(query) {
     displayResults(filtered);
 }
 
-// Luisteren naar input in de zoekbalk
 document.getElementById('search').oninput = e => handleSearch(e.target.value);
 </script>
+
 </body>
 </html>
