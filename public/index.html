@@ -3,159 +3,187 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Standaard Procedure & AVG Kader 2026</title>
+    <title>Privacy Officer Wijzer</title>
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
-            color: #2c3e50;
-            max-width: 900px;
+            color: #333;
+            max-width: 850px;
             margin: 0 auto;
-            padding: 40px 20px;
-            background-color: #f9f9f9;
+            padding: 30px;
+            background-color: #fff;
         }
-        header {
-            border-bottom: 3px solid #3498db;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        /* De iconische regenboogstreep */
+        .rainbow-divider {
+            height: 6px;
+            background: linear-gradient(to right, #ff5f6d, #ffc371, #42e695, #3bb2b8, #96e6a1, #d4fc79);
+            margin-bottom: 25px;
+            border-radius: 3px;
         }
-        h1 { color: #2980b9; margin: 0; }
-        h2 { 
+        h1 { 
             color: #2c3e50; 
-            border-left: 5px solid #3498db; 
-            padding-left: 15px; 
+            font-size: 2.4em; 
+            margin-bottom: 5px;
+            letter-spacing: -1px;
+        }
+        h2 { 
+            color: #2980b9; 
+            border-bottom: 2px solid #f0f0f0; 
+            padding-bottom: 8px; 
             margin-top: 40px;
         }
-        h3 { color: #d35400; }
-        .metadata {
-            background: #ffffff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
+        .meta {
+            color: #7f8c8d;
             font-size: 0.9em;
+            margin-bottom: 30px;
         }
-        .card {
-            background: white;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            margin-bottom: 20px;
-        }
+        /* Tabel styling */
         table {
             width: 100%;
             border-collapse: collapse;
             margin: 20px 0;
-            background: white;
         }
         th, td {
-            border: 1px solid #dfe6e9;
-            padding: 15px;
+            border: 1px solid #e0e0e0;
+            padding: 12px 15px;
             text-align: left;
         }
-        th { background-color: #f8f9fa; color: #2c3e50; }
-        .decision-frame {
-            background-color: #fff4e5;
-            padding: 25px;
-            border-left: 5px solid #e67e22;
-            border-radius: 4px;
+        th { 
+            background-color: #f8f9fa; 
+            color: #34495e;
+            text-transform: uppercase;
+            font-size: 0.85em;
         }
-        .status-badge {
-            background-color: #27ae60;
-            color: white;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.8em;
+        /* Focus op Vraag/Antwoord & Wet */
+        .qa-container {
+            margin-top: 20px;
+        }
+        .qa-item {
+            margin-bottom: 25px;
+            padding: 15px;
+            background-color: #fafafa;
+            border-radius: 5px;
+        }
+        .question {
             font-weight: bold;
+            color: #2980b9;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .law-ref {
+            font-size: 0.85em;
+            color: #e67e22;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        /* Tooling onderaan */
+        .tool-section {
+            margin-top: 50px;
+            padding: 20px;
+            background-color: #fcfcfc;
+            border: 1px solid #eee;
+            border-radius: 8px;
+        }
+        .tool-section h3 {
+            margin-top: 0;
+            font-size: 1.1em;
+            color: #7f8c8d;
         }
         footer {
-            margin-top: 60px;
-            padding-top: 20px;
-            border-top: 1px solid #eee;
-            font-size: 0.85em;
-            color: #7f8c8d;
+            margin-top: 50px;
+            font-size: 0.8em;
+            color: #bdc3c7;
             text-align: center;
         }
     </style>
 </head>
 <body>
 
+    <div class="rainbow-divider"></div>
+    
     <header>
-        <h1>Standaard Operationele Procedure</h1>
-        <span class="status-badge">GEVALIDEERD 2026</span>
+        <h1>Privacy Officer Wijzer</h1>
+        <div class="meta">Hoofddoel: Documentatie, Wetgeving & Verantwoording | Versie 2026</div>
     </header>
 
-    <div class="metadata">
-        <strong>Document ID:</strong> SOP-AVG-TOTAL-001<br>
-        <strong>Laatste Update:</strong> 6 april 2026<br>
-        <strong>Eigenaar:</strong> Project Management & Privacy Officer
-    </div>
-
     <main>
-        <section class="card">
-            <h2>1. Operationele Processtappen</h2>
-            <p>De standaardwerkwijze voor data-gerelateerde projecten:</p>
+        <section>
+            <h2>Vraag / Antwoord & Juridisch Kader</h2>
+            <div class="qa-container">
+                
+                <div class="qa-item">
+                    <span class="law-ref">Art. 6 lid 1 sub b & f AVG</span>
+                    <span class="question">Op welke juridische grondslag vindt de verwerking plaats?</span>
+                    <p>Antwoord: De verwerking is noodzakelijk voor de uitvoering van een overeenkomst of gebaseerd op een gerechtvaardigd bedrijfsbelang, mits de privacy-impact beperkt blijft.</p>
+                </div>
+
+                <div class="qa-item">
+                    <span class="law-ref">Art. 5 lid 1 sub c AVG</span>
+                    <span class="question">Hoe wordt dataminimalisatie gewaarborgd?</span>
+                    <p>Antwoord: Er vindt een strikte bronselectie plaats. Alleen velden die technisch noodzakelijk zijn voor de berekening worden ingeladen. Identificerende kenmerken worden waar mogelijk gepseudonimiseerd.</p>
+                </div>
+
+                <div class="qa-item">
+                    <span class="law-ref">Art. 32 AVG</span>
+                    <span class="question">Welke beveiligingsstandaarden worden gehanteerd?</span>
+                    <p>Antwoord: Versleuteling van data in rust en tijdens transport (TLS 1.3), strikt toegangsbeheer (RBAC) en periodieke logging-controle.</p>
+                </div>
+
+                <div class="qa-item">
+                    <span class="law-ref">Art. 5 lid 1 sub e AVG</span>
+                    <span class="question">Wat is het beleid rondom bewaartermijnen?</span>
+                    <p>Antwoord: Data wordt niet langer bewaard dan noodzakelijk voor het doel van de procedure. Na afloop geldt de wettelijke fiscale bewaartermijn van 7 jaar, waarna vernietiging volgt.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section>
+            <h2>Procedurele Vastlegging (SOP)</h2>
+            <p>Vastgesteld op 13 maart 2026 voor alle toekomstige trajecten:</p>
             <table>
                 <thead>
                     <tr>
-                        <th>Fase</th>
-                        <th>Omschrijving</th>
-                        <th>Verantwoordelijke</th>
+                        <th>Stap</th>
+                        <th>Actie</th>
+                        <th>Focuspunt AVG</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td><strong>01. Initialisatie</strong></td>
-                        <td>Verzamelen van bronbestanden en data-inventarisatie.</td>
-                        <td>Projectleider</td>
+                        <td>01</td>
+                        <td>Initialisatie & Intake</td>
+                        <td>Doelbinding vaststellen</td>
                     </tr>
                     <tr>
-                        <td><strong>02. Validatie</strong></td>
-                        <td>Technische controle op integriteit en parameters.</td>
-                        <td>Data Specialist</td>
+                        <td>02</td>
+                        <td>Validatie & Controle</td>
+                        <td>Dataminimalisatie check</td>
                     </tr>
                     <tr>
-                        <td><strong>03. Verwerking</strong></td>
-                        <td>Uitvoeren van berekeningen en genereren output.</td>
-                        <td>Systeem / AI</td>
+                        <td>03</td>
+                        <td>Rapportage & Output</td>
+                        <td>Integriteit & Vertrouwelijkheid</td>
                     </tr>
                 </tbody>
             </table>
         </section>
 
-        <section class="card">
-            <h2>2. Privacy & Compliance Dossier</h2>
-            <p>Vragen en antwoorden ten behoeve van de verantwoordingsplicht (Art. 5 lid 2 AVG):</p>
-            
-            <p><strong>Vraag: Wat is de juridische grondslag?</strong><br>
-            Antwoord: De verwerking is noodzakelijk voor de uitvoering van een overeenkomst of gerechtvaardigd belang.</p>
-
-            <p><strong>Vraag: Hoe passen we dataminimalisatie toe?</strong><br>
-            Antwoord: Alleen noodzakelijke velden worden opgehaald. Privacy-gevoelige data wordt geanonimiseerd waar mogelijk.</p>
-
-            <p><strong>Vraag: Wat zijn de beveiligingsmaatregelen?</strong><br>
-            Antwoord: Versleuteling van data (TLS 1.3), Multi-Factor Authenticatie en strikt toegangsbeheer op basis van rollen.</p>
-        </section>
-
-        <section class="decision-frame">
-            <h2>3. Afwegingskader: "Mag dit van de AVG?"</h2>
-            <p>Gebruik dit kader bij elke wijziging in de procedure of bij een nieuwe data-aanvraag:</p>
-            
-            <ol>
-                <li><strong>Doelbinding:</strong> Is het doel specifiek en vooraf vastgelegd?</li>
-                <li><strong>Grondslag:</strong> Hebben we een wettelijke basis (bijv. toestemming of contract)?</li>
-                <li><strong>Noodzakelijkheid:</strong> Kan het doel ook bereikt worden met minder of anonieme data?</li>
-                <li><strong>Transparantie:</strong> Weet de betrokkene dat we dit doen (privacyverklaring)?</li>
-            </ol>
-            <p><em><strong>Let op:</strong> Is het antwoord op één van deze vragen "Nee"? Dan mag de verwerking niet starten zonder aanvullende maatregelen of goedkeuring van de Privacy Officer.</em></p>
+        <section class="tool-section">
+            <h3>Ondersteunend: Afwegingskader (De "Mag dit?" Tool)</h3>
+            <p><small>Gebruik deze tool als snelle check bij nieuwe aanvragen:</small></p>
+            <ul style="font-size: 0.9em;">
+                <li>Is het doel legitiem?</li>
+                <li>Is er een grondslag in de wet?</li>
+                <li>Is de inbreuk proportioneel?</li>
+                <li>Zijn de betrokkenen transparant geïnformeerd?</li>
+            </ul>
         </section>
     </main>
 
     <footer>
-        <p>Gegenereerd voor standaardprocedure - Vastgelegd op 13 maart 2026 - Versie 2.0</p>
+        <p>Geregistreerd document ten behoeve van de Privacy Officer - 2026</p>
     </footer>
 
 </body>
