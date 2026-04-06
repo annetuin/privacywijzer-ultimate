@@ -8,7 +8,7 @@ app.use(cors());
 app.use(express.static("public"));
 app.use(express.json());
 
-const db = new sqlite3.Database("privacy.db");
+const db = new sqlite3.Database("data.json");
 
 app.get("/api/stats", (req, res) => {
   db.get("SELECT COUNT(*) as total FROM questions", (err, row) => {
