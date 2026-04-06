@@ -1,25 +1,204 @@
 <!DOCTYPE html>
-<html><head><title>Privacy wijzer zorg!</title>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width">
-<style>body{font-family:system-ui;background:#1a1a2e;color:#fff;padding:40px;max-width:900px;margin:auto}
-input{width:100%;padding:20px;font-size:18px;border-radius:12px;border:none;margin-bottom:30px;box-shadow:0 4px 20px rgba(0,0,0,.3)}
-.result{background:#16213e;padding:25px;margin:20px 0;border-radius:12px}.risk{padding:8px 16px;border-radius:20px;font-weight:bold;display:inline-block}</style></head>
+<html lang="nl">
+<head>
+    <title>Privacy Wijzer Zorg Pro</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --accent: #38bdf8;
+            --text: #f1f5f9;
+            --critical: #ef4444;
+            --high: #f97316;
+            --medium: #eab308;
+            --low: #22c55e;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: radial-gradient(circle at top right, #1e293b, #0f172a);
+            color: var(--text);
+            padding: 20px;
+            max-width: 1000px;
+            margin: auto;
+            min-height: 100vh;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+        }
+
+        .search-container {
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            padding: 10px;
+            border-radius: 16px;
+        }
+
+        input {
+            width: 100%;
+            padding: 20px 25px;
+            font-size: 1.2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: var(--card-bg);
+            color: #fff;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            outline: none;
+        }
+
+        input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .result {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            padding: 30px;
+            margin: 25px 0;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.05);
+            animation: fadeIn 0.5s ease-out forwards;
+            transition: transform 0.2s;
+        }
+
+        .result:hover {
+            transform: scale(1.01);
+            border-color: rgba(255,255,255,0.2);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h3 {
+            margin-top: 0;
+            color: var(--accent);
+            font-size: 1.4rem;
+            line-height: 1.4;
+        }
+
+        p {
+            line-height: 1.6;
+            color: #cbd5e1;
+            font-size: 1.1rem;
+        }
+
+        .meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 15px;
+        }
+
+        .laws {
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: #94a3b8;
+        }
+
+        .risk {
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .risk-critical { background: var(--critical); color: #fff; box-shadow: 0 0 15px rgba(239, 68, 68, 0.4); }
+        .risk-high { background: var(--high); color: #fff; }
+        .risk-medium { background: var(--medium); color: #000; }
+        .risk-low { background: var(--low); color: #fff; }
+
+        .empty-state {
+            text-align: center;
+            padding: 100px 0;
+            color: #64748b;
+        }
+    </style>
+</head>
 <body>
-<h1>Privacy wijzer zorg!</h1>
-<input id="search" placeholder="Typ: datalek, WGBO...">
-<div id="results"></div>
+
+<header>
+    <h1>Privacy Wijzer Zorg</h1>
+    <p>Database AVG, WGBO & Wet BIG - Direct opvraagbaar</p>
+</header>
+
+<div class="search-container">
+    <input id="search" placeholder="Zoek op term (bijv. dossier, kind, politie)..." autocomplete="off">
+</div>
+
+<div id="results">
+    <div class="empty-state">Begin met typen om de database te doorzoeken...</div>
+</div>
+
 <script>
-async function search(q='') {
-  const r = await fetch(`/api/search?q=${q}`);
-  const data = await r.json();
-  document.getElementById('results').innerHTML = data.map(d=>`
-    <div class="result">
-      <h3>${d.question}</h3>
-      <p>${d.answer}</p>
-      <span class="risk" style="background:#f00;color:white">${d.risk}</span>
-    </div>
-  `).join('') || '<p>Geen resultaten - probeer "datalek"</p>';
+// Dit is de data die je eerder hebt opgebouwd
+const database = [
+    { "category": "Bewaartermijnen", "question": "Wat is de standaard dossiertermijn?", "answer": "Minimaal 20 jaar na de laatste behandeling.", "risk": "high", "laws": "WGBO 7:454" },
+    { "category": "Beroepsgeheim", "question": "Mag info naar de politie?", "answer": "Nee, beroepsgeheim is leidend. Alleen bij expliciete toestemming of noodtoestand.", "risk": "critical", "laws": "BIG Art. 88 / WGBO" },
+    { "category": "Minderjarigen", "question": "Zelfstandige beslissing vanaf welke leeftijd?", "answer": "Vanaf 16 jaar beslist een jongere volledig zelfstandig over zijn dossier.", "risk": "high", "laws": "WGBO 7:447" },
+    { "category": "Datalek", "question": "Wanneer melden bij de AP?", "answer": "Binnen 72 uur na ontdekking bij ernstige privacyrisico's.", "risk": "critical", "laws": "AVG Art. 33" },
+    { "category": "Inzage", "question": "Heeft patiënt recht op gratis kopie?", "answer": "Ja, de eerste kopie van het dossier moet kosteloos worden verstrekt.", "risk": "low", "laws": "AVG Art. 15 / WGBO" }
+    // Voeg hier de rest van de 100 entries toe
+];
+
+function displayResults(data) {
+    const container = document.getElementById('results');
+    if (data.length === 0) {
+        container.innerHTML = '<div class="empty-state">Geen resultaten gevonden voor deze zoekopdracht.</div>';
+        return;
+    }
+
+    container.innerHTML = data.map((d, index) => `
+        <div class="result" style="animation-delay: ${index * 0.05}s">
+            <h3>${d.question}</h3>
+            <p>${d.answer}</p>
+            <div class="meta">
+                <span class="laws">Bron: ${d.laws}</span>
+                <span class="risk risk-${d.risk}">${d.risk}</span>
+            </div>
+        </div>
+    `).join('');
 }
-document.getElementById('search').oninput = e=>search(e.target.value);
+
+document.getElementById('search').oninput = e => {
+    const val = e.target.value.toLowerCase();
+    if (val.length < 2) {
+        document.getElementById('results').innerHTML = '<div class="empty-state">Begin met typen...</div>';
+        return;
+    }
+    
+    const filtered = database.filter(d => 
+        d.question.toLowerCase().includes(val) || 
+        d.answer.toLowerCase().includes(val) ||
+        d.category.toLowerCase().includes(val)
+    );
+    
+    displayResults(filtered);
+};
 </script>
-</body></html>
+
+</body>
+</html>
