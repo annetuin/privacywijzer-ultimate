@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-    <title>Privacy Officer Dashboard — Gehandicaptenzorg</title>
+    <title>Privacy Wijzer — Gehandicaptenzorg</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
@@ -16,7 +16,7 @@
         }
 
         body {
-            font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-family: -apple-system, system-ui, sans-serif;
             background-color: var(--bg);
             color: var(--text);
             margin: 0;
@@ -27,32 +27,15 @@
 
         .container { width: 100%; max-width: 650px; }
 
-        header { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            margin-bottom: 40px; 
-            padding-bottom: 10px;
-        }
-        
-        h1 { font-size: 1.2rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin: 0; }
-        
-        .nav-group { display: flex; gap: 10px; }
-        .officer-btn {
-            background: var(--subtle);
-            border: 1px solid var(--border);
-            padding: 6px 12px;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            cursor: pointer;
-        }
+        header { margin-bottom: 40px; }
+        h1 { font-size: 1.5rem; font-weight: 700; margin: 0; }
+        header p { color: var(--meta); font-size: 0.85rem; margin-top: 5px; }
 
         .search-container {
             position: sticky;
             top: 0;
             background: var(--bg);
-            padding: 10px 0 12px 0;
+            padding: 10px 0 15px 0;
             margin-bottom: 20px;
             z-index: 10;
         }
@@ -76,167 +59,164 @@
             outline: none;
         }
 
-        .result { padding: 25px 0; border-bottom: 1px solid var(--border); transition: 0.2s; }
+        .result { padding: 30px 0; border-bottom: 1px solid var(--border); }
         .category { font-size: 0.7rem; text-transform: uppercase; color: var(--meta); font-weight: 800; letter-spacing: 0.05em; }
-        h3 { font-size: 1.1rem; margin: 8px 0; font-weight: 600; }
-        p { font-size: 0.95rem; line-height: 1.6; color: #3f3f46; }
+        h3 { font-size: 1.2rem; margin: 10px 0; font-weight: 600; }
+        p { font-size: 1rem; line-height: 1.6; color: #3f3f46; margin-bottom: 20px; }
+
+        .footer-card { display: flex; justify-content: space-between; align-items: center; }
+        .source-btn { 
+            padding: 8px 14px; 
+            background: var(--text); 
+            color: var(--bg); 
+            text-decoration: none; 
+            border-radius: 4px; 
+            font-size: 0.8rem; 
+            font-weight: 600;
+        }
 
         .modal {
             display: none;
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background: var(--bg);
+            background: white;
             z-index: 1000;
             padding: 40px 20px;
-            overflow-y: auto;
         }
 
-        .decision-box {
-            background: var(--subtle);
-            padding: 25px;
-            border-radius: 8px;
-            margin-top: 20px;
-            border-left: 4px solid var(--accent);
-        }
-
-        .btn-group { display: flex; gap: 10px; margin-top: 20px; }
-        .choice-btn {
-            padding: 10px 20px;
-            border: 1px solid var(--border);
-            background: white;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: 600;
-        }
-
-        footer { margin-top: 100px; padding: 40px 0; border-top: 1px solid var(--border); font-size: 0.75rem; color: var(--meta); text-align: center; }
-        
-        .counter-badge { font-size: 0.7rem; color: var(--meta); margin-top: 10px; display: block; }
+        footer { margin-top: 80px; padding: 20px 0; border-top: 1px solid var(--border); font-size: 0.8rem; color: var(--meta); text-align: center; }
     </style>
 </head>
 <body>
 
 <div class="container">
     <header>
-        <h1>Privacy Officer <span style="font-weight:300;">Wijzer</span></h1>
-        <div class="nav-group">
-            <button class="officer-btn" onclick="openModal('datalekModal')">Datalek Check</button>
-            <button class="officer-btn" onclick="openModal('decisionModal')">Informatie Delen</button>
-        </div>
+        <h1>Privacy Wijzer</h1>
+        <p>Gehandicaptenzorg — Compliance Tool v2026</p>
     </header>
 
     <div class="search-container">
-        <input id="search" placeholder="Doorzoek wet- en regelgeving..." autocomplete="off">
+        <input id="search" placeholder="Typ een onderwerp (bijv. Wzd, dossier, foto)..." autocomplete="off">
     </div>
 
     <div id="results">
-        <div style="text-align:center; padding:60px; color:var(--meta); font-size:0.9rem;">Voer minimaal 2 tekens in voor de database...</div>
+        <div style="text-align:center; padding:50px; color:var(--meta);">Typ minimaal 2 letters om te zoeken...</div>
     </div>
 
     <footer>
-        <p>Awareness Tool v2026.04 • <a href="javascript:void(0)" onclick="openModal('privacyModal')" style="color:var(--meta)">Privacy & Log</a></p>
-        <span id="usageCounter" class="counter-badge">Raadplegingen in deze sessie: 0</span>
+        Geen gegevensverwerking • <a href="javascript:void(0)" onclick="toggleModal('privacyModal')" style="color:var(--meta)">Privacyverklaring</a>
     </footer>
-</div>
-
-<div id="datalekModal" class="modal">
-    <div style="max-width: 600px; margin: 0 auto;">
-        <h2>Datalek Incident Check</h2>
-        <p>Beantwoord de vragen om te bepalen of melding bij de AP noodzakelijk is.</p>
-        <div id="datalekWizard">
-            <div class="decision-box">
-                <p>Is er sprake van verlies of onrechtmatige toegang tot persoonsgegevens? (Bijv. USB-stick kwijt, verkeerde mail verstuurd naar 100 personen?)</p>
-                <div class="btn-group">
-                    <button class="choice-btn" onclick="nextDatalek('ja')">Ja</button>
-                    <button class="choice-btn" onclick="nextDatalek('nee')">Nee</button>
-                </div>
-            </div>
-        </div>
-        <button onclick="closeModal('datalekModal')" style="margin-top: 40px; border:none; background:none; text-decoration:underline; cursor:pointer;">Annuleren</button>
-    </div>
-</div>
-
-<div id="decisionModal" class="modal">
-    <div style="max-width: 600px; margin: 0 auto;">
-        <h2>Beslishulp: Informatie Delen</h2>
-        <div id="wizard">
-            <div class="decision-box">
-                <p id="step-text">Is de cliënt (of vertegenwoordiger) akkoord met het delen van deze info?</p>
-                <div class="btn-group">
-                    <button class="choice-btn" onclick="nextStep('ja')">Ja</button>
-                    <button class="choice-btn" onclick="nextStep('nee')">Nee</button>
-                </div>
-            </div>
-        </div>
-        <button onclick="closeModal('decisionModal')" style="margin-top: 40px; border:none; background:none; text-decoration:underline; cursor:pointer;">Sluiten</button>
-    </div>
 </div>
 
 <div id="privacyModal" class="modal">
     <div style="max-width: 600px; margin: 0 auto;">
-        <h2>Gegevensverwerking & Audit</h2>
-        <p>Deze tool slaat <strong>geen</strong> informatie op servers op. De sessie-teller die je onderaan ziet, wordt gereset zodra de pagina wordt ververst.</p>
-        <p>Als Privacy Officer kun je dit screenshotten als bewijs van laagdrempelige awareness-training binnen je team.</p>
-        <button onclick="closeModal('privacyModal')" style="margin-top: 40px; padding: 10px 20px; background: #000; color: #fff; border: none; border-radius: 4px; cursor: pointer;">Sluiten</button>
+        <h2>Privacyverklaring</h2>
+        <p>Deze app is 'privacy-first'. Er vindt geen gegevensverwerking plaats op servers. Alle zoekopdrachten blijven in de lokale browser van de gebruiker.</p>
+        <button onclick="toggleModal('privacyModal')" style="padding: 10px 20px; background: #000; color: #fff; border: none; border-radius: 4px; cursor: pointer;">Sluiten</button>
     </div>
 </div>
 
 <script>
-// Database: Wetgeving en Officer richtlijnen
 const database = [
-    { "category": "Datalek", "question": "Wanneer melden bij de AP?", "answer": "Binnen 72 uur na ontdekking. Je meldt alleen als het lek waarschijnlijk een risico inhoudt voor de rechten en vrijheden van de cliënt.", "laws": "AVG Art. 33", "url": "https://autoriteitpersoonsgegevens.nl/onderwerpen/beveiliging/datalekken" },
-    { "category": "Wzd", "question": "Onvrijwillige zorg: wie is de Wzd-functionaris?", "answer": "In de gehandicaptenzorg is dit de persoon die toeziet op de inzet van onvrijwillige zorg. Meestal een terzake kundig arts of gedragsdeskundige.", "laws": "Wzd", "url": "https://www.dwangindezorg.nl/wzd/onvrijwillige-zorg" },
-    { "category": "DPIA", "question": "Wanneer is een DPIA verplicht?", "answer": "Als je een nieuw systeem gaat gebruiken met een hoog privacyrisico (bijv. nieuwe camerabeveiliging met gezichtsherkenning of een nieuw ECD).", "laws": "AVG Art. 35", "url": "https://autoriteitpersoonsgegevens.nl/onderwerpen/avg/data-protection-impact-assessment-dpia" }
+    { 
+        "category": "Dossiervorming", 
+        "question": "Hoe lang moet het dossier bewaard blijven?", 
+        "answer": "Standaardtermijn van 20 jaar na de laatste wijziging of beëindiging van de zorgovereenkomst.", 
+        "laws": "WGBO / Wzd",
+        "url": "https://www.rijksoverheid.nl/onderwerpen/rechten-van-patient-en-cliënt/medisch-dossier"
+    },
+    { 
+        "category": "Wzd", 
+        "question": "Informatie delen met familie over onvrijwillige zorg?", 
+        "answer": "De wettelijk vertegenwoordiger heeft recht op alle noodzakelijke informatie. Bij wilsbekwame cliënten bepaalt de cliënt dit zelf.", 
+        "laws": "Wzd / WGBO",
+        "url": "https://www.dwangindezorg.nl/wzd/cliënten-en-vertegenwoordigers"
+    },
+    { 
+        "category": "Groepsruimte", 
+        "question": "Camera of sensor in de slaapkamer?", 
+        "answer": "Alleen bij strikte noodzaak voor veiligheid. Moet in zorgplan staan en geëvalueerd worden.", 
+        "laws": "Wzd / AVG",
+        "url": "https://www.dwangindezorg.nl/wzd/onvrijwillige-zorg/vormen"
+    },
+    { 
+        "category": "Communicatie", 
+        "question": "Foto's op WhatsApp plaatsen?", 
+        "answer": "WhatsApp is onveilig voor cliëntgegevens. Gebruik uitsluitend goedgekeurde organisatie-apps.", 
+        "laws": "AVG Art. 32",
+        "url": "https://www.vgn.nl/artikel/handreiking-privacy-de-gehandicaptenzorg"
+    },
+    { 
+        "category": "Vertegenwoordiging", 
+        "question": "Wie tekent het zorgplan?", 
+        "answer": "Bij wilsonbekwaamheid: 1. Curator/Mentor, 2. Gemachtigde, 3. Partner, 4. Familie.", 
+        "laws": "WGBO / Mentorschap",
+        "url": "https://www.goedvertegenwoordigd.nl/"
+    },
+    { 
+        "category": "Incidenten", 
+        "question": "Incident tussen twee cliënten in dossier?", 
+        "answer": "Rapporteer incident in dossier cliënt A zonder cliënt B bij naam te noemen.", 
+        "laws": "AVG / WGBO",
+        "url": "https://www.autoriteitpersoonsgegevens.nl/themas/gezondheid/medisch-dossier/rechten-van-de-patient"
+    },
+    { 
+        "category": "Inzage", 
+        "question": "Mag cliënt eigen dossier inzien?", 
+        "answer": "Ja, inclusief recht op kopie. Uitzondering als privacy van anderen in gevaar komt.", 
+        "laws": "WGBO Art. 7:456",
+        "url": "https://www.kansplus.nl/themas/rechten-en-plichten/inzage-in-het-dossier/"
+    },
+    { 
+        "category": "Vrijwilligers", 
+        "question": "Info delen met vrijwilliger?", 
+        "answer": "Alleen strikt noodzakelijke info voor de taak. Vrijwilliger heeft geheimhoudingsplicht.", 
+        "laws": "AVG / Geheimhouding",
+        "url": "https://www.vgn.nl/vrijwilligers-en-privacy"
+    }
 ];
-
-let sessionCount = 0;
 
 function handleSearch(query) {
     const val = query.toLowerCase();
     const container = document.getElementById('results');
-    if (val.length < 2) { container.innerHTML = '<div style="text-align:center; padding:60px; color:var(--meta);">Minimaal 2 tekens...</div>'; return; }
-    
-    // Audit counter update
-    sessionCount++;
-    document.getElementById('usageCounter').innerText = `Raadplegingen in deze sessie: ${sessionCount}`;
 
-    const filtered = database.filter(d => d.question.toLowerCase().includes(val) || d.answer.toLowerCase().includes(val));
+    if (val.length < 2) {
+        container.innerHTML = '<div style="text-align:center; padding:50px; color:var(--meta);">Typ minimaal 2 letters...</div>';
+        return;
+    }
+    
+    const filtered = database.filter(d => 
+        d.question.toLowerCase().includes(val) || 
+        d.category.toLowerCase().includes(val) ||
+        d.answer.toLowerCase().includes(val)
+    );
+
+    if (filtered.length === 0) {
+        container.innerHTML = '<div style="text-align:center; padding:50px; color:var(--meta);">Geen hits gevonden.</div>';
+        return;
+    }
+
     container.innerHTML = filtered.map(d => `
         <div class="result">
             <div class="category">${d.category}</div>
             <h3>${d.question}</h3>
             <p>${d.answer}</p>
-            <div style="display:flex; justify-content:space-between; margin-top:15px; font-size:0.8rem;">
-                <span style="color:var(--meta)">Bron: ${d.laws}</span>
-                <a href="${d.url}" target="_blank" style="color:var(--accent); font-weight:700; text-decoration:none; border-bottom:1px solid #000;">Directe Bron</a>
+            <div class="footer-card">
+                <span style="color:var(--meta); font-size:0.8rem;">Bron: ${d.laws}</span>
+                ${d.url ? `<a href="${d.url}" target="_blank" class="source-btn">Open Bron</a>` : ''}
             </div>
         </div>
     `).join('');
 }
 
-// Modal & Wizard Logica
-function openModal(id) { document.getElementById(id).style.display = 'block'; }
-function closeModal(id) { document.getElementById(id).style.display = 'none'; resetWizards(); }
-
-let datalekStep = 1;
-function nextDatalek(choice) {
-    const wiz = document.getElementById('datalekWizard');
-    if (datalekStep === 1) {
-        if (choice === 'nee') { wiz.innerHTML = '<div class="decision-box">Geen datalek. Wel belangrijk om het incident intern te loggen voor de jaarrapportage.</div>'; }
-        else { datalekStep = 2; wiz.innerHTML = '<div class="decision-box"><p>Is er een hoog risico voor de cliënt? (Bijv. diefstal medische gegevens, identiteitsfraude mogelijk?)</p><div class="btn-group"><button class="choice-btn" onclick="nextDatalek(\'ja\')">Ja</button><button class="choice-btn" onclick="nextDatalek(\'nee\')">Nee</button></div></div>'; }
-    } else if (datalekStep === 2) {
-        if (choice === 'ja') { wiz.innerHTML = '<div class="decision-box"><strong>ACTIE:</strong> Meld het datalek binnen 72 uur bij de AP en informeer de cliënt direct.</div>'; }
-        else { wiz.innerHTML = '<div class="decision-box">Meld het lek binnen 72 uur bij de AP. Informeren van de cliënt is op basis van deze check niet strikt verplicht, maar wel raadzaam.</div>'; }
-    }
-}
-
-function resetWizards() {
-    datalekStep = 1;
-    document.getElementById('datalekWizard').innerHTML = '<div class="decision-box"><p>Is er sprake van verlies of onrechtmatige toegang tot persoonsgegevens?</p><div class="btn-group"><button class="choice-btn" onclick="nextDatalek(\'ja\')">Ja</button><button class="choice-btn" onclick="nextDatalek(\'nee\')">Nee</button></div></div>';
+function toggleModal(id) {
+    const m = document.getElementById(id);
+    m.style.display = (m.style.display === 'block') ? 'none' : 'block';
 }
 
 document.getElementById('search').oninput = e => handleSearch(e.target.value);
 </script>
+
 </body>
 </html>
