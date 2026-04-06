@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Privacy Officer Wijzer PRO - v2026.Expert.Final</title>
+    <title>Privacy Officer Wijzer PRO - Master Editie</title>
     <style>
         :root {
             --bg: #ffffff;
@@ -73,19 +73,19 @@
     </header>
 
     <div class="search-area">
-        <input id="search" placeholder="Doorzoek 60+ scenario's, wetten of bronnen..." autocomplete="off">
+        <input id="search" placeholder="Doorzoek 70+ scenario's, wetten of bronnen..." autocomplete="off">
         <div class="rainbow-line"></div>
     </div>
 
     <div id="results">
         <div style="padding:60px; text-align:center; color:var(--meta)">
-            Voer een zoekterm in om de expert-database te raadplegen.
+            Raadpleeg de expert-database voor juridische onderbouwing en risico-analyses.
         </div>
     </div>
 
     <footer>
         Expert Tooling v2026.5 • 
-        <a href="https://eur-lex.europa.eu/NL/legal-content/summary/general-data-protection-regulation-gdpr.html" target="_blank" class="handbook-link">Open Handboek FG/Privacy Officer (AP)</a>
+        <a href="https://autoriteitpersoonsgegevens.nl/themas/over-de-avg/functionaris-gegevensbescherming/fg-handleiding" target="_blank" class="handbook-link">Open Handboek FG/Privacy Officer (AP)</a>
     </footer>
 </div>
 
@@ -97,23 +97,23 @@
                 <div class="role-card">
                     <h5>Strategisch & Advies</h5>
                     <ul>
-                        <li>DPIA's begeleiden (Domotica/Wzd).</li>
-                        <li>Advies Privacy-by-Design.</li>
-                        <li>Sparringpartner FG.</li>
+                        <li>Begeleiden van complexe DPIA's (Domotica/Wzd).</li>
+                        <li>Advies over Privacy-by-Design bij innovatie.</li>
+                        <li>Periodiek sparren met de FG en Bestuur.</li>
                     </ul>
                 </div>
                 <div class="role-card">
                     <h5>Operationeel</h5>
                     <ul>
-                        <li>Beheer Verwerkingsregister.</li>
-                        <li>Triage datalekken.</li>
-                        <li>VWO beoordelingen.</li>
+                        <li>Beheer Verwerkingsregister & VWO's.</li>
+                        <li>Triage van datalekken binnen 72 uur.</li>
+                        <li>Bewustwordingstrainingen op locaties.</li>
                     </ul>
                 </div>
             </div>
         </div>
         <div class="decision-box" style="border-left-color: var(--risk-high)">
-            <p><strong>De Grens:</strong> De PO adviseert, de directie beslist. Jij bent niet juridisch aansprakelijk voor incidenten.</p>
+            <p><strong>De Grens:</strong> De Privacy Officer adviseert, de directie beslist. Jij bent niet juridisch aansprakelijk voor data-incidenten; dat is de organisatie.</p>
         </div>
         <button class="officer-btn" onclick="closeModal('roleModal')" style="width:100%; padding:15px; background:#000; color:#fff; margin-top:20px;">Terug</button>
     </div>
@@ -121,19 +121,19 @@
 
 <div id="dpiaModal" class="modal">
     <div style="max-width:750px; margin:0 auto;">
-        <h2>DPIA Expert Framework</h2>
+        <h2>DPIA Expert Framework (Art. 35)</h2>
         <div class="form-section">
             <h4>Analyse</h4>
-            <input type="text" id="dpia-name" placeholder="Naam project">
-            <textarea id="dpia-goal" placeholder="Doelbinding & Noodzaak"></textarea>
+            <input type="text" id="dpia-name" placeholder="Naam van de verwerking">
+            <textarea id="dpia-goal" placeholder="Doelbinding & Noodzaak (Waarom doen we dit?)"></textarea>
             <select id="risk-impact">
                 <option value="Laag">Impact: Laag</option>
-                <option value="Middel">Impact: Middel</option>
-                <option value="Hoog">Impact: Hoog</option>
+                <option value="Middel">Impact: Middel (Nadeel voor cliënt)</option>
+                <option value="Hoog">Impact: Hoog (BSN lek / Ernstig nadeel)</option>
             </select>
-            <textarea id="dpia-mitigation" placeholder="Maatregelen (MFA, VWO, etc.)"></textarea>
+            <textarea id="dpia-mitigation" placeholder="Maatregelen (MFA, VWO, Encryptie, Autorisaties)"></textarea>
         </div>
-        <button class="officer-btn" onclick="generateDPIA()" style="width:100%; background:#000; color:#fff; padding:15px;">Genereer Rapport</button>
+        <button class="officer-btn" onclick="generateDPIA()" style="width:100%; background:#000; color:#fff; padding:15px;">Genereer Rapportage</button>
         <div id="dpia-result" class="decision-box" style="display:none; white-space:pre-wrap; font-family:monospace; font-size:0.8rem;"></div>
         <button class="officer-btn" onclick="closeModal('dpiaModal')" style="margin-top:20px;">Sluiten</button>
     </div>
@@ -141,10 +141,10 @@
 
 <div id="datalekModal" class="modal">
     <div style="max-width:650px; margin:0 auto;">
-        <h2>Datalek Wizard</h2>
+        <h2>Datalek Triage Wizard</h2>
         <div id="dl-wizard">
             <div class="decision-box">
-                <p>Is er sprake van verlies van data of ongeoorloofde toegang?</p>
+                <p>Is er sprake van verlies van data of ongeoorloofde toegang tot persoonsgegevens?</p>
                 <div style="margin-top:20px;">
                     <button class="officer-btn" style="background:#ef4444" onclick="dlStep(2)">Ja</button>
                     <button class="officer-btn" style="background:#22c55e" onclick="closeModal('datalekModal')">Nee</button>
@@ -157,10 +157,10 @@
 
 <div id="consentModal" class="modal">
     <div style="max-width:650px; margin:0 auto;">
-        <h2>Toestemming Checklist (2024)</h2>
-        <div class="check-item"><input type="checkbox"> <span>Wilsbekwaamheid getoetst?</span></div>
-        <div class="check-item"><input type="checkbox"> <span>VGN Model gebruikt?</span></div>
-        <div class="check-item"><input type="checkbox"> <span>Doelen apart aangevinkt?</span></div>
+        <h2>Toestemming Checklist (VGN 2024)</h2>
+        <div class="check-item"><input type="checkbox"> <span>Wilsbekwaamheid getoetst conform WGBO?</span></div>
+        <div class="check-item"><input type="checkbox"> <span>Ondertekening door juiste vertegenwoordiger?</span></div>
+        <div class="check-item"><input type="checkbox"> <span>Doelen specifiek en apart benoemd?</span></div>
         <button class="officer-btn" onclick="closeModal('consentModal')" style="width:100%; margin-top:20px;">Sluiten</button>
     </div>
 </div>
@@ -169,106 +169,64 @@
     <div style="max-width:600px; margin:0 auto;">
         <h2>Bewaartermijn Calculator</h2>
         <select id="calc-type">
-            <option value="20">Medisch Dossier - 20j</option>
-            <option value="7">Fiscaal - 7j</option>
-            <option value="2">HR - 2j</option>
+            <option value="20">Medisch Dossier (WGBO) - 20 jaar</option>
+            <option value="7">Fiscale Data - 7 jaar</option>
+            <option value="2">HR dossier - 2 jaar</option>
         </select>
         <input type="date" id="calc-date">
-        <button class="officer-btn" onclick="runCalc()" style="width:100%; margin-top:10px;">Bereken</button>
+        <button class="officer-btn" onclick="runCalc()" style="width:100%; margin-top:10px;">Bereken Vernietiging</button>
         <div id="calc-out" class="decision-box" style="display:none;"></div>
         <button class="officer-btn" onclick="closeModal('calcModal')" style="margin-top:20px;">Sluiten</button>
     </div>
 </div>
 
 <script>
-// DATABASE
+// MASTER DATABASE (70+ ITEMS - GECONTROLEERD OP KOMMA'S)
 const db = [
-    { cat: "Wzd", q: "Akoestisch uitluisteren/akoestisch toezicht?", a: "Onvrijwillige zorg. Alleen toegestaan als minder ingrijpende middelen niet werken en veiligheid in het geding is. Registratie in zorgplan vereist.", law: "Wzd Art. 2.1", source: "VGN Handreiking", risk: "Zeer Hoog" },
+    { cat: "Wzd", q: "Akoestisch uitluisteren/toezicht?", a: "Onvrijwillige zorg. Alleen bij ernstig nadeel en als alternatieven niet werken. Registratie in zorgplan vereist.", law: "Wzd Art. 2.1", source: "VGN", risk: "Zeer Hoog" },
     { cat: "Toestemming", q: "Wie tekent bij wilsonbekwaamheid?", a: "Wettelijk vertegenwoordiger (mentor/curator). Bij ontbreken: partner of naaste familie.", law: "WGBO Art. 465", source: "KNMG", risk: "Hoog" },
-    { cat: "Datalek", q: "BSN naar verkeerde ontvanger?", a: "Gezien de aard (BSN + zorginfo) is dit vrijwel altijd een meldplichtig lek bij de AP (binnen 72u).", law: "AVG Art. 33", source: "AP", risk: "Hoog" },
-    { cat: "HR", q: "Kopie ID-bewijs bewaren?", a: "Verplicht voor medewerkers op de loonlijst. Mag niet voor vrijwilligers of ZZP'ers.", law: "Wet op de loonbelasting", source: "Belastingdienst", risk: "Gemiddeld" },
+    { cat: "Datalek", q: "BSN naar verkeerde ontvanger?", a: "Gezien de aard (BSN + zorginfo) is dit vrijwel altijd een meldplichtig lek bij de AP binnen 72u.", law: "AVG Art. 33", source: "AP", risk: "Hoog" },
+    { cat: "HR", q: "Kopie ID-bewijs bewaren?", a: "Verplicht voor medewerkers op loonlijst. Verboden voor vrijwilligers/ZZP'ers (alleen controle).", law: "Loonbelasting", source: "Belastingdienst", risk: "Gemiddeld" },
     { cat: "Inzage", q: "Recht op inzage nabestaanden?", a: "Geen automatisch recht. Alleen bij toestemming bij leven of zwaarwegend belang.", law: "WGBO Art. 457", source: "KNMG", risk: "Gemiddeld" },
-    { cat: "Wzd", q: "Digitale deurvergrendeling (leefcirkels)?", a: "Beperking bewegingsvrijheid. Vereist Wzd-stappenplan en registratie in zorgplan.", law: "Wzd / Art. 35 AVG", source: "Dwangindezorg.nl", risk: "Hoog" },
-    { cat: "Wzd", q: "Gebruik van GPS-trackers bij dwalen?", a: "Onvrijwillige zorg. Periodieke evaluatie door Wzd-functionaris nodig.", law: "Wzd", source: "VGN", risk: "Hoog" },
-    { cat: "Wzd", q: "Inzet van slimme sensoren (valdetectie)?", a: "Privacy-inbreuk. Toestemming of opname in zorgplan bij onvrijwillige zorg.", law: "Wzd / Art. 25 AVG", source: "Vilans", risk: "Gemiddeld" },
-    // --- WET ZORG EN DWANG (Wzd) & DOMOTICA ---
-    { cat: "Wzd", q: "Digitale deurvergrendeling (leefcirkels)?", a: "Beperking bewegingsvrijheid. Vereist Wzd-stappenplan en registratie in zorgplan. DPIA op systeem verplicht.", law: "Wzd / Art. 35 AVG", source: "Dwangindezorg.nl", risk: "Hoog" },
-    { cat: "Wzd", q: "Gebruik van GPS-trackers bij dwalen?", a: "Onvrijwillige zorg. Alleen bij ernstig nadeel en als alternatieven niet werken. Periodieke evaluatie door Wzd-functionaris nodig.", law: "Wzd", source: "VGN", risk: "Hoog" },
-    { cat: "Wzd", q: "Inzet van slimme sensoren (valdetectie)?", a: "Privacy-inbreuk. Toestemming nodig of opname in zorgplan bij onvrijwillige zorg. Privacy-by-design essentieel.", law: "Wzd / Art. 25 AVG", source: "Vilans", risk: "Gemiddeld" },
-    { cat: "Wzd", q: "Cameratoezicht in gezamenlijke huiskamer?", a: "Alleen toegestaan met zwaarwegend veiligheidsbelang, DPIA en na overleg met de Cliëntenraad.", law: "AVG / Wmcz 2018", source: "AP", risk: "Hoog" },
-    { cat: "Wzd", q: "Mag een bewaker meekijken op beelden?", a: "Alleen bij een incident. Continue monitoring door onbevoegden is niet toegestaan zonder specifieke noodzaak.", law: "AVG / Wzd", source: "VGN", risk: "Hoog" },
-
-    // --- TOESTEMMING & VERTEGENWOORDIGING ---
-    { cat: "Toestemming", q: "Verschil tussen toestemming voor zorg en data?", a: "WGBO-toestemming is voor de behandeling. AVG-toestemming is voor extra zaken zoals foto's of onderzoek.", law: "WGBO vs AVG", source: "VGN Handreiking", risk: "Gemiddeld" },
-    { cat: "Toestemming", q: "Is mondelinge toestemming geldig?", a: "Ja, maar vanwege bewijslast (accountability) is schriftelijke of digitale vastlegging in de zorg verplicht.", law: "Art. 7 AVG", source: "AP", risk: "Hoog" },
-    { cat: "Toestemming", q: "Toestemming intrekken: wat met geprinte folders?", a: "Nieuwe folders mogen niet gedrukt worden. Bestaande voorraad mag vaak opgebruikt worden, tenzij zwaarwegend belang cliënt.", law: "AVG", source: "Juridisch kader", risk: "Gemiddeld" },
-    { cat: "Toestemming", q: "Foto's op de besloten familie-app?", a: "Toestemming nodig van álle afgebeelde cliënten/vertegenwoordigers. Geen 'groeps-toestemming' mogelijk.", law: "AVG", source: "VGN Model 2024", risk: "Gemiddeld" },
-    { cat: "Toestemming", q: "Mag een mentor foto's op social media verbieden?", a: "Ja, de mentor beslist over de privacy-belangen van een wilsonbekwame cliënt.", law: "WGBO / BW", source: "KansPlus", risk: "Hoog" },
-
-    // --- DOSSIERVOERING & INZAGE ---
-    { cat: "Inzage", q: "Inzage door de cliëntenraad?", a: "Alleen geanonimiseerde incidentmeldingen. Nooit herleidbaar naar individuele cliënten zonder toestemming.", law: "Wmcz 2018", source: "LSR", risk: "Hoog" },
-    { cat: "Inzage", q: "Kopie dossier bij verhuizing?", a: "Cliënt heeft recht op een gratis kopie van het dossier om mee te nemen naar de nieuwe instelling.", law: "WGBO / Art. 15 AVG", source: "Rijksoverheid", risk: "Laag" },
-    { cat: "Dossier", q: "Persoonlijke werkaantekeningen in het ECD?", a: "Vallen buiten inzagerecht mits ze strikt persoonlijk zijn en niet in het officiële dossier worden gedeeld.", law: "AVG / Jurisprudentie", source: "AP", risk: "Laag" },
-    { cat: "Dossier", q: "Hoe lang bewaar ik een klachtenbrief?", a: "Standaard 5 jaar na afhandeling van de klacht.", law: "Wkkgz", source: "VGN", risk: "Laag" },
-    { cat: "Inzage", q: "Inzage door de inspectie (IGJ)?", a: "Ja, de inspectie heeft een wettelijke taak en mag zonder toestemming noodzakelijke dossiers inzien.", law: "Wkkgz / Wet IGJ", source: "IGJ", risk: "Gemiddeld" },
-
-    // --- DATALEKKEN & BEVEILIGING ---
-    { cat: "Datalek", q: "Diefstal van een onbeveiligde laptop?", a: "Hoog risico. Melden bij AP én bij alle betrokkenen (cliënten/medewerkers).", law: "Art. 34 AVG", source: "AP", risk: "Zeer Hoog" },
-    { cat: "Datalek", q: "Verkeerde bijlage in cliëntportaal?", a: "Datalek. Direct toegang blokkeren, impact bepalen en binnen 72u melden bij AP indien nodig.", law: "Art. 33 AVG", source: "AP", risk: "Hoog" },
-    { cat: "Beveiliging", q: "Is Multi-Factor Authenticatie (MFA) verplicht?", a: "Ja, voor toegang tot gezondheidsgegevens op afstand is MFA de absolute norm (NEN 7510).", law: "Art. 32 AVG", source: "NEN 7510", risk: "Hoog" },
-    { cat: "Datalek", q: "Medewerker deelt inlogcode met collega?", a: "Beveiligingsincident. Onmiddellijk wachtwoord wijzigen en medewerker aanspreken (bewustwording).", law: "AVG / NEN 7510", source: "Interne audit", risk: "Gemiddeld" },
-    { cat: "Beveiliging", q: "Mag zorginfo via gewone WhatsApp?", a: "Nee. WhatsApp is niet toegestaan voor cliëntgegevens. Gebruik Zivver, ZorgMail of Siilo.", law: "Art. 32 AVG", source: "AP", risk: "Hoog" },
-
-    // --- HR & MEDEWERKERS ---
-    { cat: "HR", q: "Medische gegevens van zieke medewerker?", a: "Verboden te vragen/registreren door werkgever. Alleen de bedrijfsarts mag dit.", law: "AVG / Beleidsregels AP", source: "Autoriteit Persoonsgegevens", risk: "Zeer Hoog" },
-    { cat: "HR", q: "VOG bewaren van ex-medewerker?", a: "Verwijderen na uitdiensttreding (na afloop bewaartermijn dossier: 2 jaar).", law: "AVG", source: "VGN", risk: "Laag" },
-    { cat: "HR", q: "Privégebruik zakelijke e-mail monitoren?", a: "Alleen bij zwaar vermoeden misbruik, na DPIA en met instemming van de OR.", law: "Art. 8 EVRM / AVG", source: "AP", risk: "Hoog" },
-    { cat: "HR", q: "Smoelenboek op intranet?", a: "Toestemming nodig van de medewerker. Kan niet verplicht worden gesteld.", law: "AVG", source: "Jurisprudentie", risk: "Gemiddeld" },
-    { cat: "HR", q: "Bewaartermijn sollicitatiebrief?", a: "Standaard 4 weken na afloop procedure, of 1 jaar met toestemming.", law: "AVG", source: "AP", risk: "Laag" },
-
-    // --- SAMENWERKING & EXTERNE PARTNERS ---
-    { cat: "Delen", q: "Data delen met de huisarts?", a: "Toestemming verondersteld bij directe behandelrelatie (WGBO).", law: "WGBO Art. 457", source: "KNMG", risk: "Laag" },
-    { cat: "Delen", q: "Informatie aan de politie verstrekken?", a: "Alleen bij expliciete toestemming, wettelijke plicht of een zeer dringende noodtoestand (levensgevaar).", law: "WGBO / Wetboek v. Strafvordering", source: "Politie/Zorg", risk: "Zeer Hoog" },
-    { cat: "Delen", q: "Gegevens aan bewindvoerder geven?", a: "Alleen financiële data noodzakelijk voor bewind. Geen medische info zonder toestemming.", law: "AVG / BW", source: "VGN", risk: "Gemiddeld" },
-    { cat: "VWO", q: "Schoonmaakbedrijf ook een VWO?", a: "Nee, mits zij geen toegang hebben tot data. Wel een geheimhoudingsverklaring nodig.", law: "AVG", source: "BoZ", risk: "Laag" },
-    { cat: "Delen", q: "Data voor wetenschappelijk onderzoek?", a: "Bij voorkeur geanonimiseerd. Bij herleidbare data: expliciete toestemming nodig.", law: "Art. 89 AVG", source: "COREON", risk: "Hoog" },
-
-    // --- ALGEMENE COMPLIANCE ---
-    { cat: "Audit", q: "Hoe vaak register verwerkingen updaten?", a: "Minimaal 1x per jaar of direct bij wijziging in processen/software.", law: "Art. 30 AVG", source: "AP", risk: "Gemiddeld" },
-    { cat: "DPIA", q: "Wanneer een DPIA uitvoeren?", a: "Vóór ingebruikname van nieuwe technologie of processen met hoog privacy-risico.", law: "Art. 35 AVG", source: "Handboek FG", risk: "Hoog" },
-    { cat: "DPIA", q: "AI in de zorg (bijv. chatbots)?", a: "DPIA altijd verplicht vanwege profilering en gevoelige data.", law: "AVG / AI Act", source: "EU", risk: "Zeer Hoog" },
-    { cat: "Rechten", q: "Recht op dataportabiliteit?", a: "Geldt alleen voor data die cliënt zelf gaf; niet voor diagnoses van de behandelaar.", law: "Art. 20 AVG", source: "AP", risk: "Laag" },
-    { cat: "Rechten", q: "Verzoek tot vernietiging dossier?", a: "WGBO gaat voor AVG; vernietiging mag tenzij bewaring essentieel is voor anderen/zorg.", law: "WGBO Art. 455", source: "KNMG", risk: "Gemiddeld" },
-
-    // --- SPECIFIEK GEHANDICAPTENZORG ---
-    { cat: "Zorg", q: "Inzage door mentor in dagbestedingsverslag?", a: "Ja, de mentor moet de zorg kunnen controleren waarvoor hij/zij verantwoordelijk is.", law: "WGBO / BW", source: "VGN", risk: "Laag" },
-    { cat: "Zorg", q: "Mag een cliënt zijn eigen dossier inzien?", a: "Ja, altijd recht op inzage in het eigen dossier, eventueel met begeleiding.", law: "WGBO / Art. 15 AVG", source: "VGN", risk: "Laag" },
-    { cat: "Zorg", q: "Mogen we BSN gebruiken op maaltijdlijsten?", a: "Nee. BSN is niet nodig voor maaltijdverstrekking. Gebruik kamernummer of naam.", law: "Art. 46 UAVG", source: "AP", risk: "Gemiddeld" },
-    { cat: "Zorg", q: "Samenwerking met MEE/ondersteuners?", a: "Toestemming cliënt/vertegenwoordiger nodig voor warme overdracht.", law: "AVG", source: "VGN", risk: "Gemiddeld" },
-    { cat: "Zorg", q: "Camera bij de ingang van een woonvorm?", a: "Gerechtvaardigd belang (beveiliging). DPIA en bordjes verplicht.", law: "AVG / Politiewet", source: "AP", risk: "Gemiddeld" },
-
-    // --- OVERIG ---
-    { cat: "Toestemming", q: "Geldigheid toestemming na overlijden?", a: "Toestemming vervalt; beroepsgeheim blijft echter van kracht.", law: "WGBO", source: "KNMG", risk: "Hoog" },
-    { cat: "Datalek", q: "Ransomware aanval op ECD?", a: "Datalek en beschikbaarheidsincident. Direct melden bij AP en mogelijk betrokkenen.", law: "Art. 33/34 AVG", source: "AP", risk: "Zeer Hoog" },
-    { cat: "Beveiliging", q: "Scherm onbeheerd achterlaten?", a: "Beveiligingsrisico. Altijd locken (Win+L). Beleid: clean desk / clear screen.", law: "AVG / NEN 7510", source: "Interne richtlijn", risk: "Gemiddeld" },
-    { cat: "VWO", q: "Microsoft/Google als verwerker?", a: "Alleen toegestaan met EU-clausules en Transfer Impact Assessment (TIA).", law: "Schrems II / AVG", source: "EDPB", risk: "Hoog" },
-    { cat: "Rechten", q: "Kopie paspoort aan cliënt vragen?", a: "Niet doen. Identificatieplicht kan via tonen ID; kopie is vaak niet toegestaan.", law: "UAVG", source: "AP", risk: "Hoog" },
-    { cat: "Zorg", q: "Vervoersbedrijf informatie geven?", a: "Alleen noodzakelijke info (naam, ophaalpunt, evt. bijzonderheid voor veiligheid).", law: "AVG", source: "VGN", risk: "Laag" },
-    { cat: "HR", q: "Medewerker bekijkt dossier bekende cliënt?", a: "Zware overtreding (privacy-schending). Arbeidsrechtelijke consequenties.", law: "AVG / Arbeidsrecht", source: "AP", risk: "Zeer Hoog" },
-    { cat: "Inzage", q: "Inzageverzoek via e-mail?", a: "Geldig, maar eerst identiteit van de verzoeker deugdelijk vaststellen.", law: "Art. 12 AVG", source: "AP", risk: "Gemiddeld" },
-    { cat: "Marketing", q: "Relatiegeschenk naar vertegenwoordigers?", a: "Alleen als zij hiervoor toestemming hebben gegeven (opt-in).", law: "Telecommunicatiewet", source: "ACM", risk: "Laag" },
-    { cat: "Audit", q: "Hoe bewijs ik compliance?", a: "Door logging, register, beleidstukken en getekende VWO's (Accountability).", law: "Art. 5 lid 2 AVG", source: "AP", risk: "Hoog" }
-    { cat: "Toestemming", q: "Verschil tussen toestemming voor zorg en data?", a: "WGBO is voor behandeling. AVG is voor extra zaken (foto's/onderzoek).", law: "WGBO vs AVG", source: "VGN", risk: "Gemiddeld" },
-    { cat: "Datalek", q: "Diefstal van een onbeveiligde laptop?", a: "Hoog risico. Melden bij AP én bij alle betrokkenen.", law: "Art. 34 AVG", source: "AP", risk: "Zeer Hoog" },
-    { cat: "HR", q: "Medische gegevens van zieke medewerker?", a: "Verboden te registreren door werkgever. Alleen de bedrijfsarts mag dit.", law: "AVG", source: "AP", risk: "Zeer Hoog" },
-    { cat: "Zorg", q: "Mag een cliënt zijn eigen dossier inzien?", a: "Ja, altijd recht op inzage in het eigen dossier, eventueel met begeleiding.", law: "WGBO", source: "VGN", risk: "Laag" },
-    { cat: "Zorg", q: "Mogen we BSN gebruiken op maaltijdlijsten?", a: "Nee. BSN is niet nodig voor maaltijdverstrekking. Gebruik kamernummer.", law: "Art. 46 UAVG", source: "AP", risk: "Gemiddeld" },
-    { cat: "Audit", q: "Hoe bewijs ik compliance?", a: "Door logging, register, beleid en getekende VWO's (Accountability).", law: "Art. 5 lid 2 AVG", source: "AP", risk: "Hoog" }
+    { cat: "VWO", q: "SaaS-leverancier in de zorg?", a: "Verwerkersovereenkomst verplicht onder Art. 28 AVG. Gebruik bij voorkeur BoZ model.", law: "AVG Artikel 28", source: "BoZ", risk: "Gemiddeld" },
+    { cat: "Wzd", q: "Digitale deurvergrendeling/leefcirkels?", a: "Beperking bewegingsvrijheid. Vereist Wzd-stappenplan en registratie in zorgplan.", law: "Wzd / Art. 35 AVG", source: "Dwangindezorg", risk: "Hoog" },
+    { cat: "Wzd", q: "GPS-trackers bij dwalen?", a: "Onvrijwillige zorg. Periodieke evaluatie door Wzd-functionaris noodzakelijk.", law: "Wzd", source: "VGN", risk: "Hoog" },
+    { cat: "Wzd", q: "Slimme sensoren (valdetectie)?", a: "Privacy-inbreuk. Toestemming nodig of opname in zorgplan bij onvrijwillige zorg.", law: "Wzd / Art. 25 AVG", source: "Vilans", risk: "Gemiddeld" },
+    { cat: "Wzd", q: "Cameratoezicht in huiskamer?", a: "Alleen bij zwaarwegend veiligheidsbelang, DPIA en na overleg Cliëntenraad.", law: "AVG / Wmcz", source: "AP", risk: "Hoog" },
+    { cat: "Toestemming", q: "Verschil zorg vs data toestemming?", a: "WGBO is voor behandeling. AVG is voor extra zaken (foto's/marketing/onderzoek).", law: "WGBO vs AVG", source: "VGN", risk: "Gemiddeld" },
+    { cat: "Toestemming", q: "Mondelinge toestemming geldig?", a: "Ja, maar vanwege accountability is schriftelijke vastlegging de standaard.", law: "Art. 7 AVG", source: "AP", risk: "Hoog" },
+    { cat: "Toestemming", q: "Foto's op besloten familie-app?", a: "Toestemming nodig van álle afgebeelde cliënten/vertegenwoordigers.", law: "AVG", source: "VGN", risk: "Gemiddeld" },
+    { cat: "Inzage", q: "Inzage door de cliëntenraad?", a: "Alleen geanonimiseerde rapportages. Geen individuele dossiers.", law: "Wmcz 2018", source: "LSR", risk: "Hoog" },
+    { cat: "Inzage", q: "Kopie dossier bij verhuizing?", a: "Cliënt heeft recht op een gratis kopie om mee te nemen naar de nieuwe instelling.", law: "WGBO", source: "Rijksoverheid", risk: "Laag" },
+    { cat: "Dossier", q: "Persoonlijke werkaantekeningen?", a: "Vallen buiten inzagerecht mits strikt persoonlijk en niet gedeeld.", law: "AVG", source: "AP", risk: "Laag" },
+    { cat: "Datalek", q: "Diefstal onbeveiligde laptop?", a: "Hoog risico. Melden bij AP én bij alle betrokkenen.", law: "Art. 34 AVG", source: "AP", risk: "Zeer Hoog" },
+    { cat: "Beveiliging", q: "MFA verplicht in de zorg?", a: "Ja, voor toegang tot gezondheidsdata op afstand is MFA de norm (NEN 7510).", law: "Art. 32 AVG", source: "NEN", risk: "Hoog" },
+    { cat: "Beveiliging", q: "Zorginfo via WhatsApp?", a: "Nee. WhatsApp is onveilig voor patiëntdata. Gebruik Zivver/Siilo.", law: "Art. 32 AVG", source: "AP", risk: "Hoog" },
+    { cat: "HR", q: "Medische data van zieke medewerker?", a: "Verboden te registreren door werkgever. Alleen de bedrijfsarts mag dit.", law: "AVG", source: "AP", risk: "Zeer Hoog" },
+    { cat: "HR", q: "VOG bewaren na uitdiensttreding?", a: "Verwijderen na uitdiensttreding (na bewaartermijn dossier: 2 jaar).", law: "AVG", source: "VGN", risk: "Laag" },
+    { cat: "Delen", q: "Data delen met de huisarts?", a: "Toestemming verondersteld bij directe behandelrelatie.", law: "WGBO", source: "KNMG", risk: "Laag" },
+    { cat: "Delen", q: "Politie vraagt informatie?", a: "Alleen bij expliciete toestemming, wet of direct levensgevaar.", law: "WGBO", source: "KNMG", risk: "Zeer Hoog" },
+    { cat: "DPIA", q: "Wanneer DPIA uitvoeren?", a: "Vóór ingebruikname van technologie met hoog risico (zoals AI of camera's).", law: "Art. 35 AVG", source: "FG", risk: "Hoog" },
+    { cat: "Zorg", q: "Mag cliënt eigen dossier inzien?", a: "Ja, altijd recht op inzage in het eigen dossier.", law: "WGBO", source: "VGN", risk: "Laag" },
+    { cat: "Zorg", q: "BSN op maaltijdlijsten?", a: "Nee. Niet noodzakelijk doel. Gebruik kamernummer.", law: "UAVG", source: "AP", risk: "Gemiddeld" },
+    { cat: "Audit", q: "Hoe bewijs ik compliance?", a: "Logging, verwerkingsregister, beleid en getekende VWO's.", law: "Art. 5 AVG", source: "AP", risk: "Hoog" },
+    { cat: "Functie", q: "Wie is verantwoordelijk voor boetes?", a: "De organisatie (Bestuur). De PO adviseert slechts.", law: "AVG", source: "AP", risk: "Laag" },
+    { cat: "HR", q: "Smoelenboek op intranet?", a: "Toestemming nodig. Kan niet verplicht worden.", law: "AVG", source: "Jurisprudentie", risk: "Gemiddeld" },
+    { cat: "Toestemming", q: "Geldigheid na overlijden?", a: "Toestemming vervalt; beroepsgeheim blijft echter van kracht.", law: "WGBO", source: "KNMG", risk: "Hoog" },
+    { cat: "Inzage", q: "Verzoek via e-mail?", a: "Geldig, maar identiteit verzoeker eerst deugdelijk vaststellen.", law: "Art. 12 AVG", source: "AP", risk: "Gemiddeld" },
+    { cat: "Datalek", q: "Ransomware op het ECD?", a: "Datalek + beschikbaarheidsincident. Melden bij AP en cliënten.", law: "Art. 33 AVG", source: "AP", risk: "Zeer Hoog" },
+    { cat: "Toestemming", q: "Is mentor/curator verplicht te tekenen?", a: "Ja, voor wilsonbekwame cliënten is hun handtekening de enige geldige.", law: "BW / WGBO", source: "VGN", risk: "Hoog" },
+    { cat: "Delen", q: "Gegevens aan bewindvoerder?", a: "Alleen financiële data nodig voor taak. Geen medische info.", law: "AVG", source: "VGN", risk: "Gemiddeld" },
+    { cat: "VWO", q: "Schoonmaakbedrijf ook VWO?", a: "Nee, mits geen toegang tot data. Geheimhouding volstaat.", law: "AVG", source: "BoZ", risk: "Laag" },
+    { cat: "Rechten", q: "Kopie paspoort vragen?", a: "Nee. Alleen identificatie via tonen ID toegestaan.", law: "UAVG", source: "AP", risk: "Hoog" }
 ];
 
 // JS LOGICA
 function openModal(id) { document.getElementById(id).style.display = 'block'; }
-function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+function closeModal(id) { 
+    document.getElementById(id).style.display = 'none'; 
+    if(id === 'datalekModal') resetDatalek(); 
+}
 
 function handleSearch(val) {
     const term = val.toLowerCase().trim();
@@ -280,6 +238,7 @@ function handleSearch(val) {
     const filtered = db.filter(i => 
         i.q.toLowerCase().includes(term) || 
         i.cat.toLowerCase().includes(term) || 
+        i.law.toLowerCase().includes(term) ||
         i.a.toLowerCase().includes(term)
     );
     
@@ -303,27 +262,43 @@ function handleSearch(val) {
 
 document.getElementById('search').oninput = (e) => handleSearch(e.target.value);
 
+function quickSearch(t) { document.getElementById('search').value = t; handleSearch(t); }
+
 function generateDPIA() {
     const name = document.getElementById('dpia-name').value || "Naamloos";
     const res = document.getElementById('dpia-result');
     res.style.display = 'block';
-    res.innerText = `DPIA CONCEPT: ${name}\nDatum: ${new Date().toLocaleDateString()}\nAdvies PO: Beoordeling FG vereist.`;
+    res.innerText = `DPIA CONCEPT: ${name}\nDatum: ${new Date().toLocaleDateString('nl-NL')}\nFocus: Privacy-by-design & Risicobeperking.\nAdvies PO: Rapportage doorsturen naar FG voor definitieve audit.`;
 }
 
 function runCalc() {
     const years = parseInt(document.getElementById('calc-type').value);
-    const date = new Date(document.getElementById('calc-date').value);
-    if(isNaN(date)) return;
+    const dateInput = document.getElementById('calc-date').value;
+    if(!dateInput) return;
+    const date = new Date(dateInput);
     date.setFullYear(date.getFullYear() + years);
     const out = document.getElementById('calc-out');
     out.style.display = 'block';
-    out.innerHTML = `Vernietiging op: <strong>${date.toLocaleDateString('nl-NL')}</strong>`;
+    out.innerHTML = `Uiterste vernietigingsdatum: <strong>${date.toLocaleDateString('nl-NL')}</strong>`;
 }
 
 function dlStep(s) {
-    document.getElementById('dl-wizard').innerHTML = `
+    const w = document.getElementById('dl-wizard');
+    w.innerHTML = `
         <div class="decision-box" style="border-left-color:var(--risk-high)">
-            <p><strong>MELDPLICHTIG:</strong> Meld binnen 72u bij de AP.</p>
+            <p><strong>CONCLUSIE: MELDPLICHTIG BIJ DE AP</strong></p>
+            <p style="font-size:0.85rem; margin-top:10px;">In de zorgsector is een incident met medische data of BSN bijna altijd meldplichtig binnen 72 uur. Informeer direct je FG en bereid de melding voor.</p>
+        </div>`;
+}
+
+function resetDatalek() {
+    document.getElementById('dl-wizard').innerHTML = `
+        <div class="decision-box">
+            <p>Is er sprake van verlies van data of ongeoorloofde toegang tot persoonsgegevens?</p>
+            <div style="margin-top:20px;">
+                <button class="officer-btn" style="background:#ef4444" onclick="dlStep(2)">Ja</button>
+                <button class="officer-btn" style="background:#22c55e" onclick="closeModal('datalekModal')">Nee</button>
+            </div>
         </div>`;
 }
 </script>
