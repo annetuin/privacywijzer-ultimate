@@ -120,18 +120,12 @@
         .btn-group { display: flex; gap: 10px; margin-top: 20px; }
         .choice-btn { padding: 10px 15px; border: 1px solid var(--border); background: white; border-radius: 4px; cursor: pointer; font-weight: 600; }
 
-        /* DPIA Specifieke Actions */
         .action-bar { display: flex; gap: 10px; margin-top: 15px; }
-        .share-btn { 
-            background: #eab308; 
-            color: #000; 
-            border: none; 
-            padding: 8px 12px; 
-            border-radius: 4px; 
-            font-size: 0.75rem; 
-            font-weight: 700; 
-            cursor: pointer; 
-        }
+        .share-btn { background: #eab308; color: #000; border: none; padding: 8px 12px; border-radius: 4px; font-size: 0.75rem; font-weight: 700; cursor: pointer; }
+
+        /* Checklist styling */
+        .check-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; font-size: 0.9rem; }
+        .check-item input { width: auto; margin-top: 4px; border-bottom: none; }
 
         footer { margin-top: 60px; padding: 30px 0; border-top: 1px solid var(--border); font-size: 0.75rem; color: var(--meta); text-align: center; }
     </style>
@@ -143,7 +137,7 @@
         <h1>Privacy Officer <span style="font-weight:300">Wijzer</span></h1>
         <div class="nav-group">
             <button class="officer-btn" onclick="openModal('linksModal')">Bronnen</button>
-            <button class="officer-btn" onclick="openModal('newsModal')">Nieuws</button>
+            <button class="officer-btn" onclick="openModal('vwoModal')">Verwerkers (VWO)</button>
             <button class="officer-btn" onclick="openModal('dpiaModal')">DPIA Pro</button>
             <button class="officer-btn" onclick="openModal('calcModal')">Calculator</button>
             <button class="officer-btn" onclick="openModal('datalekModal')">Datalek</button>
@@ -156,9 +150,9 @@
         <div class="rainbow-line"></div>
         <div class="quick-tags">
             <button class="tag-btn" onclick="quickSearch('Wzd')">Wzd</button>
-            <button class="tag-btn" onclick="quickSearch('foto')">WhatsApp</button>
+            <button class="tag-btn" onclick="quickSearch('VGN')">VGN</button>
             <button class="tag-btn" onclick="quickSearch('dossier')">Bewaartermijn</button>
-            <button class="tag-btn" onclick="quickSearch('HR')">HR</button>
+            <button class="tag-btn" onclick="quickSearch('vwo')">VWO</button>
         </div>
     </div>
 
@@ -169,6 +163,38 @@
     <footer>
         <p>Expert Dashboard v2026 • <a href="javascript:void(0)" onclick="openModal('privacyModal')" style="color:var(--meta)">AVG & Wetgeving</a></p>
     </footer>
+</div>
+
+<div id="vwoModal" class="modal">
+    <div style="max-width: 600px; margin: 0 auto;">
+        <h2>Checklist Verwerkersovereenkomst (VWO)</h2>
+        <p style="font-size: 0.9rem; color: var(--meta); margin-bottom: 20px;">Toetsing conform BoZ-standaard en Art. 28 AVG.</p>
+        
+        <div class="form-section">
+            <h4>Essentiële Punten (AVG Art. 28)</h4>
+            <div class="check-item"><input type="checkbox"> <span>Onderwerp en duur van de verwerking gedefinieerd.</span></div>
+            <div class="check-item"><input type="checkbox"> <span>Aard en doel van de verwerking gespecificeerd.</span></div>
+            <div class="check-item"><input type="checkbox"> <span>Soort persoonsgegevens en categorieën betrokkenen vermeld.</span></div>
+            <div class="check-item"><input type="checkbox"> <span>Verplichting tot instructie-gebaseerde verwerking.</span></div>
+            <div class="check-item"><input type="checkbox"> <span>Geheimhoudingsplicht voor personeel verwerker.</span></div>
+            <div class="check-item"><input type="checkbox"> <span>Beveiligingsmaatregelen (Art. 32) beschreven.</span></div>
+        </div>
+
+        <div class="form-section">
+            <h4>Zorg-specifieke eisen (BoZ)</h4>
+            <div class="check-item"><input type="checkbox"> <span>Toestemming voor subverwerkers (specifiek of algemeen).</span></div>
+            <div class="check-item"><input type="checkbox"> <span>Bijstand bij rechten van betrokkenen.</span></div>
+            <div class="check-item"><input type="checkbox"> <span>Bijstand bij datalekken (snelle melding!).</span></div>
+            <div class="check-item"><input type="checkbox"> <span>Audit-recht (recht op controle door zorginstelling).</span></div>
+            <div class="check-item"><input type="checkbox"> <span>Teruggave of vernietiging data na afloop.</span></div>
+        </div>
+
+        <div class="decision-box">
+            <strong>Advies:</strong> Gebruik bij voorkeur de <a href="https://www.vgn.nl/nieuws/boz-modelverwerkersovereenkomst-vernieuwd" target="_blank">BoZ modelverwerkersovereenkomst</a> om risico's te minimaliseren.
+        </div>
+        
+        <button onclick="closeModal('vwoModal')" style="margin-top:40px; border:none; background:none; text-decoration:underline; cursor:pointer;">Terug naar Dashboard</button>
+    </div>
 </div>
 
 <div id="dpiaModal" class="modal">
@@ -209,123 +235,52 @@
             </div>
         </div>
         
-        <button onclick="closeModal('dpiaModal')" style="margin-top:40px; border:none; background:none; text-decoration:underline; cursor:pointer;">Terug naar Dashboard</button>
+        <button onclick="closeModal('dpiaModal')" style="margin-top:40px; border:none; background:none; text-decoration:underline; cursor:pointer;">Terug</button>
     </div>
 </div>
 
 <div id="linksModal" class="modal">
-    <div style="max-content; max-width: 600px; margin: 0 auto;">
-        <h2>Essentiële Bronnen (VGN & Wetgeving)</h2>
-        
-        <div class="form-section">
-            <h4>VGN Dossiers & Modellen</h4>
-            <a href="https://www.vgn.nl/privacy" target="_blank" class="link-item">VGN Dossier Privacy<span>Centraal punt voor privacy in de gehandicaptenzorg</span></a>
-            <a href="https://www.vgn.nl/nieuws/model-toestemmingsformulier-herzien" target="_blank" class="link-item">Model Toestemmingsformulier (okt 2024)<span>Nieuwste versie conform AVG-praktijkervaring</span></a>
-            <a href="https://www.vgn.nl/nieuws/model-privacyreglement-herzien" target="_blank" class="link-item">Model Privacyreglement (okt 2024)<span>Geactualiseerd standaardreglement voor instellingen</span></a>
-            <a href="https://www.vgn.nl/nieuws/boz-modelverwerkersovereenkomst-vernieuwd" target="_blank" class="link-item">BoZ Modelverwerkersovereenkomst<span>Landelijke standaard (Update feb 2023)</span></a>
-        </div>
-
-        <div class="form-section">
-            <h4>Wetgeving & Toezicht</h4>
-            <a href="https://autoriteitpersoonsgegevens.nl/nl" target="_blank" class="link-item">Autoriteit Persoonsgegevens<span>Landelijke toezichthouder</span></a>
-            <a href="https://www.dwangindezorg.nl/wzd" target="_blank" class="link-item">Wet zorg en dwang (Wzd)<span>Informatiepunt over onvrijwillige zorg en privacy</span></a>
-        </div>
-
-        <button onclick="closeModal('linksModal')" style="margin-top:20px; border:none; background:none; text-decoration:underline; cursor:pointer; color:var(--meta);">Sluiten</button>
-    </div>
-</div>
-</div>
-
-<div id="newsModal" class="modal">
     <div style="max-width: 600px; margin: 0 auto;">
-        <h2>Actueel Nieuws</h2>
-        <a href="https://autoriteitpersoonsgegevens.nl/actueel" target="_blank" class="link-item">AP Nieuwsberichten<span>Sancties en onderzoeken</span></a>
-        <a href="https://www.privacyweb.nl/" target="_blank" class="link-item">PrivacyWeb<span>Jurisprudentie</span></a>
-        <button onclick="closeModal('newsModal')" style="margin-top:20px; border:none; background:none; text-decoration:underline; cursor:pointer;">Sluiten</button>
+        <h2>Essentiële Bronnen</h2>
+        <a href="https://www.vgn.nl/privacy" target="_blank" class="link-item">VGN Privacy Dossier<span>Centraal punt gehandicaptenzorg</span></a>
+        <a href="https://www.vgn.nl/nieuws/boz-modelverwerkersovereenkomst-vernieuwd" target="_blank" class="link-item">BoZ Verwerkersovereenkomst<span>Landelijke standaard</span></a>
+        <a href="https://autoriteitpersoonsgegevens.nl/nl" target="_blank" class="link-item">Autoriteit Persoonsgegevens<span>Officiële website AP</span></a>
+        <button onclick="closeModal('linksModal')" style="margin-top:20px; border:none; background:none; text-decoration:underline; cursor:pointer;">Sluiten</button>
     </div>
 </div>
 
 <div id="calcModal" class="modal">
     <div style="max-width: 600px; margin: 0 auto;">
         <h2>Bewaartermijn Calculator</h2>
-        <div class="form-group">
-            <label>Type Gegevens</label>
-            <select id="data-type" onchange="calculateDestruction()">
-                <option value="wgbo">Cliëntdossier (WGBO) - 20 jaar</option>
-                <option value="hr-basis">Personeelsdossier (Algemeen) - 2 jaar</option>
-                <option value="hr-fiscaal">Salaris / Belasting (Fiscaal) - 7 jaar</option>
-                <option value="hr-solli">Sollicitatiegegevens - 4 weken</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label>Referentiedatum (Einde zorg/uitdienst)</label>
-            <input type="date" id="end-date" onchange="calculateDestruction()">
-        </div>
+        <select id="data-type" onchange="calculateDestruction()">
+            <option value="wgbo">Cliëntdossier (WGBO) - 20 jaar</option>
+            <option value="hr-basis">Personeelsdossier - 2 jaar</option>
+            <option value="hr-fiscaal">Fiscaal - 7 jaar</option>
+        </select>
+        <input type="date" id="end-date" onchange="calculateDestruction()">
         <div id="calc-result" class="decision-box" style="display:none;"></div>
         <button onclick="closeModal('calcModal')" style="margin-top:20px; border:none; background:none; text-decoration:underline; cursor:pointer;">Sluiten</button>
     </div>
 </div>
 
-<div id="datalekModal" class="modal">
-    <div style="max-width:600px;margin:0 auto;">
-        <h2>Datalek Check</h2>
-        <div id="datalekWizard">
-            <div class="decision-box">
-                <p>Is er sprake van dataverlies of onrechtmatige toegang?</p>
-                <div class="btn-group">
-                    <button class="choice-btn" onclick="nextDatalek('ja')">Ja</button>
-                    <button class="choice-btn" onclick="nextDatalek('nee')">Nee</button>
-                </div>
-            </div>
-        </div>
-        <button onclick="closeModal('datalekModal')" style="margin-top:40px;border:none;background:none;text-decoration:underline;cursor:pointer;">Sluiten</button>
-    </div>
-</div>
-
-<div id="privacyModal" class="modal">
-    <div style="max-width:600px;margin:0 auto;">
-        <h2>AVG & Wetgeving</h2>
-        <p>Lokaal dashboard. <a href="https://autoriteitpersoonsgegevens.nl/nl/wetten-en-regels/algemene-verordening-gegevensbescherming-avg" target="_blank">Volledige AVG Tekst</a></p>
-        <button onclick="closeModal('privacyModal')" style="margin-top:40px;padding:10px 20px;background:#000;color:#fff;border:none;border-radius:4px;cursor:pointer;">Sluiten</button>
-    </div>
-</div>
+<div id="datalekModal" class="modal"><div style="max-width:600px;margin:0 auto;"><h2>Datalek Check</h2><div id="datalekWizard"><div class="decision-box"><p>Dataverlies?</p><button class="choice-btn" onclick="nextDatalek('ja')">Ja</button> <button class="choice-btn" onclick="nextDatalek('nee')">Nee</button></div></div><button onclick="closeModal('datalekModal')" style="margin-top:40px;border:none;background:none;text-decoration:underline;cursor:pointer;">Sluiten</button></div></div>
+<div id="privacyModal" class="modal"><div style="max-width:600px;margin:0 auto;"><h2>AVG & Wetgeving</h2><button onclick="closeModal('privacyModal')" style="margin-top:40px;">Sluiten</button></div></div>
 
 <script>
 const database = [
-    { cat: "Dossier", q: "Bewaartermijn dossier?", a: "Minimaal 20 jaar na laatste wijziging of stopzetting zorg.", law: "WGBO", url: "https://www.rijksoverheid.nl/onderwerpen/rechten-van-patient-en-client/medisch-dossier" },
-    { cat: "Wzd", q: "Camera of sensor in kamer?", a: "Onvrijwillige zorg: alleen bij ernstig risico en na opname in zorgplan.", law: "Wzd", url: "https://www.dwangindezorg.nl/wzd/onvrijwillige-zorg/vormen" },
-    { cat: "HR", q: "Bewaartermijn personeelsdossier?", a: "Meeste gegevens 2 jaar na uitdiensttreding. Fiscale gegevens 7 jaar.", law: "AVG / Fiscale wet", url: "https://autoriteitpersoonsgegevens.nl/nl/onderwerpen/werk-en-uitkering/personeelsdossier" }
-    { cat: "Zorg", q: "Is er een standaard toestemmingsformulier?", a: "Ja, VGN heeft in oktober 2024 het model toestemmingsformulier herzien op basis van nieuwe inzichten.", law: "AVG / VGN", url: "https://www.vgn.nl/nieuws/model-toestemmingsformulier-herzien" },
-{ cat: "Zorg", q: "Wat is de status van het privacyreglement?", a: "Het model privacyreglement van de VGN is in oktober 2024 geactualiseerd voor de gehandicaptenzorg.", law: "AVG / VGN", url: "https://www.vgn.nl/nieuws/model-privacyreglement-herzien" },
-{ cat: "Contracten", q: "Welke verwerkersovereenkomst moet ik gebruiken?", a: "Gebruik de BoZ modelverwerkersovereenkomst (laatste update feb 2023), ontwikkeld door VGN, ActiZ en anderen.", law: "BoZ / AVG", url: "https://www.vgn.nl/nieuws/boz-modelverwerkersovereenkomst-vernieuwd" },
+    { cat: "VWO", q: "Moet elke leverancier een VWO?", a: "Ja, zodra een externe partij persoonsgegevens verwerkt in jouw opdracht (bijv. SaaS, hosting).", law: "Art. 28 AVG", url: "https://www.vgn.nl/nieuws/boz-modelverwerkersovereenkomst-vernieuwd" },
+    { cat: "VGN", q: "Model Toestemmingsformulier?", a: "VGN heeft in okt 2024 nieuwe modellen gepubliceerd.", law: "VGN", url: "https://www.vgn.nl/privacy" },
+    { cat: "Dossier", q: "Bewaartermijn cliënt?", a: "20 jaar na einde zorgverlening.", law: "WGBO", url: "https://www.rijksoverheid.nl/onderwerpen/rechten-van-patient-en-client/medisch-dossier" }
 ];
 
-// Zoekfunctie
 function handleSearch(query) {
     const term = query.toLowerCase().trim();
     const container = document.getElementById('results');
-    if (term.length < 2) { 
-        container.innerHTML = '<div class="empty-state">Typ minimaal 2 letters om te zoeken...</div>'; 
-        return; 
-    }
-    const filtered = database.filter(i => 
-        i.q.toLowerCase().includes(term) || 
-        i.a.toLowerCase().includes(term) || 
-        i.cat.toLowerCase().includes(term)
-    );
-    container.innerHTML = filtered.map(i => `
-        <div class="result">
-            <div class="category">${i.cat}</div>
-            <h3>${i.q}</h3>
-            <p>${i.a}</p>
-            <div style="display:flex; justify-content:space-between; align-items:center;">
-                <span style="color:var(--meta); font-size:0.75rem;">Bron: ${i.law}</span>
-                <a href="${i.url}" target="_blank" style="color:var(--accent); font-weight:700; text-decoration:none; border-bottom:1.5px solid var(--accent); font-size:0.8rem;">Open Bron</a>
-            </div>
-        </div>`).join('');
+    if (term.length < 2) { container.innerHTML = '<div class="empty-state">Typ minimaal 2 letters...</div>'; return; }
+    const filtered = database.filter(i => i.q.toLowerCase().includes(term) || i.a.toLowerCase().includes(term) || i.cat.toLowerCase().includes(term));
+    container.innerHTML = filtered.map(i => `<div class="result"><div class="category">${i.cat}</div><h3>${i.q}</h3><p>${i.a}</p><a href="${i.url}" target="_blank" style="color:black; font-weight:700; font-size:0.8rem;">Open Bron</a></div>`).join('');
 }
 
-// Calculator
 function calculateDestruction() {
     const type = document.getElementById('data-type').value;
     const inputDate = document.getElementById('end-date').value;
@@ -333,75 +288,27 @@ function calculateDestruction() {
     let d = new Date(inputDate);
     if(type === "wgbo") d.setFullYear(d.getFullYear() + 20);
     else if(type === "hr-basis") d.setFullYear(d.getFullYear() + 2);
-    else if(type === "hr-fiscaal") d.setFullYear(d.getFullYear() + 7);
-    else if(type === "hr-solli") d.setDate(d.getDate() + 28);
+    else d.setFullYear(d.getFullYear() + 7);
     const res = document.getElementById('calc-result');
     res.style.display = 'block';
     res.innerHTML = `Vernietigen op: <strong>${d.toLocaleDateString('nl-NL')}</strong>`;
 }
 
-// DPIA Generator & Export
 function generateDPIA() {
-    const name = document.getElementById('dpia-name').value || "Naamloos Project";
-    const goal = document.getElementById('dpia-goal').value;
-    const sub = document.getElementById('dpia-sub').value;
-    const data = document.getElementById('dpia-data').value;
-    const target = document.getElementById('dpia-target').value;
-    const risk = document.getElementById('dpia-risks').value;
-    const mitig = document.getElementById('dpia-mitigation').value;
-    
-    const reportText = `DPIA RAPPORT - ${new Date().toLocaleDateString()}\n-----------------------------------\nPROJECT: ${name}\nDOEL: ${goal}\nSUBSIDIARITEIT: ${sub}\nTYPE GEGEVENS: ${data}\nDOELGROEP: ${target}\nRISICO'S: ${risk}\nMAATREGELEN: ${mitig}\n-----------------------------------\nStatus: Concept gereed voor review.`;
-
+    const name = document.getElementById('dpia-name').value || "Project";
+    const reportText = `DPIA CONCEPT - ${new Date().toLocaleDateString()}\nPROJECT: ${name}\nStatus: Te beoordelen.`;
     document.getElementById('dpia-result').innerText = reportText;
     document.getElementById('dpia-result-container').style.display = 'block';
 }
 
-function copyDPIA() {
-    const text = document.getElementById('dpia-result').innerText;
-    navigator.clipboard.writeText(text).then(() => alert("Rapport gekopieerd naar klembord!"));
-}
-
-function mailDPIA() {
-    const name = document.getElementById('dpia-name').value || "Project";
-    const body = encodeURIComponent(document.getElementById('dpia-result').innerText);
-    window.location.href = `mailto:?subject=DPIA%20Concept:%20${name}&body=${body}`;
-}
-
-// Helpers
-function triggerReportMail() { 
-    window.location.href = `mailto:privacy@jouwinstelling.nl?subject=Privacy%20Melding&body=Details...`; 
-}
-
-function quickSearch(t) { 
-    document.getElementById('search').value = t; 
-    handleSearch(t); 
-}
-
+function copyDPIA() { navigator.clipboard.writeText(document.getElementById('dpia-result').innerText); alert("Gekopieerd!"); }
+function mailDPIA() { window.location.href = `mailto:?subject=DPIA&body=${encodeURIComponent(document.getElementById('dpia-result').innerText)}`; }
+function triggerReportMail() { window.location.href = `mailto:privacy@jouwinstelling.nl?subject=Privacy%20Melding`; }
+function quickSearch(t) { document.getElementById('search').value = t; handleSearch(t); }
 document.getElementById('search').oninput = e => handleSearch(e.target.value);
-
-function openModal(id) { 
-    document.getElementById(id).style.display = 'block'; 
-}
-
-function closeModal(id) { 
-    document.getElementById(id).style.display = 'none'; 
-}
-
-// Datalek Wizard
-let dlStep = 1;
-function nextDatalek(c) {
-    const w = document.getElementById('datalekWizard');
-    if (dlStep === 1) {
-        if (c === 'nee') {
-            w.innerHTML = '<div class="decision-box">Geen actie vereist. Er is geen sprake van een datalek.</div>';
-        } else { 
-            dlStep = 2; 
-            w.innerHTML = '<div class="decision-box"><p>Is er een (hoog) risico voor de rechten en vrijheden van betrokkenen?</p><button class="choice-btn" onclick="nextDatalek(\'ja\')">Ja</button> <button class="choice-btn" onclick="nextDatalek(\'nee\')">Nee</button></div>'; 
-        }
-    } else if (dlStep === 2) {
-        w.innerHTML = '<div class="decision-box"><strong>ACTIE:</strong> Meld het lek binnen 72 uur bij de Autoriteit Persoonsgegevens en documenteer intern.</div>';
-    }
-}
+function openModal(id) { document.getElementById(id).style.display = 'block'; }
+function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+function nextDatalek(c) { document.getElementById('datalekWizard').innerHTML = '<div class="decision-box">Melden bij AP binnen 72u.</div>'; }
 </script>
 </body>
 </html>
