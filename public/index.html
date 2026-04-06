@@ -95,7 +95,8 @@
         .result { padding: 25px 0; border-bottom: 1px solid var(--border); }
         .category { font-size: 0.65rem; text-transform: uppercase; color: var(--meta); font-weight: 800; letter-spacing: 0.08em; }
         h3 { font-size: 1.15rem; margin: 8px 0; font-weight: 700; }
-        
+        p { font-size: 0.95rem; line-height: 1.6; color: #333; margin-bottom: 15px; }
+
         .footer-card { display: flex; justify-content: space-between; align-items: center; }
         .source-link { color: var(--accent); font-weight: 700; text-decoration: none; border-bottom: 1.5px solid var(--accent); font-size: 0.8rem; }
 
@@ -149,7 +150,7 @@
             <button class="tag-btn" onclick="quickSearch('Wzd')">Wzd</button>
             <button class="tag-btn" onclick="quickSearch('foto')">WhatsApp</button>
             <button class="tag-btn" onclick="quickSearch('dossier')">Bewaartermijn</button>
-            <button class="tag-btn" onclick="quickSearch('politie')">Politie</button>
+            <button class="tag-btn" onclick="quickSearch('HR')">HR</button>
         </div>
     </div>
 
@@ -162,6 +163,27 @@
     </footer>
 </div>
 
+<div id="linksModal" class="modal">
+    <div style="max-width: 600px; margin: 0 auto;">
+        <h2>Essentiële Bronnen</h2>
+        <a href="https://autoriteitpersoonsgegevens.nl/nl" target="_blank" class="link-item">Autoriteit Persoonsgegevens<span>Officiële website AP</span></a>
+        <a href="https://www.vgn.nl/privacy" target="_blank" class="link-item">VGN Privacy Dossier<span>Handreikingen gehandicaptenzorg</span></a>
+        <a href="https://www.dwangindezorg.nl/wzd" target="_blank" class="link-item">Wet zorg en dwang (Wzd)<span>Centraal informatiepunt</span></a>
+        <a href="https://www.knmg.nl/advies-richtlijnen/dossier-bewaren" target="_blank" class="link-item">KNMG Bewaartermijnen<span>Richtlijnen medisch dossier</span></a>
+        <button onclick="closeModal('linksModal')" style="margin-top:20px; border:none; background:none; text-decoration:underline; cursor:pointer;">Sluiten</button>
+    </div>
+</div>
+
+<div id="newsModal" class="modal">
+    <div style="max-width: 600px; margin: 0 auto;">
+        <h2>Actueel Nieuws</h2>
+        <a href="https://autoriteitpersoonsgegevens.nl/actueel" target="_blank" class="link-item">AP Nieuwsberichten<span>Laatste sancties en nieuws</span></a>
+        <a href="https://www.privacyweb.nl/" target="_blank" class="link-item">PrivacyWeb<span>Vakkennis en jurisprudentie</span></a>
+        <a href="https://www.z-cert.nl/nieuws/" target="_blank" class="link-item">Z-CERT Nieuws<span>Cybersecurity in de zorg</span></a>
+        <button onclick="closeModal('newsModal')" style="margin-top:20px; border:none; background:none; text-decoration:underline; cursor:pointer;">Sluiten</button>
+    </div>
+</div>
+
 <div id="calcModal" class="modal">
     <div style="max-width: 600px; margin: 0 auto;">
         <h2>Bewaartermijn Calculator</h2>
@@ -171,34 +193,15 @@
                 <option value="wgbo">Cliëntdossier (WGBO) - 20 jaar</option>
                 <option value="hr-basis">Personeelsdossier (Algemeen) - 2 jaar</option>
                 <option value="hr-fiscaal">Salaris / Belasting (Fiscaal) - 7 jaar</option>
-                <option value="hr-solli">Sollicitatiegegevens - 4 weken (of 1 jaar)</option>
+                <option value="hr-solli">Sollicitatiegegevens - 4 weken</option>
             </select>
         </div>
         <div class="form-group">
-            <label>Datum einde zorg / uitdiensttreding / afwijzing</label>
+            <label>Datum einde zorg / uitdiensttreding</label>
             <input type="date" id="end-date" onchange="calculateDestruction()">
         </div>
         <div id="calc-result" class="decision-box" style="display:none;"></div>
         <button onclick="closeModal('calcModal')" style="margin-top:20px; border:none; background:none; text-decoration:underline; cursor:pointer;">Sluiten</button>
-    </div>
-</div>
-
-<div id="linksModal" class="modal">
-    <div style="max-width: 600px; margin: 0 auto;">
-        <h2>Essentiële Bronnen</h2>
-        <a href="https://autoriteitpersoonsgegevens.nl" target="_blank" class="link-item">Autoriteit Persoonsgegevens (AP)<span>Officiële toezichthouder Nederland</span></a>
-        <a href="https://www.vgn.nl/handreiking-privacy" target="_blank" class="link-item">VGN Handreiking Privacy<span>Specifiek voor gehandicaptenzorg</span></a>
-        <a href="https://www.dwangindezorg.nl" target="_blank" class="link-item">Dwang in de Zorg (Wzd)<span>Centraal punt voor Wet zorg en dwang</span></a>
-        <button onclick="closeModal('linksModal')" style="margin-top:20px; border:none; background:none; text-decoration:underline; cursor:pointer;">Sluiten</button>
-    </div>
-</div>
-
-<div id="newsModal" class="modal">
-    <div style="max-width: 600px; margin: 0 auto;">
-        <h2>Actueel Nieuws</h2>
-        <a href="https://autoriteitpersoonsgegevens.nl/actueel" target="_blank" class="link-item">AP Nieuwsberichten<span>Sancties en onderzoeken</span></a>
-        <a href="https://www.privacyweb.nl" target="_blank" class="link-item">PrivacyWeb<span>Jurisprudentie</span></a>
-        <button onclick="closeModal('newsModal')" style="margin-top:20px; border:none; background:none; text-decoration:underline; cursor:pointer;">Sluiten</button>
     </div>
 </div>
 
@@ -215,15 +218,15 @@
 
 <div id="datalekModal" class="modal"><div style="max-width:600px;margin:0 auto;"><h2>Datalek Check</h2><div id="datalekWizard"><div class="decision-box"><p>Dataverlies of onrechtmatige toegang?</p><div class="btn-group"><button class="choice-btn" onclick="nextDatalek('ja')">Ja</button><button class="choice-btn" onclick="nextDatalek('nee')">Nee</button></div></div></div><button onclick="closeModal('datalekModal')" style="margin-top:40px;border:none;background:none;text-decoration:underline;cursor:pointer;">Sluiten</button></div></div>
 <div id="decisionModal" class="modal"><div style="max-width:600px;margin:0 auto;"><h2>Delen Check</h2><div id="shareWizard"><div class="decision-box"><p>Expliciete toestemming?</p><div class="btn-group"><button class="choice-btn" onclick="nextShare('ja')">Ja</button><button class="choice-btn" onclick="nextShare('nee')">Nee</button></div></div></div><button onclick="closeModal('decisionModal')" style="margin-top:40px;border:none;background:none;text-decoration:underline;cursor:pointer;">Sluiten</button></div></div>
-<div id="privacyModal" class="modal"><div style="max-width:600px;margin:0 auto;"><h2>AVG & Wetgeving</h2><p>Lokaal dashboard. <a href="https://autoriteitpersoonsgegevens.nl/wetten-en-regels/algemene-verordening-gegevensbescherming-avg" target="_blank">Volledige AVG Tekst</a></p><button onclick="closeModal('privacyModal')" style="margin-top:40px;padding:10px 20px;background:#000;color:#fff;border:none;border-radius:4px;cursor:pointer;">Sluiten</button></div></div>
+<div id="privacyModal" class="modal"><div style="max-width:600px;margin:0 auto;"><h2>AVG & Wetgeving</h2><p>Lokaal dashboard. <a href="https://autoriteitpersoonsgegevens.nl/nl/wetten-en-regels/algemene-verordening-gegevensbescherming-avg" target="_blank">Volledige AVG Tekst</a></p><button onclick="closeModal('privacyModal')" style="margin-top:40px;padding:10px 20px;background:#000;color:#fff;border:none;border-radius:4px;cursor:pointer;">Sluiten</button></div></div>
 
 <script>
+// Database met stabiele URL's
 const database = [
-    { cat: "Dossier", q: "Bewaartermijn dossier?", a: "Minimaal 20 jaar na laatste wijziging of stopzetting zorg.", law: "WGBO", url: "https://www.rijksoverheid.nl/onderwerpen/rechten-van-patient-en-cliënt/medisch-dossier" },
+    { cat: "Dossier", q: "Bewaartermijn dossier?", a: "Minimaal 20 jaar na laatste wijziging of stopzetting zorg.", law: "WGBO", url: "https://www.rijksoverheid.nl/onderwerpen/rechten-van-patient-en-client/medisch-dossier" },
     { cat: "Wzd", q: "Camera of sensor in kamer?", a: "Onvrijwillige zorg: alleen bij ernstig risico en na opname in zorgplan.", law: "Wzd", url: "https://www.dwangindezorg.nl/wzd/onvrijwillige-zorg/vormen" },
-    { cat: "Privacy", q: "Foto's op WhatsApp?", a: "Onveilig. Gebruik uitsluitend organisatie-apps met toestemming.", law: "AVG Art. 32", url: "https://www.vgn.nl/artikel/handreiking-privacy-de-gehandicaptenzorg" },
-    { cat: "Politie", q: "Vragen van politie?", a: "Beroepsgeheim gaat voor. Alleen delen bij vordering OvJ of noodtoestand.", law: "WGBO", url: "https://www.knmg.nl/advies-richtlijnen/beroepsgeheim-en-politie-justitie" },
-    { cat: "HR", q: "Bewaartermijn personeelsdossier?", a: "Meeste gegevens 2 jaar na uitdiensttreding. Fiscale gegevens 7 jaar.", law: "AVG / Fiscale wet", url: "https://autoriteitpersoonsgegevens.nl/themas/werk-en-uitkering/personeelsdossier" }
+    { cat: "Privacy", q: "Foto's op WhatsApp?", a: "Onveilig. Gebruik uitsluitend organisatie-apps met toestemming.", law: "AVG Art. 32", url: "https://www.vgn.nl/privacy" },
+    { cat: "HR", q: "Bewaartermijn personeelsdossier?", a: "Meeste gegevens 2 jaar na uitdiensttreding. Fiscale gegevens 7 jaar.", law: "AVG / Fiscale wet", url: "https://autoriteitpersoonsgegevens.nl/nl/onderwerpen/werk-en-uitkering/personeelsdossier" }
 ];
 
 function handleSearch(query) {
@@ -239,43 +242,25 @@ function calculateDestruction() {
     const type = document.getElementById('data-type').value;
     const inputDate = document.getElementById('end-date').value;
     if (!inputDate) return;
-
     let d = new Date(inputDate);
     let grondslag = "";
-    
-    switch(type) {
-        case "wgbo":
-            d.setFullYear(d.getFullYear() + 20);
-            grondslag = "WGBO (20 jaar na laatste wijziging)";
-            break;
-        case "hr-basis":
-            d.setFullYear(d.getFullYear() + 2);
-            grondslag = "AVG Richtlijn (2 jaar na uitdiensttreding)";
-            break;
-        case "hr-fiscaal":
-            d.setFullYear(d.getFullYear() + 7);
-            grondslag = "Rijksbelastingwet (7 jaar fiscale bewaarplicht)";
-            break;
-        case "hr-solli":
-            d.setDate(d.getDate() + 28);
-            grondslag = "AVG Richtlijn (4 weken na afloop sollicitatie, tenzij toestemming voor 1 jaar)";
-            break;
-    }
-
+    if(type === "wgbo") { d.setFullYear(d.getFullYear() + 20); grondslag = "WGBO (20 jaar)"; }
+    else if(type === "hr-basis") { d.setFullYear(d.getFullYear() + 2); grondslag = "AVG (2 jaar)"; }
+    else if(type === "hr-fiscaal") { d.setFullYear(d.getFullYear() + 7); grondslag = "Fiscaal (7 jaar)"; }
+    else if(type === "hr-solli") { d.setDate(d.getDate() + 28); grondslag = "AVG (4 weken)"; }
     const res = document.getElementById('calc-result');
     res.style.display = 'block';
     res.innerHTML = `Vernietigen op: <strong>${d.toLocaleDateString('nl-NL')}</strong><br><small>Grondslag: ${grondslag}.</small>`;
 }
 
 function triggerReportMail() {
-    window.location.href = `mailto:jouw@email.nl?subject=Privacy%20Melding&body=Incident%20melding...`;
+    window.location.href = `mailto:privacy@jouworganisatie.nl?subject=Privacy%20Incident%20Melding&body=Incident%20details%3A`;
 }
 
 function quickSearch(t) { document.getElementById('search').value = t; handleSearch(t); }
 document.getElementById('search').oninput = e => handleSearch(e.target.value);
 function openModal(id) { document.getElementById(id).style.display = 'block'; }
 function closeModal(id) { document.getElementById(id).style.display = 'none'; resetWizards(); }
-
 function generateDPIA() {
     const res = document.getElementById('dpia-result');
     res.innerText = `DPIA SCAN - ${new Date().toLocaleDateString()}\nProject: ${document.getElementById('dpia-name').value}\nStatus: Concept`;
