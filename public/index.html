@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-    <title>Privacy Wijzer — Gehandicaptenzorg</title>
+    <title>Privacy Officer Dashboard — Gehandicaptenzorg</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <style>
         :root {
             --bg: #ffffff;
@@ -15,6 +15,8 @@
             --rainbow: linear-gradient(to right, #ef4444, #f97316, #eab308, #22c55e, #38bdf8, #a855f7);
         }
 
+        * { box-sizing: border-box; }
+
         body {
             font-family: -apple-system, system-ui, sans-serif;
             background-color: var(--bg);
@@ -25,11 +27,31 @@
             justify-content: center;
         }
 
-        .container { width: 100%; max-width: 650px; }
+        .container { width: 100%; max-width: 700px; }
 
-        header { margin-bottom: 40px; }
-        h1 { font-size: 1.4rem; font-weight: 700; margin: 0; letter-spacing: -0.02em; }
-        header p { color: var(--meta); font-size: 0.85rem; margin-top: 5px; }
+        header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            margin-bottom: 30px; 
+            padding-bottom: 10px;
+        }
+        
+        h1 { font-size: 1.3rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; margin: 0; }
+        
+        .nav-group { display: flex; gap: 8px; flex-wrap: wrap; }
+        .officer-btn {
+            background: var(--text);
+            color: var(--bg);
+            border: none;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+        .officer-btn:hover { opacity: 0.8; }
 
         .search-container {
             position: sticky;
@@ -37,7 +59,7 @@
             background: var(--bg);
             padding: 10px 0 15px 0;
             margin-bottom: 20px;
-            z-index: 10;
+            z-index: 100;
         }
 
         .search-container::after {
@@ -52,129 +74,212 @@
 
         input {
             width: 100%;
-            padding: 12px 0;
-            font-size: 1.1rem;
+            padding: 15px 0;
+            font-size: 1.2rem;
             border: none;
             background: transparent;
             outline: none;
+            font-weight: 500;
         }
 
-        .result { padding: 30px 0; border-bottom: 1px solid var(--border); }
-        .category { font-size: 0.7rem; text-transform: uppercase; color: var(--meta); font-weight: 800; letter-spacing: 0.05em; }
-        h3 { font-size: 1.2rem; margin: 10px 0; font-weight: 600; }
-        p { font-size: 1rem; line-height: 1.6; color: #3f3f46; margin-bottom: 20px; }
+        .quick-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+        .tag-btn {
+            background: var(--subtle);
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            color: var(--text);
+        }
 
-        .footer-card { display: flex; justify-content: space-between; align-items: center; }
-        .source-btn { 
-            padding: 8px 14px; 
-            background: var(--text); 
-            color: var(--bg); 
-            text-decoration: none; 
-            border-radius: 4px; 
-            font-size: 0.8rem; 
+        .result { padding: 30px 0; border-bottom: 1px solid var(--border); animation: fadeIn 0.3s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .category { font-size: 0.7rem; text-transform: uppercase; color: var(--meta); font-weight: 800; letter-spacing: 0.08em; }
+        h3 { font-size: 1.2rem; margin: 10px 0; font-weight: 700; line-height: 1.3; }
+        p { font-size: 1rem; line-height: 1.6; color: #333; margin-bottom: 20px; }
+
+        .footer-card { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+        .source-link { color: var(--accent); font-weight: 700; text-decoration: none; border-bottom: 1.5px solid var(--accent); font-size: 0.85rem; }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: var(--bg);
+            z-index: 1000;
+            padding: 40px 20px;
+            overflow-y: auto;
+        }
+
+        .decision-box {
+            background: var(--subtle);
+            padding: 25px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .btn-group { display: flex; gap: 10px; margin-top: 20px; }
+        .choice-btn {
+            padding: 12px 20px;
+            border: 1px solid var(--border);
+            background: white;
+            border-radius: 6px;
+            cursor: pointer;
             font-weight: 600;
         }
 
-        footer { margin-top: 80px; padding: 20px 0; border-top: 1px solid var(--border); font-size: 0.8rem; color: var(--meta); text-align: center; }
+        footer { margin-top: 80px; padding: 40px 0; border-top: 1px solid var(--border); font-size: 0.8rem; color: var(--meta); text-align: center; }
+        
+        @media (max-width: 600px) {
+            header { flex-direction: column; align-items: flex-start; gap: 15px; }
+            h1 { font-size: 1.1rem; }
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
     <header>
-        <h1>Privacy Wijzer</h1>
-        <p>Expert Dashboard — Gehandicaptenzorg</p>
+        <h1>Privacy Officer <span style="font-weight:300">Wijzer</span></h1>
+        <div class="nav-group">
+            <button class="officer-btn" onclick="openModal('datalekModal')">Datalek Check</button>
+            <button class="officer-btn" onclick="openModal('decisionModal')">Delen Check</button>
+        </div>
     </header>
 
     <div class="search-container">
-        <input id="search" placeholder="Zoek op term (bijv. Wzd, AVG, dossier)..." autocomplete="off">
+        <input id="search" placeholder="Zoek onderwerp..." autocomplete="off">
+        <div class="quick-tags">
+            <button class="tag-btn" onclick="quickSearch('Wzd')">Wzd</button>
+            <button class="tag-btn" onclick="quickSearch('foto')">WhatsApp</button>
+            <button class="tag-btn" onclick="quickSearch('dossier')">Bewaartermijn</button>
+            <button class="tag-btn" onclick="quickSearch('politie')">Politie</button>
+        </div>
     </div>
 
     <div id="results">
-        <div style="text-align:center; padding:50px; color:var(--meta);">Typ 2 letters om de database te doorzoeken...</div>
+        <div style="text-align:center; padding:60px; color:var(--meta);">Typ 2 letters om te zoeken...</div>
     </div>
 
     <footer>
-        Geen gegevensverwerking • Lokaal naslagwerk v2026
+        <p>Awareness Dashboard v2026 • <a href="javascript:void(0)" onclick="openModal('privacyModal')" style="color:var(--meta)">Privacy & Audit</a></p>
+        <span id="usageCounter">Raadplegingen deze sessie: 0</span>
     </footer>
 </div>
 
+<div id="datalekModal" class="modal">
+    <div style="max-width: 600px; margin: 0 auto;">
+        <h2>Datalek Incident Check</h2>
+        <div id="datalekWizard">
+            <div class="decision-box">
+                <p>Is er sprake van verlies van data of onrechtmatige toegang? (USB kwijt, mail verkeerd?)</p>
+                <div class="btn-group">
+                    <button class="choice-btn" onclick="nextDatalek('ja')">Ja</button>
+                    <button class="choice-btn" onclick="nextDatalek('nee')">Nee</button>
+                </div>
+            </div>
+        </div>
+        <button onclick="closeModal('datalekModal')" style="margin-top:40px; border:none; background:none; text-decoration:underline; cursor:pointer;">Sluiten</button>
+    </div>
+</div>
+
+<div id="decisionModal" class="modal">
+    <div style="max-width: 600px; margin: 0 auto;">
+        <h2>Beslishulp: Informatie Delen</h2>
+        <div id="shareWizard">
+            <div class="decision-box">
+                <p>Heeft de cliënt/vertegenwoordiger expliciet toestemming gegeven?</p>
+                <div class="btn-group">
+                    <button class="choice-btn" onclick="nextShare('ja')">Ja</button>
+                    <button class="choice-btn" onclick="nextShare('nee')">Nee</button>
+                </div>
+            </div>
+        </div>
+        <button onclick="closeModal('decisionModal')" style="margin-top:40px; border:none; background:none; text-decoration:underline; cursor:pointer;">Sluiten</button>
+    </div>
+</div>
+
+<div id="privacyModal" class="modal">
+    <div style="max-width: 600px; margin: 0 auto;">
+        <h2>Privacy & Audit</h2>
+        <p>Deze tool is lokaal. De teller onderaan helpt je bij awareness-audits.</p>
+        <p><strong>AVG Tekst:</strong> <a href="https://autoriteitpersoonsgegevens.nl/wetten-en-regels/algemene-verordening-gegevensbescherming-avg" target="_blank">Klik hier voor de volledige verordening</a>.</p>
+        <button onclick="closeModal('privacyModal')" style="margin-top:40px; padding:10px 20px; background:#000; color:#fff; border:none; border-radius:4px; cursor:pointer;">Sluiten</button>
+    </div>
+</div>
+
 <script>
-/**
- * DATABASE: VOEG HIER NIEUWE ITEMS TOE
- * Kopieer een bestaand blok { ... } en plak het onderaan de lijst.
- */
 const database = [
-    { 
-        "cat": "Dossiervorming", 
-        "q": "Hoe lang moet het dossier bewaard blijven?", 
-        "a": "De standaardtermijn is 20 jaar na de laatste wijziging of beëindiging van de zorgvereenkomst.", 
-        "law": "WGBO / Wzd",
-        "url": "https://www.rijksoverheid.nl/onderwerpen/rechten-van-patient-en-cliënt/medisch-dossier"
-    },
-    { 
-        "cat": "Wzd", 
-        "q": "Camera of sensor in de slaapkamer?", 
-        "a": "Toezicht via techniek mag alleen bij ernstig risico voor de cliënt. Dit moet altijd in het zorgplan staan en periodiek geëvalueerd worden.", 
-        "law": "Wzd / AVG",
-        "url": "https://www.dwangindezorg.nl/wzd/onvrijwillige-zorg/vormen"
-    },
-    { 
-        "cat": "Communicatie", 
-        "q": "WhatsApp gebruiken voor cliëntgegevens?", 
-        "a": "Standaard WhatsApp is onveilig. Gebruik uitsluitend goedgekeurde organisatie-apps (bijv. Siilo of ZorgMail).", 
-        "law": "AVG Art. 32",
-        "url": "https://www.vgn.nl/artikel/handreiking-privacy-de-gehandicaptenzorg"
-    },
-    { 
-        "cat": "Incidenten", 
-        "q": "Incident tussen cliënten in het dossier?", 
-        "a": "Rapporteer in dossier cliënt A zonder cliënt B bij naam te noemen om diens privacy te waarborgen.", 
-        "law": "AVG / WGBO",
-        "url": "https://www.autoriteitpersoonsgegevens.nl/themas/gezondheid/medisch-dossier/rechten-van-de-patient"
-    }
+    { cat: "Dossier", q: "Bewaartermijn dossier?", a: "Minimaal 20 jaar na laatste wijziging of stopzetting zorg.", law: "WGBO", url: "https://www.rijksoverheid.nl/onderwerpen/rechten-van-patient-en-cliënt/medisch-dossier" },
+    { cat: "Wzd", q: "Camera of sensor in kamer?", a: "Onvrijwillige zorg: alleen bij ernstig risico en na opname in zorgplan.", law: "Wzd", url: "https://www.dwangindezorg.nl/wzd/onvrijwillige-zorg/vormen" },
+    { cat: "Privacy", q: "Foto's op WhatsApp?", a: "Onveilig. Gebruik uitsluitend organisatie-apps (Siilo/ONS) met toestemming.", law: "AVG Art. 32", url: "https://www.vgn.nl/artikel/handreiking-privacy-de-gehandicaptenzorg" },
+    { cat: "Politie", q: "Informatie aan politie geven?", a: "Alleen bij vordering Officier van Justitie of acute noodtoestand. Beroepsgeheim gaat voor.", law: "WGBO / BIG", url: "https://www.knmg.nl/advies-richtlijnen/beroepsgeheim-en-politie-justitie" },
+    { cat: "Overlijden", q: "Inzage na overlijden?", a: "Beroepsgeheim blijft. Inzage alleen bij toestemming vooraf of zwaarwegend belang.", law: "WGBO", url: "https://www.knmg.nl/advies-richtlijnen/inzage-dossier-overleden-patient" },
+    { cat: "Incidenten", q: "Incident tussen cliënten rapporten?", a: "Rapporteer in dossier cliënt A zonder naam cliënt B te noemen (privacy bewoner B).", law: "AVG", url: "https://www.autoriteitpersoonsgegevens.nl/themas/gezondheid/medisch-dossier/rechten-van-de-patient" }
 ];
 
-/**
- * LOGICA: HIERONDER NIETS WIJZIGEN (tenzij je de werking wilt aanpassen)
- */
-const searchInput = document.getElementById('search');
+let sessionCount = 0;
 const resultsContainer = document.getElementById('results');
 
 function handleSearch(query) {
     const term = query.toLowerCase().trim();
-
-    if (term.length < 2) {
-        resultsContainer.innerHTML = '<div style="text-align:center; padding:50px; color:var(--meta);">Typ minimaal 2 letters...</div>';
-        return;
-    }
+    if (term.length < 2) { resultsContainer.innerHTML = '<div style="text-align:center; padding:60px; color:var(--meta);">Typ 2 letters...</div>'; return; }
     
-    const filtered = database.filter(item => 
-        item.q.toLowerCase().includes(term) || 
-        item.a.toLowerCase().includes(term) ||
-        item.cat.toLowerCase().includes(term)
-    );
+    sessionCount++;
+    document.getElementById('usageCounter').innerText = `Raadplegingen deze sessie: ${sessionCount}`;
 
-    if (filtered.length === 0) {
-        resultsContainer.innerHTML = '<div style="text-align:center; padding:50px; color:var(--meta);">Geen resultaten gevonden.</div>';
-        return;
-    }
+    const filtered = database.filter(i => i.q.toLowerCase().includes(term) || i.a.toLowerCase().includes(term) || i.cat.toLowerCase().includes(term));
+    if (filtered.length === 0) { resultsContainer.innerHTML = '<div style="text-align:center; padding:60px; color:var(--meta);">Geen resultaten.</div>'; return; }
 
-    resultsContainer.innerHTML = filtered.map(item => `
+    resultsContainer.innerHTML = filtered.map(i => `
         <div class="result">
-            <div class="category">${item.cat}</div>
-            <h3>${item.q}</h3>
-            <p>${item.a}</p>
+            <div class="category">${i.cat}</div>
+            <h3>${i.q}</h3>
+            <p>${i.a}</p>
             <div class="footer-card">
-                <span style="color:var(--meta); font-size:0.8rem;">Bron: ${item.law}</span>
-                ${item.url ? `<a href="${item.url}" target="_blank" class="source-btn">Open Bron</a>` : ''}
+                <span style="color:var(--meta); font-size:0.8rem;">Bron: ${i.law}</span>
+                <a href="${i.url}" target="_blank" class="source-link">Open Bron</a>
             </div>
         </div>
     `).join('');
 }
 
-searchInput.oninput = (e) => handleSearch(e.target.value);
-</script>
+function quickSearch(t) { document.getElementById('search').value = t; handleSearch(t); }
+document.getElementById('search').oninput = e => handleSearch(e.target.value);
 
+// Modal Logic
+function openModal(id) { document.getElementById(id).style.display = 'block'; }
+function closeModal(id) { document.getElementById(id).style.display = 'none'; resetWizards(); }
+
+// Wizards
+let dlStep = 1, shStep = 1;
+function nextDatalek(c) {
+    const w = document.getElementById('datalekWizard');
+    if (dlStep === 1) {
+        if (c === 'nee') { w.innerHTML = '<div class="decision-box">Geen datalek. Log intern als incident.</div>'; }
+        else { dlStep = 2; w.innerHTML = '<div class="decision-box"><p>Hoog risico voor cliënt?</p><button class="choice-btn" onclick="nextDatalek(\'ja\')">Ja</button> <button class="choice-btn" onclick="nextDatalek(\'nee\')">Nee</button></div>'; }
+    } else if (dlStep === 2) {
+        w.innerHTML = `<div class="decision-box"><strong>Advies:</strong> Meld binnen 72u bij AP. ${c==='ja'?'Informeer cliënt direct.':''}</div>`;
+    }
+}
+function nextShare(c) {
+    const w = document.getElementById('shareWizard');
+    if (shStep === 1) {
+        if (c === 'ja') { w.innerHTML = '<div class="decision-box">Delen toegestaan. Log in dagrapportage.</div>'; }
+        else { shStep = 2; w.innerHTML = '<div class="decision-box"><p>Acuut gevaar?</p><button class="choice-btn" onclick="nextShare(\'ja\')">Ja</button> <button class="choice-btn" onclick="nextShare(\'nee\')">Nee</button></div>'; }
+    } else if (shStep === 2) {
+        w.innerHTML = `<div class="decision-box"><strong>Advies:</strong> ${c==='ja'?'Delen op basis van noodtoestand.':'NIET delen. Beroepsgeheim weegt zwaarder.'}</div>`;
+    }
+}
+function resetWizards() { 
+    dlStep = 1; shStep = 1;
+    document.getElementById('datalekWizard').innerHTML = '<div class="decision-box"><p>Is er sprake van verlies of onrechtmatige toegang?</p><button class="choice-btn" onclick="nextDatalek(\'ja\')">Ja</button> <button class="choice-btn" onclick="nextDatalek(\'nee\')">Nee</button></div>';
+    document.getElementById('shareWizard').innerHTML = '<div class="decision-box"><p>Heeft de cliënt/vertegenwoordiger toestemming gegeven?</p><button class="choice-btn" onclick="nextShare(\'ja\')">Ja</button> <button class="choice-btn" onclick="nextShare(\'nee\')">Nee</button></div>';
+}
+</script>
 </body>
 </html>
