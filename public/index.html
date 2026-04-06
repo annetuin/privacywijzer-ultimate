@@ -218,6 +218,73 @@ const db = [
     { cat: "HR", q: "Kopie ID-bewijs bewaren?", a: "Verplicht voor medewerkers op de loonlijst. Mag niet voor vrijwilligers of ZZP'ers (alleen controle/noteren nummer).", law: "Wet op de loonbelasting", source: "Belastingdienst", risk: "Gemiddeld" },
     { cat: "Inzage", q: "Recht op inzage nabestaanden?", a: "Geen automatisch recht. Alleen bij toestemming bij leven, zwaarwegend belang of incidentenonderzoek.", law: "WGBO Art. 457", source: "KNMG", risk: "Gemiddeld" },
     { cat: "VWO", q: "Softwareleverancier in de zorg?", a: "Verwerkersovereenkomst verplicht onder Art. 28 AVG. Gebruik bij voorkeur BoZ model.", law: "AVG Artikel 28", source: "BoZ Model", risk: "Gemiddeld" }
+// --- WET ZORG EN DWANG (Wzd) & DOMOTICA ---
+    { cat: "Wzd", q: "Digitale deurvergrendeling (leefcirkels)?", a: "Beperking bewegingsvrijheid. Vereist Wzd-stappenplan en registratie in zorgplan. DPIA op systeem verplicht.", law: "Wzd / Art. 35 AVG", source: "Dwangindezorg.nl", risk: "Hoog" },
+    { cat: "Wzd", q: "Gebruik van GPS-trackers bij dwalen?", a: "Onvrijwillige zorg. Alleen bij ernstig nadeel en als alternatieven niet werken. Periodieke evaluatie door Wzd-functionaris nodig.", law: "Wzd", source: "VGN", risk: "Hoog" },
+    { cat: "Wzd", q: "Inzet van slimme sensoren (valdetectie)?", a: "Privacy-inbreuk. Toestemming nodig of opname in zorgplan bij onvrijwillige zorg. Privacy-by-design essentieel.", law: "Wzd / Art. 25 AVG", source: "Vilans", risk: "Gemiddeld" },
+    { cat: "Wzd", q: "Cameratoezicht in gezamenlijke huiskamer?", a: "Alleen toegestaan met zwaarwegend veiligheidsbelang, DPIA en na overleg met de Cliëntenraad.", law: "AVG / Wmcz 2018", source: "AP", risk: "Hoog" },
+    { cat: "Wzd", q: "Mag een bewaker meekijken op beelden?", a: "Alleen bij een incident. Continue monitoring door onbevoegden is niet toegestaan zonder specifieke noodzaak.", law: "AVG / Wzd", source: "VGN", risk: "Hoog" },
+
+    // --- TOESTEMMING & VERTEGENWOORDIGING ---
+    { cat: "Toestemming", q: "Verschil tussen toestemming voor zorg en data?", a: "WGBO-toestemming is voor de behandeling. AVG-toestemming is voor extra zaken zoals foto's of onderzoek.", law: "WGBO vs AVG", source: "VGN Handreiking", risk: "Gemiddeld" },
+    { cat: "Toestemming", q: "Is mondelinge toestemming geldig?", a: "Ja, maar vanwege bewijslast (accountability) is schriftelijke of digitale vastlegging in de zorg verplicht.", law: "Art. 7 AVG", source: "AP", risk: "Hoog" },
+    { cat: "Toestemming", q: "Toestemming intrekken: wat met geprinte folders?", a: "Nieuwe folders mogen niet gedrukt worden. Bestaande voorraad mag vaak opgebruikt worden, tenzij zwaarwegend belang cliënt.", law: "AVG", source: "Juridisch kader", risk: "Gemiddeld" },
+    { cat: "Toestemming", q: "Foto's op de besloten familie-app?", a: "Toestemming nodig van álle afgebeelde cliënten/vertegenwoordigers. Geen 'groeps-toestemming' mogelijk.", law: "AVG", source: "VGN Model 2024", risk: "Gemiddeld" },
+    { cat: "Toestemming", q: "Mag een mentor foto's op social media verbieden?", a: "Ja, de mentor beslist over de privacy-belangen van een wilsonbekwame cliënt.", law: "WGBO / BW", source: "KansPlus", risk: "Hoog" },
+
+    // --- DOSSIERVOERING & INZAGE ---
+    { cat: "Inzage", q: "Inzage door de cliëntenraad?", a: "Alleen geanonimiseerde incidentmeldingen. Nooit herleidbaar naar individuele cliënten zonder toestemming.", law: "Wmcz 2018", source: "LSR", risk: "Hoog" },
+    { cat: "Inzage", q: "Kopie dossier bij verhuizing?", a: "Cliënt heeft recht op een gratis kopie van het dossier om mee te nemen naar de nieuwe instelling.", law: "WGBO / Art. 15 AVG", source: "Rijksoverheid", risk: "Laag" },
+    { cat: "Dossier", q: "Persoonlijke werkaantekeningen in het ECD?", a: "Vallen buiten inzagerecht mits ze strikt persoonlijk zijn en niet in het officiële dossier worden gedeeld.", law: "AVG / Jurisprudentie", source: "AP", risk: "Laag" },
+    { cat: "Dossier", q: "Hoe lang bewaar ik een klachtenbrief?", a: "Standaard 5 jaar na afhandeling van de klacht.", law: "Wkkgz", source: "VGN", risk: "Laag" },
+    { cat: "Inzage", q: "Inzage door de inspectie (IGJ)?", a: "Ja, de inspectie heeft een wettelijke taak en mag zonder toestemming noodzakelijke dossiers inzien.", law: "Wkkgz / Wet IGJ", source: "IGJ", risk: "Gemiddeld" },
+
+    // --- DATALEKKEN & BEVEILIGING ---
+    { cat: "Datalek", q: "Diefstal van een onbeveiligde laptop?", a: "Hoog risico. Melden bij AP én bij alle betrokkenen (cliënten/medewerkers).", law: "Art. 34 AVG", source: "AP", risk: "Zeer Hoog" },
+    { cat: "Datalek", q: "Verkeerde bijlage in cliëntportaal?", a: "Datalek. Direct toegang blokkeren, impact bepalen en binnen 72u melden bij AP indien nodig.", law: "Art. 33 AVG", source: "AP", risk: "Hoog" },
+    { cat: "Beveiliging", q: "Is Multi-Factor Authenticatie (MFA) verplicht?", a: "Ja, voor toegang tot gezondheidsgegevens op afstand is MFA de absolute norm (NEN 7510).", law: "Art. 32 AVG", source: "NEN 7510", risk: "Hoog" },
+    { cat: "Datalek", q: "Medewerker deelt inlogcode met collega?", a: "Beveiligingsincident. Onmiddellijk wachtwoord wijzigen en medewerker aanspreken (bewustwording).", law: "AVG / NEN 7510", source: "Interne audit", risk: "Gemiddeld" },
+    { cat: "Beveiliging", q: "Mag zorginfo via gewone WhatsApp?", a: "Nee. WhatsApp is niet toegestaan voor cliëntgegevens. Gebruik Zivver, ZorgMail of Siilo.", law: "Art. 32 AVG", source: "AP", risk: "Hoog" },
+
+    // --- HR & MEDEWERKERS ---
+    { cat: "HR", q: "Medische gegevens van zieke medewerker?", a: "Verboden te vragen/registreren door werkgever. Alleen de bedrijfsarts mag dit.", law: "AVG / Beleidsregels AP", source: "Autoriteit Persoonsgegevens", risk: "Zeer Hoog" },
+    { cat: "HR", q: "VOG bewaren van ex-medewerker?", a: "Verwijderen na uitdiensttreding (na afloop bewaartermijn dossier: 2 jaar).", law: "AVG", source: "VGN", risk: "Laag" },
+    { cat: "HR", q: "Privégebruik zakelijke e-mail monitoren?", a: "Alleen bij zwaar vermoeden misbruik, na DPIA en met instemming van de OR.", law: "Art. 8 EVRM / AVG", source: "AP", risk: "Hoog" },
+    { cat: "HR", q: "Smoelenboek op intranet?", a: "Toestemming nodig van de medewerker. Kan niet verplicht worden gesteld.", law: "AVG", source: "Jurisprudentie", risk: "Gemiddeld" },
+    { cat: "HR", q: "Bewaartermijn sollicitatiebrief?", a: "Standaard 4 weken na afloop procedure, of 1 jaar met toestemming.", law: "AVG", source: "AP", risk: "Laag" },
+
+    // --- SAMENWERKING & EXTERNE PARTNERS ---
+    { cat: "Delen", q: "Data delen met de huisarts?", a: "Toestemming verondersteld bij directe behandelrelatie (WGBO).", law: "WGBO Art. 457", source: "KNMG", risk: "Laag" },
+    { cat: "Delen", q: "Informatie aan de politie verstrekken?", a: "Alleen bij expliciete toestemming, wettelijke plicht of een zeer dringende noodtoestand (levensgevaar).", law: "WGBO / Wetboek v. Strafvordering", source: "Politie/Zorg", risk: "Zeer Hoog" },
+    { cat: "Delen", q: "Gegevens aan bewindvoerder geven?", a: "Alleen financiële data noodzakelijk voor bewind. Geen medische info zonder toestemming.", law: "AVG / BW", source: "VGN", risk: "Gemiddeld" },
+    { cat: "VWO", q: "Schoonmaakbedrijf ook een VWO?", a: "Nee, mits zij geen toegang hebben tot data. Wel een geheimhoudingsverklaring nodig.", law: "AVG", source: "BoZ", risk: "Laag" },
+    { cat: "Delen", q: "Data voor wetenschappelijk onderzoek?", a: "Bij voorkeur geanonimiseerd. Bij herleidbare data: expliciete toestemming nodig.", law: "Art. 89 AVG", source: "COREON", risk: "Hoog" },
+
+    // --- ALGEMENE COMPLIANCE ---
+    { cat: "Audit", q: "Hoe vaak register verwerkingen updaten?", a: "Minimaal 1x per jaar of direct bij wijziging in processen/software.", law: "Art. 30 AVG", source: "AP", risk: "Gemiddeld" },
+    { cat: "DPIA", q: "Wanneer een DPIA uitvoeren?", a: "Vóór ingebruikname van nieuwe technologie of processen met hoog privacy-risico.", law: "Art. 35 AVG", source: "Handboek FG", risk: "Hoog" },
+    { cat: "DPIA", q: "AI in de zorg (bijv. chatbots)?", a: "DPIA altijd verplicht vanwege profilering en gevoelige data.", law: "AVG / AI Act", source: "EU", risk: "Zeer Hoog" },
+    { cat: "Rechten", q: "Recht op dataportabiliteit?", a: "Geldt alleen voor data die cliënt zelf gaf; niet voor diagnoses van de behandelaar.", law: "Art. 20 AVG", source: "AP", risk: "Laag" },
+    { cat: "Rechten", q: "Verzoek tot vernietiging dossier?", a: "WGBO gaat voor AVG; vernietiging mag tenzij bewaring essentieel is voor anderen/zorg.", law: "WGBO Art. 455", source: "KNMG", risk: "Gemiddeld" },
+
+    // --- SPECIFIEK GEHANDICAPTENZORG ---
+    { cat: "Zorg", q: "Inzage door mentor in dagbestedingsverslag?", a: "Ja, de mentor moet de zorg kunnen controleren waarvoor hij/zij verantwoordelijk is.", law: "WGBO / BW", source: "VGN", risk: "Laag" },
+    { cat: "Zorg", q: "Mag een cliënt zijn eigen dossier inzien?", a: "Ja, altijd recht op inzage in het eigen dossier, eventueel met begeleiding.", law: "WGBO / Art. 15 AVG", source: "VGN", risk: "Laag" },
+    { cat: "Zorg", q: "Mogen we BSN gebruiken op maaltijdlijsten?", a: "Nee. BSN is niet nodig voor maaltijdverstrekking. Gebruik kamernummer of naam.", law: "Art. 46 UAVG", source: "AP", risk: "Gemiddeld" },
+    { cat: "Zorg", q: "Samenwerking met MEE/ondersteuners?", a: "Toestemming cliënt/vertegenwoordiger nodig voor warme overdracht.", law: "AVG", source: "VGN", risk: "Gemiddeld" },
+    { cat: "Zorg", q: "Camera bij de ingang van een woonvorm?", a: "Gerechtvaardigd belang (beveiliging). DPIA en bordjes verplicht.", law: "AVG / Politiewet", source: "AP", risk: "Gemiddeld" },
+
+    // --- OVERIG ---
+    { cat: "Toestemming", q: "Geldigheid toestemming na overlijden?", a: "Toestemming vervalt; beroepsgeheim blijft echter van kracht.", law: "WGBO", source: "KNMG", risk: "Hoog" },
+    { cat: "Datalek", q: "Ransomware aanval op ECD?", a: "Datalek en beschikbaarheidsincident. Direct melden bij AP en mogelijk betrokkenen.", law: "Art. 33/34 AVG", source: "AP", risk: "Zeer Hoog" },
+    { cat: "Beveiliging", q: "Scherm onbeheerd achterlaten?", a: "Beveiligingsrisico. Altijd locken (Win+L). Beleid: clean desk / clear screen.", law: "AVG / NEN 7510", source: "Interne richtlijn", risk: "Gemiddeld" },
+    { cat: "VWO", q: "Microsoft/Google als verwerker?", a: "Alleen toegestaan met EU-clausules en Transfer Impact Assessment (TIA).", law: "Schrems II / AVG", source: "EDPB", risk: "Hoog" },
+    { cat: "Rechten", q: "Kopie paspoort aan cliënt vragen?", a: "Niet doen. Identificatieplicht kan via tonen ID; kopie is vaak niet toegestaan.", law: "UAVG", source: "AP", risk: "Hoog" },
+    { cat: "Zorg", q: "Vervoersbedrijf informatie geven?", a: "Alleen noodzakelijke info (naam, ophaalpunt, evt. bijzonderheid voor veiligheid).", law: "AVG", source: "VGN", risk: "Laag" },
+    { cat: "HR", q: "Medewerker bekijkt dossier bekende cliënt?", a: "Zware overtreding (privacy-schending). Arbeidsrechtelijke consequenties.", law: "AVG / Arbeidsrecht", source: "AP", risk: "Zeer Hoog" },
+    { cat: "Inzage", q: "Inzageverzoek via e-mail?", a: "Geldig, maar eerst identiteit van de verzoeker deugdelijk vaststellen.", law: "Art. 12 AVG", source: "AP", risk: "Gemiddeld" },
+    { cat: "Marketing", q: "Relatiegeschenk naar vertegenwoordigers?", a: "Alleen als zij hiervoor toestemming hebben gegeven (opt-in).", law: "Telecommunicatiewet", source: "ACM", risk: "Laag" },
+    { cat: "Audit", q: "Hoe bewijs ik compliance?", a: "Door logging, register, beleidstukken en getekende VWO's (Accountability).", law: "Art. 5 lid 2 AVG", source: "AP", risk: "Hoog" }
 ];
 
 // MODAL LOGICA
