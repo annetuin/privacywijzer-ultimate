@@ -1,1139 +1,145 @@
-{
-  "questions": [
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 1",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 2",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 3",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 4",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 5",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 6",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 7",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 8",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 9",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 10",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 11",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 12",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 13",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 14",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 15",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 16",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 17",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 18",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 19",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 20",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 21",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 22",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 23",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 24",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 25",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 26",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 27",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 28",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 29",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 30",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 31",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 32",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 33",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 34",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 35",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 36",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 37",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 38",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 39",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 40",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 41",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 42",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 43",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 44",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 45",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 46",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 47",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 48",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 49",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 50",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 51",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 52",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 53",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 54",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 55",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 56",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 57",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 58",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 59",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 60",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 61",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 62",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 63",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 64",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 65",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 66",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 67",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 68",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 69",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 70",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 71",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 72",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 73",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 74",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 75",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 76",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 77",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 78",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 79",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 80",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 81",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 82",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 83",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 84",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 85",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 86",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 87",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 88",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 89",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 90",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 91",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 92",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 93",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 94",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 95",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 96",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 97",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 98",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 99",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 100",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 101",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 102",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 103",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 104",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 105",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 106",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 107",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 108",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 109",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 110",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 111",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 112",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 113",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 114",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 115",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 116",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 117",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 118",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 119",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 120",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 121",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 122",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 123",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 124",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 125",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 126",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 127",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 128",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 129",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 130",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 131",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 132",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 133",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 134",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 135",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 136",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 137",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 138",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 139",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 140",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 141",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 142",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 143",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 144",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 145",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 146",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 147",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 148",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 149",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 150",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 151",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 152",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 153",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 154",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 155",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 156",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 157",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 158",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 159",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 160",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 161",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
-    {
-      "category": "Datalekken",
-      "question": "Wanneer binnen 72 uur datalek melden? - variant 162",
-      "answer": "Bij waarschijnlijk risico rechten/vrijheden (AVG 33)",
-      "risk": "kritiek",
-      "laws": "AVG 33"
-    },
+[
+  {
+    "category": "Dossiervorming & Bewaren",
+    "question": "Wanneer begint de wettelijke bewaartermijn van 20 jaar?",
+    "answer": "De termijn loopt vanaf de datum van de laatste wijziging of vervaardiging van het gegeven in het dossier.",
+    "risk": "medium",
+    "laws": "WGBO Art. 7:454 lid 3"
+  },
+  {
+    "category": "Dossiervorming & Bewaren",
+    "question": "Welke gegevens vallen buiten de 20-jarige bewaartermijn?",
+    "answer": "Academische ziekenhuizen moeten bepaalde documenten (zoals operatieverslagen en ontslagbrieven) 115 jaar bewaren (na geboorte patiënt) op basis van de Archiefwet.",
+    "risk": "low",
+    "laws": "Archiefwet / Selectielijst academische ziekenhuizen"
+  },
+  {
+    "category": "Rechten van Betrokkenen",
+    "question": "Wat is het recht op 'vergeten worden' in de zorg?",
+    "answer": "In de zorg is dit vertaald naar het recht op vernietiging. De hulpverlener moet binnen 3 maanden gehoor geven aan een verzoek, tenzij bewaring essentieel is voor een ander (bijv. erfelijkheid).",
+    "risk": "high",
+    "laws": "WGBO Art. 7:455 / AVG Art. 17"
+  },
+  {
+    "category": "Rechten van Betrokkenen",
+    "question": "Mag een patiënt delen van zijn dossier afschermen voor de waarnemer?",
+    "answer": "Ja, de patiënt heeft het recht op gedeeltelijke blokkering van gegevens voor specifieke zorgverleners binnen een samenwerkingsverband.",
+    "risk": "high",
+    "laws": "Wabvpz Art. 15d"
+  },
+  {
+    "category": "Rechten van Betrokkenen",
+    "question": "Inzage door de politie: wanneer mag dit?",
+    "answer": "Alleen met expliciete toestemming van de patiënt of bij een gerechtelijk bevel/wettelijke plicht (bijv. Wet lijkbezorging). Het beroepsgeheim is bijna altijd leidend.",
+    "risk": "critical",
+    "laws": "Wet BIG Art. 88 / WGBO Art. 7:457"
+  },
+  {
+    "category": "Verwerkingsgrondslagen",
+    "question": "Waarom mag een arts zonder toestemming gegevens verwerken voor de behandeling?",
+    "answer": "Omdat er een 'behandelingsovereenkomst' is. Voor de noodzakelijke medische handelingen is de overeenkomst de grondslag onder de AVG.",
+    "risk": "medium",
+    "laws": "AVG Art. 6 lid 1b / WGBO Art. 7:446"
+  },
+  {
+    "category": "Verwerkingsgrondslagen",
+    "question": "Mag data gebruikt worden voor kwaliteitsverbetering?",
+    "answer": "Ja, mits dit gebeurt binnen de eigen instelling en gegevens zoveel mogelijk geanonimiseerd zijn.",
+    "risk": "low",
+    "laws": "Wkkgz / AVG Art. 6 lid 1f (Gerechtvaardigd belang)"
+  },
+  {
+    "category": "Beveiliging & ICT",
+    "question": "Wat is de norm voor informatiebeveiliging in de zorg?",
+    "answer": "NEN 7510. Dit is de verplichte Nederlandse norm die invulling geeft aan de 'passende maatregelen' uit de AVG.",
+    "risk": "high",
+    "laws": "AVG Art. 32 / Besluit elektronische gegevensverwerking door zorgaanbieders"
+  },
+  {
+    "category": "Beveiliging & ICT",
+    "question": "Wat moet er verplicht gelogd worden?",
+    "answer": "Wie heeft welk dossier ingezien, wanneer dit gebeurde en of er wijzigingen zijn aangebracht. Deze logs moeten 5 jaar bewaard blijven.",
+    "risk": "high",
+    "laws": "NEN 7513 / Wabvpz Art. 15e"
+  },
+  {
+    "category": "Bijzondere Situaties",
+    "question": "Inzage na overlijden bij vermoeden van medische fout?",
+    "answer": "Nabestaanden hebben recht op inzage als zij een 'zwaarwegend belang' kunnen aantonen dat het beroepsgeheim van de overledene overstijgt.",
+    "risk": "high",
+    "laws": "WGBO Art. 7:458a lid 1c"
+  },
+  {
+    "category": "Bijzondere Situaties",
+    "question": "Cameratoezicht in de wachtkamer?",
+    "answer": "Toegestaan voor beveiliging, mits kenbaar gemaakt (borden), geen audio-opnames, en de beelden na maximaal 4 weken worden gewist.",
+    "risk": "medium",
+    "laws": "AVG Art. 6 lid 1f / Richtsnoeren Autoriteit Persoonsgegevens"
+  },
+  {
+    "category": "Minderjarigen",
+    "question": "Vanaf welke leeftijd mag een kind zelf zijn dossier inzien zonder toestemming ouders?",
+    "answer": "Vanaf 12 jaar heeft een kind zelfstandig recht op inzage, hoewel ouders tot 16 jaar ook recht op informatie houden.",
+    "risk": "medium",
+    "laws": "WGBO Art. 7:456"
+  },
+  {
+    "category": "Minderjarigen",
+    "question": "Wanneer mogen ouders inzage geweigerd worden?",
+    "answer": "Als de hulpverlener van mening is dat inzage door de ouders de privacy van het kind (tussen 12-16 jaar) schaadt of de behandeling belemmert.",
+    "risk": "high",
+    "laws": "WGBO Art. 7:457"
+  },
+  {
+    "category": "Functionaris Gegevensbescherming",
+    "question": "Is een FG verplicht voor een solopraktijk?",
+    "answer": "Alleen als er op 'grote schaal' bijzondere gegevens worden verwerkt. Voor de meeste kleine solopraktijken is het niet verplicht, maar wel aanbevolen.",
+    "risk": "low",
+    "laws": "AVG Art. 37 / WP29 Richtlijnen"
+  },
+  {
+    "category": "Datalekken",
+    "question": "Is het verliezen van een USB-stick met versleutelde data een datalek?",
+    "answer": "Het is een incident, maar hoeft niet gemeld te worden bij de AP als de versleuteling (encryption) onkraakbaar is volgens huidige standaarden.",
+    "risk": "medium",
+    "laws": "AVG Art. 33 / Beleidsregels Meldplicht Datalekken"
+  },
+  {
+    "category": "Werknemers",
+    "question": "Mag de werkgever de medische reden van verzuim registreren?",
+    "answer": "Absoluut niet. De werkgever mag alleen registreren *dat* iemand ziek is en de verwachte duur, niet *wat* de werknemer mankeert.",
+    "risk": "critical",
+    "laws": "AVG Art. 9 / UAVG Art. 30"
+  },
+  {
+    "category": "BSN Gebruik",
+    "question": "Mag het BSN op de factuur aan de patiënt staan?",
+    "answer": "Ja, dit is verplicht voor de identificatie van de prestatie in de zorgketen.",
+    "risk": "low",
+    "laws": "Wet gebruik burgerservicenummer in de zorg"
+  },
+  {
+    "category": "Overdracht",
+    "question": "Wat gebeurt er met het dossier bij staking van de praktijk?",
+    "answer": "De hulpverlener moet zorgen voor een bewaarder. Patiënten moeten worden geïnformeerd waar hun dossier naartoe gaat.",
+    "risk": "medium",
+    "laws": "WGBO Art. 7:454"
+  },
+  {
+    "category": "Wetenschappelijk Onderzoek",
+    "question": "Wanneer is de 'Geen-bezwaarregel' van kracht?",
+    "answer": "Bij gebruik van lichaamsmateriaal of anonieme gegevens voor onderzoek, mits de patiënt vooraf is geïnformeerd en geen bezwaar heeft gemaakt.",
+    "risk": "medium",
+    "laws": "WGBO Art. 7:467 / Wet op de geneeskundige behandelingsovereenkomst"
+  },
+  {
+    "category": "Verwerkersovereenkomst",
+    "question": "Is een accountant een verwerker?",
+    "answer": "Nee, een accountant is meestal een zelfstandig verwerkingsverantwoordelijke omdat hij handelt vanuit een eigen wettelijke beroepsplicht.",
+    "risk": "low",
+    "laws": "AVG Art. 4 lid 7 / Richtlijnen NBA"
+  }
+]
     {
       "category": "Datalekken",
       "question": "Wanneer binnen 72 uur datalek melden? - variant 163",
