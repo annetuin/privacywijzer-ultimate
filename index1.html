@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacywijzer Zorg</title>
+  <style>body{font-family:system-ui;max-width:800px;margin:0 auto;padding:20px;background:#f8f9fa}.app-header{background:#007cba;color:white;padding:20px;border-radius:12px;text-align:center;margin-bottom:30px}.topic-grid{display:grid;gap:15px}.topic-card{background:white;border:1px solid #dee2e6;border-radius:12px;padding:20px;box-shadow:0 2px 8px rgba(0,0,0,0.1);cursor:pointer;transition:all .2s}.topic-card:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,0.15)}.topic-questions{margin-top:20px;padding-top:20px;border-top:1px solid #dee2e6}.question{background:#f8f9fa;padding:15px;border-radius:8px;margin:10px 0;cursor:pointer}.question:hover{background:#e9ecef}.answer{margin-top:10px;padding:15px;background:white;border-left:4px solid #007cba}.risk-hoog{border-left-color:#dc3545}.risk-laag{border-left-color:#28a745}.loading{text-align:center;padding:60px;color:#6c757d}.law-link{color:#007cba;text-decoration:none;font-weight:500}</style>
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+      <h1>🛡️ Privacywijzer Zorg</h1>
+      <p>Duidelijke antwoorden op privacyvragen AVG • WGBO • NEN7510</p>
+    </header>
+
+    <div id="loading" class="loading">
+      <div style="font-size:48px;margin-bottom:20px">📚</div>
+      <p>Onderwerpen laden...</p>
+    </div>
+
+    <main id="main" style="display:none">
+      <div id="topics-grid" class="topic-grid"></div>
+    </main>
+  </div>
+
+  <script>
+    const API = '/api';
+
+    async function loadApp() {
+      try {
+        const res = await fetch(`${API}/topics`);
+        const topics = await res.json();
+
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('main').style.display = 'block';
+
+        renderTopics(topics);
+      } catch(e) {
+        document.getElementById('loading').innerHTML = '<p style="color:#dc3545">❌ Backend niet bereikbaar</p>';
+      }
+    }
+
+    function renderTopics(topics) {
+      const grid = document.getElementById('topics-grid');
+      grid.innerHTML = '';
+
+      topics.forEach(topic => {
+        const card = document.createElement('div');
+        card.className = 'topic-card';
+        card.onclick = () => loadTopicDetail(topic);
+        card.innerHTML = `
+          <h3>${topic.title}</h3>
+          <p style="color:#6c757d;margin:0">${topic.category}</p>
+          <p style="margin-top:12px">${topic.description}</p>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    async function loadTopicDetail(topic) {
+      const res = await fetch(`${API}/topics/${topic.slug}`);
+      const data = await res.json();
+
+      // Replace main content with topic detail
+      document.getElementById('topics-grid').innerHTML = `
+        <div class="topic-card" style="max-width:800px">
+          <h2>${data.topic.title}</h2>
+          <p style="color:#6c757d">${data.topic.category} • ${data.topic.description}</p>
+
+          <div class="topic-questions">
+            <h3>Vragen (${data.questions.length})</h3>
+            ${data.questions.map(q => `
+              <div class="question" onclick="loadQuestion(${q.id})">
+                <strong>${q.question_text}</strong>
+                <small style="color:#6c757d;display:block;margin-top:4px">${q.keywords}</small>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    }
+
+    async function loadQuestion(id) {
+      const res = await fetch(`${API}/questions/${id}`);
+      const data = await res.json();
+
+      // Show answer modal
+      const answerHtml = `
+        <div class="answer risk-${data.risk_level || 'middel'}">
+          <h4>${data.answer_title || data.question_text}</h4>
+          <p><strong>Eenvoudig:</strong> ${data.simple_answer}</p>
+          ${data.practical_guidance ? `<p><strong>Praktisch:</strong> ${data.practical_guidance}</p>` : ''}
+          <p style="font-weight:bold;color:#dc3545">Risico: ${data.risk_level?.toUpperCase()}</p>
+        </div>
+      `;
+
+      document.querySelector('.topic-questions').innerHTML += answerHtml;
+    }
+
+    // Start
+    loadApp();
+  </script>
+</body>
+</html>
