@@ -9,7 +9,7 @@ app.use(express.static("public"));
 let data = {questions: []};
 
 try {
-  data = JSON.parse(fs.readFileSync("./privacy-complete-1000.json"));
+  data = JSON.parse(fs.readFileSync("./data.json"));
   console.log(`✅ Loaded ${data.questions.length} questions`);
 } catch(e) {
   console.error("JSON load error:", e.message);
