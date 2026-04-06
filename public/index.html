@@ -28,7 +28,7 @@
         .container { width: 100%; max-width: 650px; }
 
         header { margin-bottom: 40px; }
-        h1 { font-size: 1.5rem; font-weight: 700; margin: 0; }
+        h1 { font-size: 1.4rem; font-weight: 700; margin: 0; letter-spacing: -0.02em; }
         header p { color: var(--meta); font-size: 0.85rem; margin-top: 5px; }
 
         .search-container {
@@ -75,16 +75,6 @@
             font-weight: 600;
         }
 
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: white;
-            z-index: 1000;
-            padding: 40px 20px;
-        }
-
         footer { margin-top: 80px; padding: 20px 0; border-top: 1px solid var(--border); font-size: 0.8rem; color: var(--meta); text-align: center; }
     </style>
 </head>
@@ -93,129 +83,97 @@
 <div class="container">
     <header>
         <h1>Privacy Wijzer</h1>
-        <p>Gehandicaptenzorg — Compliance Tool v2026</p>
+        <p>Expert Dashboard — Gehandicaptenzorg</p>
     </header>
 
     <div class="search-container">
-        <input id="search" placeholder="Typ een onderwerp (bijv. Wzd, dossier, foto)..." autocomplete="off">
+        <input id="search" placeholder="Zoek op term (bijv. Wzd, AVG, dossier)..." autocomplete="off">
     </div>
 
     <div id="results">
-        <div style="text-align:center; padding:50px; color:var(--meta);">Typ minimaal 2 letters om te zoeken...</div>
+        <div style="text-align:center; padding:50px; color:var(--meta);">Typ 2 letters om de database te doorzoeken...</div>
     </div>
 
     <footer>
-        Geen gegevensverwerking • <a href="javascript:void(0)" onclick="toggleModal('privacyModal')" style="color:var(--meta)">Privacyverklaring</a>
+        Geen gegevensverwerking • Lokaal naslagwerk v2026
     </footer>
 </div>
 
-<div id="privacyModal" class="modal">
-    <div style="max-width: 600px; margin: 0 auto;">
-        <h2>Privacyverklaring</h2>
-        <p>Deze app is 'privacy-first'. Er vindt geen gegevensverwerking plaats op servers. Alle zoekopdrachten blijven in de lokale browser van de gebruiker.</p>
-        <button onclick="toggleModal('privacyModal')" style="padding: 10px 20px; background: #000; color: #fff; border: none; border-radius: 4px; cursor: pointer;">Sluiten</button>
-    </div>
-</div>
-
 <script>
+/**
+ * DATABASE: VOEG HIER NIEUWE ITEMS TOE
+ * Kopieer een bestaand blok { ... } en plak het onderaan de lijst.
+ */
 const database = [
     { 
-        "category": "Dossiervorming", 
-        "question": "Hoe lang moet het dossier bewaard blijven?", 
-        "answer": "Standaardtermijn van 20 jaar na de laatste wijziging of beëindiging van de zorgovereenkomst.", 
-        "laws": "WGBO / Wzd",
+        "cat": "Dossiervorming", 
+        "q": "Hoe lang moet het dossier bewaard blijven?", 
+        "a": "De standaardtermijn is 20 jaar na de laatste wijziging of beëindiging van de zorgvereenkomst.", 
+        "law": "WGBO / Wzd",
         "url": "https://www.rijksoverheid.nl/onderwerpen/rechten-van-patient-en-cliënt/medisch-dossier"
     },
     { 
-        "category": "Wzd", 
-        "question": "Informatie delen met familie over onvrijwillige zorg?", 
-        "answer": "De wettelijk vertegenwoordiger heeft recht op alle noodzakelijke informatie. Bij wilsbekwame cliënten bepaalt de cliënt dit zelf.", 
-        "laws": "Wzd / WGBO",
-        "url": "https://www.dwangindezorg.nl/wzd/cliënten-en-vertegenwoordigers"
-    },
-    { 
-        "category": "Groepsruimte", 
-        "question": "Camera of sensor in de slaapkamer?", 
-        "answer": "Alleen bij strikte noodzaak voor veiligheid. Moet in zorgplan staan en geëvalueerd worden.", 
-        "laws": "Wzd / AVG",
+        "cat": "Wzd", 
+        "q": "Camera of sensor in de slaapkamer?", 
+        "a": "Toezicht via techniek mag alleen bij ernstig risico voor de cliënt. Dit moet altijd in het zorgplan staan en periodiek geëvalueerd worden.", 
+        "law": "Wzd / AVG",
         "url": "https://www.dwangindezorg.nl/wzd/onvrijwillige-zorg/vormen"
     },
     { 
-        "category": "Communicatie", 
-        "question": "Foto's op WhatsApp plaatsen?", 
-        "answer": "WhatsApp is onveilig voor cliëntgegevens. Gebruik uitsluitend goedgekeurde organisatie-apps.", 
-        "laws": "AVG Art. 32",
+        "cat": "Communicatie", 
+        "q": "WhatsApp gebruiken voor cliëntgegevens?", 
+        "a": "Standaard WhatsApp is onveilig. Gebruik uitsluitend goedgekeurde organisatie-apps (bijv. Siilo of ZorgMail).", 
+        "law": "AVG Art. 32",
         "url": "https://www.vgn.nl/artikel/handreiking-privacy-de-gehandicaptenzorg"
     },
     { 
-        "category": "Vertegenwoordiging", 
-        "question": "Wie tekent het zorgplan?", 
-        "answer": "Bij wilsonbekwaamheid: 1. Curator/Mentor, 2. Gemachtigde, 3. Partner, 4. Familie.", 
-        "laws": "WGBO / Mentorschap",
-        "url": "https://www.goedvertegenwoordigd.nl/"
-    },
-    { 
-        "category": "Incidenten", 
-        "question": "Incident tussen twee cliënten in dossier?", 
-        "answer": "Rapporteer incident in dossier cliënt A zonder cliënt B bij naam te noemen.", 
-        "laws": "AVG / WGBO",
+        "cat": "Incidenten", 
+        "q": "Incident tussen cliënten in het dossier?", 
+        "a": "Rapporteer in dossier cliënt A zonder cliënt B bij naam te noemen om diens privacy te waarborgen.", 
+        "law": "AVG / WGBO",
         "url": "https://www.autoriteitpersoonsgegevens.nl/themas/gezondheid/medisch-dossier/rechten-van-de-patient"
-    },
-    { 
-        "category": "Inzage", 
-        "question": "Mag cliënt eigen dossier inzien?", 
-        "answer": "Ja, inclusief recht op kopie. Uitzondering als privacy van anderen in gevaar komt.", 
-        "laws": "WGBO Art. 7:456",
-        "url": "https://www.kansplus.nl/themas/rechten-en-plichten/inzage-in-het-dossier/"
-    },
-    { 
-        "category": "Vrijwilligers", 
-        "question": "Info delen met vrijwilliger?", 
-        "answer": "Alleen strikt noodzakelijke info voor de taak. Vrijwilliger heeft geheimhoudingsplicht.", 
-        "laws": "AVG / Geheimhouding",
-        "url": "https://www.vgn.nl/vrijwilligers-en-privacy"
     }
 ];
 
-function handleSearch(query) {
-    const val = query.toLowerCase();
-    const container = document.getElementById('results');
+/**
+ * LOGICA: HIERONDER NIETS WIJZIGEN (tenzij je de werking wilt aanpassen)
+ */
+const searchInput = document.getElementById('search');
+const resultsContainer = document.getElementById('results');
 
-    if (val.length < 2) {
-        container.innerHTML = '<div style="text-align:center; padding:50px; color:var(--meta);">Typ minimaal 2 letters...</div>';
+function handleSearch(query) {
+    const term = query.toLowerCase().trim();
+
+    if (term.length < 2) {
+        resultsContainer.innerHTML = '<div style="text-align:center; padding:50px; color:var(--meta);">Typ minimaal 2 letters...</div>';
         return;
     }
     
-    const filtered = database.filter(d => 
-        d.question.toLowerCase().includes(val) || 
-        d.category.toLowerCase().includes(val) ||
-        d.answer.toLowerCase().includes(val)
+    const filtered = database.filter(item => 
+        item.q.toLowerCase().includes(term) || 
+        item.a.toLowerCase().includes(term) ||
+        item.cat.toLowerCase().includes(term)
     );
 
     if (filtered.length === 0) {
-        container.innerHTML = '<div style="text-align:center; padding:50px; color:var(--meta);">Geen hits gevonden.</div>';
+        resultsContainer.innerHTML = '<div style="text-align:center; padding:50px; color:var(--meta);">Geen resultaten gevonden.</div>';
         return;
     }
 
-    container.innerHTML = filtered.map(d => `
+    resultsContainer.innerHTML = filtered.map(item => `
         <div class="result">
-            <div class="category">${d.category}</div>
-            <h3>${d.question}</h3>
-            <p>${d.answer}</p>
+            <div class="category">${item.cat}</div>
+            <h3>${item.q}</h3>
+            <p>${item.a}</p>
             <div class="footer-card">
-                <span style="color:var(--meta); font-size:0.8rem;">Bron: ${d.laws}</span>
-                ${d.url ? `<a href="${d.url}" target="_blank" class="source-btn">Open Bron</a>` : ''}
+                <span style="color:var(--meta); font-size:0.8rem;">Bron: ${item.law}</span>
+                ${item.url ? `<a href="${item.url}" target="_blank" class="source-btn">Open Bron</a>` : ''}
             </div>
         </div>
     `).join('');
 }
 
-function toggleModal(id) {
-    const m = document.getElementById(id);
-    m.style.display = (m.style.display === 'block') ? 'none' : 'block';
-}
-
-document.getElementById('search').oninput = e => handleSearch(e.target.value);
+searchInput.oninput = (e) => handleSearch(e.target.value);
 </script>
 
 </body>
