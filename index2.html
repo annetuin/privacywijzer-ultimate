@@ -2,78 +2,103 @@
 <html lang="nl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Privacywijzer Ultimate</title>
-  <style>
-    *{margin:0;padding:0;box-sizing:border-box;}
-    body{font-family:system-ui,-apple-system,sans-serif;background:#0f0f23;color:#fff;min-height:100vh;padding:20px;line-height:1.6;}
-    .container{max-width:900px;margin:0 auto;background:rgba(255,255,255,0.1);backdrop-filter:blur(20px);border-radius:24px;padding:40px;border:1px solid rgba(255,255,255,0.2);}
-    h1{font-size:2.5rem;text-align:center;margin-bottom:20px;background:linear-gradient(45deg,#667eea,#764ba2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-    .search{width:100%;padding:20px;font-size:1.2rem;border:none;border-radius:16px;background:rgba(255,255,255,0.2);color:#fff;outline:none;margin-bottom:30px;}
-    .search::placeholder{color:#aaa;}
-    .result{background:rgba(255,255,255,0.1);padding:25px;margin:15px 0;border-radius:16px;border-left:4px solid #667eea;transition:0.3s;}
-    .result:hover{transform:translateX(10px);}
-    .category{font-weight:bold;color:#667eea;margin-bottom:8px;}
-    .question{font-size:1.1rem;margin-bottom:10px;}
-    .answer{font-weight:600;color:#10b981;}
-    .risk{display:inline-block;padding:6px 16px;border-radius:20px;font-size:0.85rem;font-weight:bold;margin:10px 0;}
-    .risk-kritiek{background:#ff4444;color:white;}
-    .risk-hoog{background:#ff8800;color:white;}
-    .risk-medium{background:#ffcc00;color:#333;}
-    .laws{font-size:0.9rem;color:#aaa;margin-top:10px;}
-    .stats{text-align:center;padding:25px;background:rgba(255,255,255,0.1);border-radius:12px;margin-bottom:30px;}
-    .no-results{text-align:center;padding:60px;color:#aaa;}
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacywijzer Zorg</title>
+  <style>body{font-family:system-ui;max-width:800px;margin:0 auto;padding:20px;background:#f8f9fa}.app-header{background:#007cba;color:white;padding:20px;border-radius:12px;text-align:center;margin-bottom:30px}.topic-grid{display:grid;gap:15px}.topic-card{background:white;border:1px solid #dee2e6;border-radius:12px;padding:20px;box-shadow:0 2px 8px rgba(0,0,0,0.1);cursor:pointer;transition:all .2s}.topic-card:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,0.15)}.topic-questions{margin-top:20px;padding-top:20px;border-top:1px solid #dee2e6}.question{background:#f8f9fa;padding:15px;border-radius:8px;margin:10px 0;cursor:pointer}.question:hover{background:#e9ecef}.answer{margin-top:10px;padding:15px;background:white;border-left:4px solid #007cba}.risk-hoog{border-left-color:#dc3545}.risk-laag{border-left-color:#28a745}.loading{text-align:center;padding:60px;color:#6c757d}.law-link{color:#007cba;text-decoration:none;font-weight:500}</style>
 </head>
 <body>
-  <div class="container">
-    <h1>🔥 Privacywijzer Ultimate</h1>
-    <div class="stats" id="stats">Loading...</div>
-    <input type="text" class="search" id="search" placeholder="Zoek: datalek, NEN7510, WGBO dossier...">
-    <div id="results"></div>
+  <div class="app">
+    <header class="app-header">
+      <h1>🛡️ Privacywijzer Zorg</h1>
+      <p>Duidelijke antwoorden op privacyvragen AVG • WGBO • NEN7510</p>
+    </header>
+
+    <div id="loading" class="loading">
+      <div style="font-size:48px;margin-bottom:20px">📚</div>
+      <p>Onderwerpen laden...</p>
+    </div>
+
+    <main id="main" style="display:none">
+      <div id="topics-grid" class="topic-grid"></div>
+    </main>
   </div>
 
   <script>
     const API = '/api';
 
-    async function loadStats() {
+    async function loadApp() {
       try {
-        const res = await fetch(`${API}/stats`);
-        const data = await res.json();
-        document.getElementById('stats').innerHTML = `<strong>${data.total}</strong> vragen • LIVE`;
+        const res = await fetch(`${API}/topics`);
+        const topics = await res.json();
+
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('main').style.display = 'block';
+
+        renderTopics(topics);
       } catch(e) {
-        document.getElementById('stats').innerHTML = 'Backend error';
+        document.getElementById('loading').innerHTML = '<p style="color:#dc3545">❌ Backend niet bereikbaar</p>';
       }
     }
 
-    async function search(q = '') {
-      try {
-        const res = await fetch(`${API}/search?q=${q}`);
-        const results = await res.json();
-        const container = document.getElementById('results');
+    function renderTopics(topics) {
+      const grid = document.getElementById('topics-grid');
+      grid.innerHTML = '';
 
-        if (!results.length) {
-          container.innerHTML = '<div class="no-results"><h2>Geen resultaten</h2><p>Probeer: "datalek", "dossier", "NEN7510"</p></div>';
-          return;
-        }
+      topics.forEach(topic => {
+        const card = document.createElement('div');
+        card.className = 'topic-card';
+        card.onclick = () => loadTopicDetail(topic);
+        card.innerHTML = `
+          <h3>${topic.title}</h3>
+          <p style="color:#6c757d;margin:0">${topic.category}</p>
+          <p style="margin-top:12px">${topic.description}</p>
+        `;
+        grid.appendChild(card);
+      });
+    }
 
-        container.innerHTML = results.map(r => `
-          <div class="result">
-            <div class="category">${r.category}</div>
-            <div class="question">${r.question}</div>
-            <div class="answer">${r.answer}</div>
-            <span class="risk risk-${r.risk}">${r.risk}</span>
-            <div class="laws">${r.laws}</div>
+    async function loadTopicDetail(topic) {
+      const res = await fetch(`${API}/topics/${topic.slug}`);
+      const data = await res.json();
+
+      // Replace main content with topic detail
+      document.getElementById('topics-grid').innerHTML = `
+        <div class="topic-card" style="max-width:800px">
+          <h2>${data.topic.title}</h2>
+          <p style="color:#6c757d">${data.topic.category} • ${data.topic.description}</p>
+
+          <div class="topic-questions">
+            <h3>Vragen (${data.questions.length})</h3>
+            ${data.questions.map(q => `
+              <div class="question" onclick="loadQuestion(${q.id})">
+                <strong>${q.question_text}</strong>
+                <small style="color:#6c757d;display:block;margin-top:4px">${q.keywords}</small>
+              </div>
+            `).join('')}
           </div>
-        `).join('');
-      } catch(e) {
-        document.getElementById('results').innerHTML = '<div style="text-align:center;color:#ff4444;">API Error</div>';
-      }
+        </div>
+      `;
     }
 
-    document.getElementById('search').addEventListener('input', e => search(e.target.value));
-    loadStats();
-    search('datalek'); // Demo
+    async function loadQuestion(id) {
+      const res = await fetch(`${API}/questions/${id}`);
+      const data = await res.json();
+
+      // Show answer modal
+      const answerHtml = `
+        <div class="answer risk-${data.risk_level || 'middel'}">
+          <h4>${data.answer_title || data.question_text}</h4>
+          <p><strong>Eenvoudig:</strong> ${data.simple_answer}</p>
+          ${data.practical_guidance ? `<p><strong>Praktisch:</strong> ${data.practical_guidance}</p>` : ''}
+          <p style="font-weight:bold;color:#dc3545">Risico: ${data.risk_level?.toUpperCase()}</p>
+        </div>
+      `;
+
+      document.querySelector('.topic-questions').innerHTML += answerHtml;
+    }
+
+    // Start
+    loadApp();
   </script>
 </body>
 </html>
