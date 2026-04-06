@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacywijzer Ultimate</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:system-ui,-apple-system,sans-serif;background:#0f0f23;color:#fff;min-height:100vh;padding:20px;line-height:1.6;}
+    .container{max-width:900px;margin:0 auto;background:rgba(255,255,255,0.1);backdrop-filter:blur(20px);border-radius:24px;padding:40px;border:1px solid rgba(255,255,255,0.2);}
+    h1{font-size:2.5rem;text-align:center;margin-bottom:20px;background:linear-gradient(45deg,#667eea,#764ba2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+    .search{width:100%;padding:20px;font-size:1.2rem;border:none;border-radius:16px;background:rgba(255,255,255,0.2);color:#fff;outline:none;margin-bottom:30px;}
+    .search::placeholder{color:#aaa;}
+    .result{background:rgba(255,255,255,0.1);padding:25px;margin:15px 0;border-radius:16px;border-left:4px solid #667eea;transition:0.3s;}
+    .result:hover{transform:translateX(10px);}
+    .category{font-weight:bold;color:#667eea;margin-bottom:8px;}
+    .question{font-size:1.1rem;margin-bottom:10px;}
+    .answer{font-weight:600;color:#10b981;}
+    .risk{display:inline-block;padding:6px 16px;border-radius:20px;font-size:0.85rem;font-weight:bold;margin:10px 0;}
+    .risk-kritiek{background:#ff4444;color:white;}
+    .risk-hoog{background:#ff8800;color:white;}
+    .risk-medium{background:#ffcc00;color:#333;}
+    .laws{font-size:0.9rem;color:#aaa;margin-top:10px;}
+    .stats{text-align:center;padding:25px;background:rgba(255,255,255,0.1);border-radius:12px;margin-bottom:30px;}
+    .no-results{text-align:center;padding:60px;color:#aaa;}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🔥 Privacywijzer Ultimate</h1>
+    <div class="stats" id="stats">Loading...</div>
+    <input type="text" class="search" id="search" placeholder="Zoek: datalek, NEN7510, WGBO dossier...">
+    <div id="results"></div>
+  </div>
+
+  <script>
+    const API = '/api';
+
+    async function loadStats() {
+      try {
+        const res = await fetch(`${API}/stats`);
+        const data = await res.json();
+        document.getElementById('stats').innerHTML = `<strong>${data.total}</strong> vragen • LIVE`;
+      } catch(e) {
+        document.getElementById('stats').innerHTML = 'Backend error';
+      }
+    }
+
+    async function search(q = '') {
+      try {
+        const res = await fetch(`${API}/search?q=${q}`);
+        const results = await res.json();
+        const container = document.getElementById('results');
+
+        if (!results.length) {
+          container.innerHTML = '<div class="no-results"><h2>Geen resultaten</h2><p>Probeer: "datalek", "dossier", "NEN7510"</p></div>';
+          return;
+        }
+
+        container.innerHTML = results.map(r => `
+          <div class="result">
+            <div class="category">${r.category}</div>
+            <div class="question">${r.question}</div>
+            <div class="answer">${r.answer}</div>
+            <span class="risk risk-${r.risk}">${r.risk}</span>
+            <div class="laws">${r.laws}</div>
+          </div>
+        `).join('');
+      } catch(e) {
+        document.getElementById('results').innerHTML = '<div style="text-align:center;color:#ff4444;">API Error</div>';
+      }
+    }
+
+    document.getElementById('search').addEventListener('input', e => search(e.target.value));
+    loadStats();
+    search('datalek'); // Demo
+  </script>
+</body>
+</html>
