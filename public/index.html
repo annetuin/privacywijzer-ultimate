@@ -209,10 +209,11 @@ function displayResults(data) {
 
     container.innerHTML = data.map((d, index) => `
         <div class="result" style="animation-delay: ${index * 0.05}s">
+            <span class="category-badge">${d.category}</span>
             <h3>${d.question}</h3>
             <p>${d.answer}</p>
             <div class="meta">
-                <span class="laws">Bron: ${d.laws}</span>
+                <span class="laws">Bron: <a href="${d.url}" target="_blank" style="color: #94a3b8; text-decoration: underline;">${d.laws}</a></span>
                 <span class="risk risk-${d.risk}">${d.risk}</span>
             </div>
         </div>
