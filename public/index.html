@@ -21,6 +21,5 @@ async function search(q='') {
   `).join('') || '<p>Geen resultaten - probeer "datalek"</p>';
 }
 document.getElementById('search').oninput = e=>search(e.target.value);
-search();
 </script>
 </body></html>
