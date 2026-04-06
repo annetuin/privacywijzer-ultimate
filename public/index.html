@@ -52,7 +52,7 @@
         .role-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 15px; }
         .role-card { padding: 15px; border: 1px solid var(--border); border-radius: 6px; }
         .role-card h5 { font-size: 0.75rem; text-transform: uppercase; margin-bottom: 10px; color: var(--meta); }
-        .role-card ul { font-size: 0.85rem; padding-left: 15px; }
+        .role-card ul { font-size: 0.8rem; padding-left: 15px; }
 
         footer { margin-top: 60px; padding: 20px; font-size: 0.75rem; text-align: center; color: var(--meta); border-top: 1px solid var(--border); }
         .handbook-link { color: var(--accent); font-weight: 700; text-decoration: underline; }
@@ -79,7 +79,7 @@
 
     <div id="results">
         <div style="padding:60px; text-align:center; color:var(--meta)">
-            Voer een zoekterm in om de expert-database te raadplegen.
+            Raadpleeg de expert-database voor juridische onderbouwing en risico-analyses.
         </div>
     </div>
 
@@ -90,30 +90,52 @@
 </div>
 
 <div id="roleModal" class="modal">
-    <div style="max-width:750px; margin:0 auto;">
+    <div style="max-width:800px; margin:0 auto;">
         <h2>Functieprofiel: Privacy Officer</h2>
+        <p style="color:var(--meta); font-size:0.85rem; margin-bottom:20px;">Positionering: Operationeel expert en strategisch adviseur (First Line of Defense / Support).</p>
+        
         <div class="form-section">
-            <h4>Kernverantwoordelijkheden</h4>
+            <h4>Resultaatgebieden & Taken</h4>
             <div class="role-grid">
                 <div class="role-card">
-                    <h5>Wat jij WEL doet</h5>
-                    <ul style="list-style: '✅ ';">
-                        <li>Management adviseren over risico's.</li>
-                        <li>DPIA's begeleiden en valideren.</li>
-                        <li>Verwerkingsregister actueel houden.</li>
-                        <li>Datalek-triage uitvoeren.</li>
+                    <h5>Strategisch & Advies</h5>
+                    <ul>
+                        <li>Begeleiden van complexe DPIA's (bijv. Domotica/Wzd).</li>
+                        <li>Adviseren over Privacy-by-Design bij nieuwe ICT.</li>
+                        <li>Sparringpartner voor de Functionaris Gegevensbescherming (FG).</li>
                     </ul>
                 </div>
                 <div class="role-card">
-                    <h5>Wat jij NIET doet</h5>
-                    <ul style="list-style: '❌ ';">
-                        <li>Eindbesluit nemen over risico-acceptatie.</li>
-                        <li>Juridisch aansprakelijk zijn voor lekken.</li>
-                        <li>IT-beveiliging configureren.</li>
+                    <h5>Operationeel & Beheer</h5>
+                    <ul>
+                        <li>Beheer Verwerkingsregister en VWO's.</li>
+                        <li>Ondersteunen bij rechten van betrokkenen.</li>
+                        <li>Triage en registratie van datalekken.</li>
+                    </ul>
+                </div>
+                <div class="role-card">
+                    <h5>Bewustwording</h5>
+                    <ul>
+                        <li>Vertaalslag wetgeving naar zorgpraktijk.</li>
+                        <li>Verzorgen van trainingen voor zorgteams.</li>
+                        <li>Privacy-audits uitvoeren op locaties.</li>
                     </ul>
                 </div>
             </div>
         </div>
+
+        <div class="form-section">
+            <h4>Verantwoordelijkheid (De Grens)</h4>
+            <div class="decision-box" style="border-left-color: var(--risk-high)">
+                <p><strong>De Privacy Officer adviseert, de directie/bestuur beslist.</strong></p>
+                <ul style="font-size:0.85rem; margin-top:10px; padding-left:20px;">
+                    <li>Jij bent niet juridisch aansprakelijk voor incidenten (dat is de rechtspersoon).</li>
+                    <li>Jij accepteert geen risico's; dat doet de proceseigenaar/bestuurder.</li>
+                    <li>Jij voert geen technische IT-security uit (bijv. firewalls instellen).</li>
+                </ul>
+            </div>
+        </div>
+
         <button class="officer-btn" onclick="closeModal('roleModal')" style="width:100%; padding:15px; background:#000; color:#fff;">Terug naar Dashboard</button>
     </div>
 </div>
@@ -122,18 +144,23 @@
     <div style="max-width:750px; margin:0 auto;">
         <h2>DPIA Expert Framework (Art. 35)</h2>
         <div class="form-section">
-            <h4>1. Pre-Scan</h4>
-            <div class="check-item"><input type="checkbox" id="crit1"> <span>Gezondheidsgegevens (Bijzonder)?</span></div>
-            <div class="check-item"><input type="checkbox" id="crit2"> <span>Kwetsbare betrokkenen?</span></div>
-            <div class="check-item"><input type="checkbox" id="crit3"> <span>Grootschalige verwerking?</span></div>
+            <h4>1. Pre-Scan (Is een DPIA verplicht?)</h4>
+            <div class="check-item"><input type="checkbox" id="crit1"> <span>Gezondheidsgegevens (Bijzondere gegevens)?</span></div>
+            <div class="check-item"><input type="checkbox" id="crit2"> <span>Kwetsbare betrokkenen (Cliënten/Wilsonbekwamen)?</span></div>
+            <div class="check-item"><input type="checkbox" id="crit3"> <span>Grootschalige verwerking of monitoring?</span></div>
         </div>
         <div class="form-section">
-            <h4>2. Rapportage</h4>
+            <h4>2. Projectomschrijving & Risico</h4>
             <input type="text" id="dpia-name" placeholder="Naam project/systeem">
-            <textarea id="dpia-goal" placeholder="Doelbinding & Noodzaak"></textarea>
-            <textarea id="dpia-mitigation" placeholder="Beheersmaatregelen (MFA, VWO, Encryptie)"></textarea>
+            <textarea id="dpia-goal" placeholder="Doelbinding: Waarom doen we dit?"></textarea>
+            <select id="risk-impact">
+                <option value="Laag">Impact: Laag</option>
+                <option value="Middel">Impact: Middel (Nadeel voor cliënt)</option>
+                <option value="Hoog">Impact: Hoog (BSN lek / Ernstig nadeel)</option>
+            </select>
+            <textarea id="dpia-mitigation" placeholder="Maatregelen (MFA, VWO, Encryptie, Autorisaties)"></textarea>
         </div>
-        <button class="officer-btn" onclick="generateDPIA()" style="width:100%; background:#000; color:#fff; padding:15px;">Genereer Rapportage</button>
+        <button class="officer-btn" onclick="generateDPIA()" style="width:100%; background:#000; color:#fff; padding:15px;">Analyse Rapporteren</button>
         <div id="dpia-result" class="decision-box" style="display:none; white-space:pre-wrap; font-family:monospace; font-size:0.8rem;"></div>
         <button class="officer-btn" onclick="closeModal('dpiaModal')" style="margin-top:20px; background:none; color:#000; text-decoration:underline;">Sluiten</button>
     </div>
@@ -157,10 +184,11 @@
 
 <div id="consentModal" class="modal">
     <div style="max-width:650px; margin:0 auto;">
-        <h2>Checklist Toestemming (VGN 2024)</h2>
-        <div class="check-item"><input type="checkbox"> <span>Wilsbekwaamheid getoetst (WGBO)?</span></div>
-        <div class="check-item"><input type="checkbox"> <span>Ondertekening door juiste vertegenwoordiger?</span></div>
-        <div class="check-item"><input type="checkbox"> <span>Specifieke doelen apart aangevinkt?</span></div>
+        <h2>Toestemming Checklist (VGN 2024)</h2>
+        <div class="check-item"><input type="checkbox"> <span>Wilsbekwaamheid getoetst conform WGBO?</span></div>
+        <div class="check-item"><input type="checkbox"> <span>VGN Model Toestemming (Okt 2024) gebruikt?</span></div>
+        <div class="check-item"><input type="checkbox"> <span>Specifieke doelen apart aangevinkt (niet gebundeld)?</span></div>
+        <div class="check-item"><input type="checkbox"> <span>Informatie over intrekken verstrekt?</span></div>
         <button class="officer-btn" onclick="closeModal('consentModal')" style="width:100%; margin-top:20px;">Sluiten</button>
     </div>
 </div>
@@ -172,6 +200,7 @@
             <option value="20">Medisch Dossier (WGBO) - 20 jaar</option>
             <option value="7">Fiscale Data - 7 jaar</option>
             <option value="2">HR dossier - 2 jaar</option>
+            <option value="0.08">Sollicitatie - 4 weken</option>
         </select>
         <input type="date" id="calc-date">
         <button class="officer-btn" onclick="runCalc()" style="width:100%; margin-top:10px;">Bereken Vernietiging</button>
@@ -183,11 +212,12 @@
 <script>
 // DATABASE
 const db = [
-    { cat: "Wzd", q: "Akoestisch uitluisteren op de kamer?", a: "Onvrijwillige zorg. Alleen toegestaan als minder ingrijpende middelen niet werken en veiligheid in het geding is. Registratie in zorgplan vereist.", law: "Wzd Art. 2.1", source: "VGN Handreiking", risk: "Zeer Hoog" },
+    { cat: "Wzd", q: "Akoestisch uitluisteren/akoestisch toezicht?", a: "Onvrijwillige zorg. Alleen toegestaan als minder ingrijpende middelen niet werken en veiligheid in het geding is. Registratie in zorgplan vereist.", law: "Wzd Art. 2.1", source: "VGN Handreiking", risk: "Zeer Hoog" },
     { cat: "Toestemming", q: "Wie tekent bij wilsonbekwaamheid?", a: "Wettelijk vertegenwoordiger (mentor/curator). Bij ontbreken: partner of naaste familie.", law: "WGBO Art. 465", source: "KNMG", risk: "Hoog" },
-    { cat: "Datalek", q: "BSN naar verkeerde ontvanger?", a: "Gezien de aard (BSN + zorginfo) is dit vrijwel altijd een meldplichtig lek bij de AP.", law: "AVG Art. 33", source: "AP", risk: "Hoog" },
-    { cat: "HR", q: "VOG bewaren in personeelsdossier?", a: "Ja, gedurende dienstverband om aan te tonen dat medewerker beschikt over geldige VOG.", law: "AVG / WJSG", source: "VGN", risk: "Laag" },
-    { cat: "VWO", q: "Is een VWO nodig voor een SaaS-leverancier?", a: "Ja, verplicht onder Art. 28 AVG. De leverancier verwerkt data in jouw opdracht.", law: "AVG Artikel 28", source: "BoZ Model", risk: "Gemiddeld" }
+    { cat: "Datalek", q: "BSN naar verkeerde ontvanger?", a: "Gezien de aard (BSN + zorginfo) is dit vrijwel altijd een meldplichtig lek bij de AP (binnen 72u).", law: "AVG Art. 33", source: "AP", risk: "Hoog" },
+    { cat: "HR", q: "Kopie ID-bewijs bewaren?", a: "Verplicht voor medewerkers op de loonlijst. Mag niet voor vrijwilligers of ZZP'ers (alleen controle/noteren nummer).", law: "Wet op de loonbelasting", source: "Belastingdienst", risk: "Gemiddeld" },
+    { cat: "Inzage", q: "Recht op inzage nabestaanden?", a: "Geen automatisch recht. Alleen bij toestemming bij leven, zwaarwegend belang of incidentenonderzoek.", law: "WGBO Art. 457", source: "KNMG", risk: "Gemiddeld" },
+    { cat: "VWO", q: "Softwareleverancier in de zorg?", a: "Verwerkersovereenkomst verplicht onder Art. 28 AVG. Gebruik bij voorkeur BoZ model.", law: "AVG Artikel 28", source: "BoZ Model", risk: "Gemiddeld" }
 ];
 
 // MODAL LOGICA
@@ -231,23 +261,26 @@ function handleSearch(val) {
 }
 document.getElementById('search').oninput = (e) => handleSearch(e.target.value);
 
+function quickSearch(t) { document.getElementById('search').value = t; handleSearch(t); }
+
 // DPIA GENERATOR
 function generateDPIA() {
     const name = document.getElementById('dpia-name').value || "Naamloos";
     const goal = document.getElementById('dpia-goal').value || "Niet ingevuld";
-    const mit = document.getElementById('dpia-mitigation').value || "Geen";
+    const mit = document.getElementById('dpia-mitigation').value || "Geen specifieke maatregelen";
     const res = document.getElementById('dpia-result');
     res.style.display = 'block';
-    res.innerText = `DPIA CONCEPT: ${name}\nDatum: ${new Date().toLocaleDateString('nl-NL')}\n\nDoel: ${goal}\nMaatregelen: ${mit}\n\nAdvies PO: Beoordeling door Functionaris Gegevensbescherming (FG) vereist voor definitieve risico-acceptatie.`;
+    res.innerText = `DPIA CONCEPT: ${name}\nDatum: ${new Date().toLocaleDateString('nl-NL')}\n\nDoel: ${goal}\nMaatregelen: ${mit}\n\nAdvies Privacy Officer: Beoordeling door FG vereist voor risico-acceptatie.`;
 }
 
 // CALCULATOR
 function runCalc() {
-    const years = parseInt(document.getElementById('calc-type').value);
+    const years = parseFloat(document.getElementById('calc-type').value);
     const inputDate = document.getElementById('calc-date').value;
     if(!inputDate) return;
     const date = new Date(inputDate);
-    date.setFullYear(date.getFullYear() + years);
+    date.setFullYear(date.getFullYear() + Math.floor(years));
+    if(years < 1) date.setMonth(date.getMonth() + 1);
     const out = document.getElementById('calc-out');
     out.style.display = 'block';
     out.innerHTML = `Uiterste vernietigingsdatum: <strong>${date.toLocaleDateString('nl-NL')}</strong>`;
@@ -258,7 +291,8 @@ function dlStep(s) {
     const w = document.getElementById('dl-wizard');
     w.innerHTML = `
         <div class="decision-box" style="border-left-color:var(--risk-high)">
-            <p><strong>MELDPLICHTIG:</strong> Gezien de aard van de zorgsector dient dit lek binnen 72 uur gemeld te worden bij de Autoriteit Persoonsgegevens. Registreer dit direct in het interne incidentenregister.</p>
+            <p><strong>CONCLUSIE: MELDPLICHTIG</strong></p>
+            <p style="font-size:0.85rem; margin-top:10px;">In de zorgsector is dit incident (Gezondheidsdata/BSN) vrijwel altijd meldplichtig bij de AP binnen 72 uur. Documenteer direct in het incidentenregister.</p>
         </div>`;
 }
 function resetDatalek() {
