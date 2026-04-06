@@ -3,44 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Standaard Procedure Document</title>
+    <title>Standaard Procedure & AVG Kader 2026</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: #333;
-            max-width: 800px;
+            color: #2c3e50;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 40px 20px;
+            background-color: #f9f9f9;
         }
         header {
-            border-bottom: 2px solid #4A90E2;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
+            border-bottom: 3px solid #3498db;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        h1 { color: #4A90E2; }
+        h1 { color: #2980b9; margin: 0; }
+        h2 { 
+            color: #2c3e50; 
+            border-left: 5px solid #3498db; 
+            padding-left: 15px; 
+            margin-top: 40px;
+        }
+        h3 { color: #d35400; }
         .metadata {
-            background: #f4f4f4;
-            padding: 15px;
-            border-radius: 5px;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            font-size: 0.9em;
+        }
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             margin-bottom: 20px;
         }
-        .section { margin-bottom: 30px; }
         table {
             width: 100%;
             border-collapse: collapse;
             margin: 20px 0;
+            background: white;
         }
         th, td {
-            border: 1px solid #ddd;
-            padding: 12px;
+            border: 1px solid #dfe6e9;
+            padding: 15px;
             text-align: left;
         }
-        th { background-color: #f8f8f8; }
-        footer {
-            margin-top: 50px;
+        th { background-color: #f8f9fa; color: #2c3e50; }
+        .decision-frame {
+            background-color: #fff4e5;
+            padding: 25px;
+            border-left: 5px solid #e67e22;
+            border-radius: 4px;
+        }
+        .status-badge {
+            background-color: #27ae60;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
             font-size: 0.8em;
-            color: #777;
+            font-weight: bold;
+        }
+        footer {
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            font-size: 0.85em;
+            color: #7f8c8d;
             text-align: center;
         }
     </style>
@@ -48,59 +84,78 @@
 <body>
 
     <header>
-        <h1>Standaard Operationele Procedure (SOP)</h1>
+        <h1>Standaard Operationele Procedure</h1>
+        <span class="status-badge">GEVALIDEERD 2026</span>
     </header>
 
     <div class="metadata">
-        <strong>Document ID:</strong> SOP-2026-001<br>
-        <strong>Datum:</strong> 6 april 2026<br>
-        <strong>Status:</strong> Definitief
+        <strong>Document ID:</strong> SOP-AVG-TOTAL-001<br>
+        <strong>Laatste Update:</strong> 6 april 2026<br>
+        <strong>Eigenaar:</strong> Project Management & Privacy Officer
     </div>
 
     <main>
-        <section class="section">
-            <h2>1. Doelstelling</h2>
-            <p>Het vastleggen van een eenduidige werkwijze voor toekomstige projecten om consistentie en kwaliteit te waarborgen.</p>
-        </section>
-
-        <section class="section">
-            <h2>2. Processtappen</h2>
+        <section class="card">
+            <h2>1. Operationele Processtappen</h2>
+            <p>De standaardwerkwijze voor data-gerelateerde projecten:</p>
             <table>
                 <thead>
                     <tr>
-                        <th>Stap</th>
+                        <th>Fase</th>
                         <th>Omschrijving</th>
                         <th>Verantwoordelijke</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>01</td>
-                        <td>Initialisatie en dataverzameling</td>
+                        <td><strong>01. Initialisatie</strong></td>
+                        <td>Verzamelen van bronbestanden en data-inventarisatie.</td>
                         <td>Projectleider</td>
                     </tr>
                     <tr>
-                        <td>02</td>
-                        <td>Validatie van parameters</td>
-                        <td>Specialist</td>
+                        <td><strong>02. Validatie</strong></td>
+                        <td>Technische controle op integriteit en parameters.</td>
+                        <td>Data Specialist</td>
                     </tr>
                     <tr>
-                        <td>03</td>
-                        <td>Finale berekening en rapportage</td>
-                        <td>Systeem/AI</td>
+                        <td><strong>03. Verwerking</strong></td>
+                        <td>Uitvoeren van berekeningen en genereren output.</td>
+                        <td>Systeem / AI</td>
                     </tr>
                 </tbody>
             </table>
         </section>
 
-        <section class="section">
-            <h2>3. Totaaloverzicht</h2>
-            <p>Alle bovenstaande stappen vormen samen de integrale procedure zoals afgesproken op 13 maart 2026.</p>
+        <section class="card">
+            <h2>2. Privacy & Compliance Dossier</h2>
+            <p>Vragen en antwoorden ten behoeve van de verantwoordingsplicht (Art. 5 lid 2 AVG):</p>
+            
+            <p><strong>Vraag: Wat is de juridische grondslag?</strong><br>
+            Antwoord: De verwerking is noodzakelijk voor de uitvoering van een overeenkomst of gerechtvaardigd belang.</p>
+
+            <p><strong>Vraag: Hoe passen we dataminimalisatie toe?</strong><br>
+            Antwoord: Alleen noodzakelijke velden worden opgehaald. Privacy-gevoelige data wordt geanonimiseerd waar mogelijk.</p>
+
+            <p><strong>Vraag: Wat zijn de beveiligingsmaatregelen?</strong><br>
+            Antwoord: Versleuteling van data (TLS 1.3), Multi-Factor Authenticatie en strikt toegangsbeheer op basis van rollen.</p>
+        </section>
+
+        <section class="decision-frame">
+            <h2>3. Afwegingskader: "Mag dit van de AVG?"</h2>
+            <p>Gebruik dit kader bij elke wijziging in de procedure of bij een nieuwe data-aanvraag:</p>
+            
+            <ol>
+                <li><strong>Doelbinding:</strong> Is het doel specifiek en vooraf vastgelegd?</li>
+                <li><strong>Grondslag:</strong> Hebben we een wettelijke basis (bijv. toestemming of contract)?</li>
+                <li><strong>Noodzakelijkheid:</strong> Kan het doel ook bereikt worden met minder of anonieme data?</li>
+                <li><strong>Transparantie:</strong> Weet de betrokkene dat we dit doen (privacyverklaring)?</li>
+            </ol>
+            <p><em><strong>Let op:</strong> Is het antwoord op één van deze vragen "Nee"? Dan mag de verwerking niet starten zonder aanvullende maatregelen of goedkeuring van de Privacy Officer.</em></p>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 - Gestandaardiseerde Procedure Documentatie</p>
+        <p>Gegenereerd voor standaardprocedure - Vastgelegd op 13 maart 2026 - Versie 2.0</p>
     </footer>
 
 </body>
