@@ -120,6 +120,19 @@
         .btn-group { display: flex; gap: 10px; margin-top: 20px; }
         .choice-btn { padding: 10px 15px; border: 1px solid var(--border); background: white; border-radius: 4px; cursor: pointer; font-weight: 600; }
 
+        /* DPIA Specifieke Actions */
+        .action-bar { display: flex; gap: 10px; margin-top: 15px; }
+        .share-btn { 
+            background: #eab308; 
+            color: #000; 
+            border: none; 
+            padding: 8px 12px; 
+            border-radius: 4px; 
+            font-size: 0.75rem; 
+            font-weight: 700; 
+            cursor: pointer; 
+        }
+
         footer { margin-top: 60px; padding: 30px 0; border-top: 1px solid var(--border); font-size: 0.75rem; color: var(--meta); text-align: center; }
     </style>
 </head>
@@ -174,9 +187,9 @@
             <h4>2. Gegevens & Betrokkenen</h4>
             <textarea id="dpia-data" placeholder="Welke (bijzondere) persoonsgegevens?"></textarea>
             <select id="dpia-target">
-                <option value="low">Betrokkenen: Regulier</option>
-                <option value="med">Betrokkenen: Kwetsbare personen (Cliënten)</option>
-                <option value="high">Betrokkenen: Grootschalig / Zeer kwetsbaar</option>
+                <option value="Regulier">Betrokkenen: Regulier</option>
+                <option value="Kwetsbare personen (Cliënten)">Betrokkenen: Kwetsbare personen (Cliënten)</option>
+                <option value="Grootschalig / Zeer kwetsbaar">Betrokkenen: Grootschalig / Zeer kwetsbaar</option>
             </select>
         </div>
 
@@ -188,9 +201,15 @@
         
         <button class="choice-btn" style="background: #000; color: #fff; width: 100%; margin-top: 10px;" onclick="generateDPIA()">Analyse Voltooien</button>
         
-        <div id="dpia-result" class="decision-box" style="display:none; white-space: pre-wrap; font-family: monospace; font-size: 0.85rem;"></div>
+        <div id="dpia-result-container" style="display:none; margin-top: 20px;">
+            <div id="dpia-result" class="decision-box" style="white-space: pre-wrap; font-family: monospace; font-size: 0.85rem;"></div>
+            <div class="action-bar">
+                <button class="share-btn" onclick="copyDPIA()">Kopieer Tekst</button>
+                <button class="share-btn" style="background:#38bdf8" onclick="mailDPIA()">Mail Rapport</button>
+            </div>
+        </div>
         
-        <button onclick="closeModal('dpiaModal')" style="margin-top:20px; border:none; background:none; text-decoration:underline; cursor:pointer;">Annuleren</button>
+        <button onclick="closeModal('dpiaModal')" style="margin-top:40px; border:none; background:none; text-decoration:underline; cursor:pointer;">Terug naar Dashboard</button>
     </div>
 </div>
 
@@ -234,8 +253,29 @@
     </div>
 </div>
 
-<div id="datalekModal" class="modal"><div style="max-width:600px;margin:0 auto;"><h2>Datalek Check</h2><div id="datalekWizard"><div class="decision-box"><p>Dataverlies of onrechtmatige toegang?</p><div class="btn-group"><button class="choice-btn" onclick="nextDatalek('ja')">Ja</button><button class="choice-btn" onclick="nextDatalek('nee')">Nee</button></div></div></div><button onclick="closeModal('datalekModal')" style="margin-top:40px;border:none;background:none;text-decoration:underline;cursor:pointer;">Sluiten</button></div></div>
-<div id="privacyModal" class="modal"><div style="max-width:600px;margin:0 auto;"><h2>AVG & Wetgeving</h2><p>Lokaal dashboard. <a href="https://autoriteitpersoonsgegevens.nl/nl/wetten-en-regels/algemene-verordening-gegevensbescherming-avg" target="_blank">Volledige AVG Tekst</a></p><button onclick="closeModal('privacyModal')" style="margin-top:40px;padding:10px 20px;background:#000;color:#fff;border:none;border-radius:4px;cursor:pointer;">Sluiten</button></div></div>
+<div id="datalekModal" class="modal">
+    <div style="max-width:600px;margin:0 auto;">
+        <h2>Datalek Check</h2>
+        <div id="datalekWizard">
+            <div class="decision-box">
+                <p>Is er sprake van dataverlies of onrechtmatige toegang?</p>
+                <div class="btn-group">
+                    <button class="choice-btn" onclick="nextDatalek('ja')">Ja</button>
+                    <button class="choice-btn" onclick="nextDatalek('nee')">Nee</button>
+                </div>
+            </div>
+        </div>
+        <button onclick="closeModal('datalekModal')" style="margin-top:40px;border:none;background:none;text-decoration:underline;cursor:pointer;">Sluiten</button>
+    </div>
+</div>
+
+<div id="privacyModal" class="modal">
+    <div style="max-width:600px;margin:0 auto;">
+        <h2>AVG & Wetgeving</h2>
+        <p>Lokaal dashboard. <a href="https://autoriteitpersoonsgegevens.nl/nl/wetten-en-regels/algemene-verordening-gegevensbescherming-avg" target="_blank">Volledige AVG Tekst</a></p>
+        <button onclick="closeModal('privacyModal')" style="margin-top:40px;padding:10px 20px;background:#000;color:#fff;border:none;border-radius:4px;cursor:pointer;">Sluiten</button>
+    </div>
+</div>
 
 <script>
 const database = [
@@ -244,14 +284,32 @@ const database = [
     { cat: "HR", q: "Bewaartermijn personeelsdossier?", a: "Meeste gegevens 2 jaar na uitdiensttreding. Fiscale gegevens 7 jaar.", law: "AVG / Fiscale wet", url: "https://autoriteitpersoonsgegevens.nl/nl/onderwerpen/werk-en-uitkering/personeelsdossier" }
 ];
 
+// Zoekfunctie
 function handleSearch(query) {
     const term = query.toLowerCase().trim();
     const container = document.getElementById('results');
-    if (term.length < 2) { container.innerHTML = '<div class="empty-state">Typ minimaal 2 letters om te zoeken...</div>'; return; }
-    const filtered = database.filter(i => i.q.toLowerCase().includes(term) || i.a.toLowerCase().includes(term) || i.cat.toLowerCase().includes(term));
-    container.innerHTML = filtered.map(i => `<div class="result"><div class="category">${i.cat}</div><h3>${i.q}</h3><p>${i.a}</p><div style="display:flex; justify-content:space-between; align-items:center;"><span style="color:var(--meta); font-size:0.75rem;">Bron: ${i.law}</span><a href="${i.url}" target="_blank" style="color:var(--accent); font-weight:700; text-decoration:none; border-bottom:1.5px solid var(--accent); font-size:0.8rem;">Open Bron</a></div></div>`).join('');
+    if (term.length < 2) { 
+        container.innerHTML = '<div class="empty-state">Typ minimaal 2 letters om te zoeken...</div>'; 
+        return; 
+    }
+    const filtered = database.filter(i => 
+        i.q.toLowerCase().includes(term) || 
+        i.a.toLowerCase().includes(term) || 
+        i.cat.toLowerCase().includes(term)
+    );
+    container.innerHTML = filtered.map(i => `
+        <div class="result">
+            <div class="category">${i.cat}</div>
+            <h3>${i.q}</h3>
+            <p>${i.a}</p>
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+                <span style="color:var(--meta); font-size:0.75rem;">Bron: ${i.law}</span>
+                <a href="${i.url}" target="_blank" style="color:var(--accent); font-weight:700; text-decoration:none; border-bottom:1.5px solid var(--accent); font-size:0.8rem;">Open Bron</a>
+            </div>
+        </div>`).join('');
 }
 
+// Calculator
 function calculateDestruction() {
     const type = document.getElementById('data-type').value;
     const inputDate = document.getElementById('end-date').value;
@@ -266,32 +324,67 @@ function calculateDestruction() {
     res.innerHTML = `Vernietigen op: <strong>${d.toLocaleDateString('nl-NL')}</strong>`;
 }
 
+// DPIA Generator & Export
 function generateDPIA() {
-    const name = document.getElementById('dpia-name').value;
+    const name = document.getElementById('dpia-name').value || "Naamloos Project";
     const goal = document.getElementById('dpia-goal').value;
     const sub = document.getElementById('dpia-sub').value;
     const data = document.getElementById('dpia-data').value;
+    const target = document.getElementById('dpia-target').value;
     const risk = document.getElementById('dpia-risks').value;
     const mitig = document.getElementById('dpia-mitigation').value;
-    const res = document.getElementById('dpia-result');
     
-    res.innerText = `DPIA RAPPORT - ${new Date().toLocaleDateString()}\n-----------------------------------\nPROJECT: ${name}\nDOEL: ${goal}\nSUBSIDIARITEIT: ${sub}\nGEGEVENS: ${data}\nRISICO'S: ${risk}\nMAATREGELEN: ${mitig}\n-----------------------------------\nStatus: In Behandeling`;
-    res.style.display = 'block';
+    const reportText = `DPIA RAPPORT - ${new Date().toLocaleDateString()}\n-----------------------------------\nPROJECT: ${name}\nDOEL: ${goal}\nSUBSIDIARITEIT: ${sub}\nTYPE GEGEVENS: ${data}\nDOELGROEP: ${target}\nRISICO'S: ${risk}\nMAATREGELEN: ${mitig}\n-----------------------------------\nStatus: Concept gereed voor review.`;
+
+    document.getElementById('dpia-result').innerText = reportText;
+    document.getElementById('dpia-result-container').style.display = 'block';
 }
 
-function triggerReportMail() { window.location.href = `mailto:privacy@jouwinstelling.nl?subject=Privacy%20Melding&body=Details...`; }
-function quickSearch(t) { document.getElementById('search').value = t; handleSearch(t); }
-document.getElementById('search').oninput = e => handleSearch(e.target.value);
-function openModal(id) { document.getElementById(id).style.display = 'block'; }
-function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+function copyDPIA() {
+    const text = document.getElementById('dpia-result').innerText;
+    navigator.clipboard.writeText(text).then(() => alert("Rapport gekopieerd naar klembord!"));
+}
 
+function mailDPIA() {
+    const name = document.getElementById('dpia-name').value || "Project";
+    const body = encodeURIComponent(document.getElementById('dpia-result').innerText);
+    window.location.href = `mailto:?subject=DPIA%20Concept:%20${name}&body=${body}`;
+}
+
+// Helpers
+function triggerReportMail() { 
+    window.location.href = `mailto:privacy@jouwinstelling.nl?subject=Privacy%20Melding&body=Details...`; 
+}
+
+function quickSearch(t) { 
+    document.getElementById('search').value = t; 
+    handleSearch(t); 
+}
+
+document.getElementById('search').oninput = e => handleSearch(e.target.value);
+
+function openModal(id) { 
+    document.getElementById(id).style.display = 'block'; 
+}
+
+function closeModal(id) { 
+    document.getElementById(id).style.display = 'none'; 
+}
+
+// Datalek Wizard
 let dlStep = 1;
 function nextDatalek(c) {
     const w = document.getElementById('datalekWizard');
     if (dlStep === 1) {
-        if (c === 'nee') w.innerHTML = '<div class="decision-box">Geen datalek.</div>';
-        else { dlStep = 2; w.innerHTML = '<div class="decision-box"><p>Hoog risico?</p><button class="choice-btn" onclick="nextDatalek(\'ja\')">Ja</button> <button class="choice-btn" onclick="nextDatalek(\'nee\')">Nee</button></div>'; }
-    } else if (dlStep === 2) w.innerHTML = '<div class="decision-box">Meld bij AP binnen 72u.</div>';
+        if (c === 'nee') {
+            w.innerHTML = '<div class="decision-box">Geen actie vereist. Er is geen sprake van een datalek.</div>';
+        } else { 
+            dlStep = 2; 
+            w.innerHTML = '<div class="decision-box"><p>Is er een (hoog) risico voor de rechten en vrijheden van betrokkenen?</p><button class="choice-btn" onclick="nextDatalek(\'ja\')">Ja</button> <button class="choice-btn" onclick="nextDatalek(\'nee\')">Nee</button></div>'; 
+        }
+    } else if (dlStep === 2) {
+        w.innerHTML = '<div class="decision-box"><strong>ACTIE:</strong> Meld het lek binnen 72 uur bij de Autoriteit Persoonsgegevens en documenteer intern.</div>';
+    }
 }
 </script>
 </body>
