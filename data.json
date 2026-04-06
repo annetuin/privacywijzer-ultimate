@@ -6185,6 +6185,210 @@
           "guidance": "Heridentificatie onmogelijk maken.",
           "laws": "AVG 5.1.e"
         }
+       [
+  {
+    "category": "Beroepsgeheim & Delen",
+    "question": "Mag een arts gegevens delen met de opvolgend behandelaar?",
+    "answer": "Ja, mits de patiënt niet expliciet heeft aangegeven dat dit niet mag. Er is sprake van veronderstelde toestemming voor de directe behandelketen.",
+    "risk": "medium",
+    "laws": "WGBO Art. 7:457 lid 2"
+  },
+  {
+    "category": "Beroepsgeheim & Delen",
+    "question": "Mag een arts gegevens delen met de zorgverzekeraar?",
+    "answer": "Ja, maar alleen die gegevens die strikt noodzakelijk zijn voor de declaratie van de geleverde zorg (diagnosecodes).",
+    "risk": "high",
+    "laws": "Zorgverzekeringswet Art. 87 / Regeling zorgverzekering"
+  },
+  {
+    "category": "Beroepsgeheim & Delen",
+    "question": "Mag informatie gedeeld worden met een letselschadeadvocaat?",
+    "answer": "Alleen met een gerichte, schriftelijke machtiging van de patiënt. Een algemene volmacht is vaak onvoldoende.",
+    "risk": "high",
+    "laws": "WGBO Art. 7:457 / AVG Art. 9"
+  },
+  {
+    "category": "Beroepsgeheim & Delen",
+    "question": "Wat is het spreekrecht van de arts bij de rechter?",
+    "answer": "De arts heeft een verschoningsrecht. Hij mag weigeren te getuigen over zaken die onder zijn beroepsgeheim vallen, tenzij er zeer uitzonderlijke omstandigheden zijn.",
+    "risk": "critical",
+    "laws": "Wetboek van Strafvordering Art. 218"
+  },
+  {
+    "category": "Beroepsgeheim & Delen",
+    "question": "Mag een assistente medische gegevens inzien?",
+    "answer": "Ja, mits dit noodzakelijk is voor de uitvoering van haar taken (bijv. triage of agendabeheer). Zij valt onder de afgeleide geheimhoudingsplicht.",
+    "risk": "medium",
+    "laws": "WGBO Art. 7:457"
+  },
+  {
+    "category": "Beroepsgeheim & Delen",
+    "question": "Mag een arts spreken met de bedrijfsarts van de patiënt?",
+    "answer": "Alleen met gerichte toestemming van de patiënt. Er is geen automatische uitwisseling tussen curatieve zorg en sociale geneeskunde.",
+    "risk": "high",
+    "laws": "KNMG Richtlijnen / WGBO"
+  },
+  {
+    "category": "Rechten van Betrokkenen",
+    "question": "Wat moet een arts doen als een patiënt vraagt om een second opinion?",
+    "answer": "De arts moet meewerken door het dossier (kopie) tijdig over te dragen aan de arts die de second opinion uitvoert.",
+    "risk": "low",
+    "laws": "WGBO Art. 7:456"
+  },
+  {
+    "category": "Rechten van Betrokkenen",
+    "question": "Kan een patiënt eisen dat een specifieke verpleegkundige geen toegang heeft?",
+    "answer": "Ja, de patiënt heeft het recht op beperking van verwerking voor specifieke personen, mits de continuïteit van zorg niet in gevaar komt.",
+    "risk": "medium",
+    "laws": "AVG Art. 18 / Wabvpz"
+  },
+  {
+    "category": "Rechten van Betrokkenen",
+    "question": "Moet de identiteit van een patiënt altijd gecontroleerd worden?",
+    "answer": "Ja, zorgaanbieders hebben een identificatieplicht om verwisseling van dossiers en fraude te voorkomen.",
+    "risk": "high",
+    "laws": "Wet gebruik burgerservicenummer in de zorg Art. 2"
+  },
+  {
+    "category": "Rechten van Betrokkenen",
+    "question": "Recht op overdraagbaarheid (dataportabiliteit) in de zorg?",
+    "answer": "Dit geldt alleen voor gegevens die de patiënt zelf heeft verstrekt op basis van toestemming of overeenkomst, niet voor de diagnoses van de arts.",
+    "risk": "low",
+    "laws": "AVG Art. 20"
+  },
+  {
+    "category": "Minderjarigen & Wilsonbekwaamheid",
+    "question": "Wie tekent de behandelovereenkomst voor een kind van 14 jaar?",
+    "answer": "Zowel het kind als de beide gezaghebbende ouders moeten tekenen/toestemming geven.",
+    "risk": "high",
+    "laws": "WGBO Art. 7:450"
+  },
+  {
+    "category": "Minderjarigen & Wilsonbekwaamheid",
+    "question": "Mag een mentor medische beslissingen nemen?",
+    "answer": "Ja, een mentor is de wettelijk vertegenwoordiger voor niet-vermogensrechtelijke zaken, waaronder medische behandelingen.",
+    "risk": "medium",
+    "laws": "BW Boek 1 / WGBO Art. 7:465"
+  },
+  {
+    "category": "Minderjarigen & Wilsonbekwaamheid",
+    "question": "Wat als ouders weigeren toestemming te geven voor een noodzakelijke ingreep?",
+    "answer": "De arts mag de behandeling uitvoeren als dit kennelijk nodig is om ernstig nadeel voor het kind te voorkomen.",
+    "risk": "critical",
+    "laws": "WGBO Art. 7:450 lid 2"
+  },
+  {
+    "category": "Minderjarigen & Wilsonbekwaamheid",
+    "question": "Heeft een gescheiden ouder zonder gezag recht op informatie?",
+    "answer": "Ja, de ouder heeft recht op belangrijke informatie over de verzorging en opvoeding, tenzij dit in strijd is met het belang van het kind.",
+    "risk": "medium",
+    "laws": "BW Boek 1 Art. 1:377c"
+  },
+  {
+    "category": "Data & Techniek",
+    "question": "Mag medische data in de cloud worden opgeslagen?",
+    "answer": "Ja, mits de servers in de EU staan (of passend beschermingsniveau hebben), er een verwerkersovereenkomst is en encryptie wordt toegepast.",
+    "risk": "high",
+    "laws": "AVG Art. 28 / NEN 7510"
+  },
+  {
+    "category": "Data & Techniek",
+    "question": "Is WhatsApp toegestaan voor communicatie met patiënten?",
+    "answer": "In principe niet voor medische inhoud, tenzij het een beveiligde zakelijke variant is die voldoet aan de NEN-normen.",
+    "risk": "high",
+    "laws": "AVG Art. 32 / Autoriteit Persoonsgegevens richtlijnen"
+  },
+  {
+    "category": "Data & Techniek",
+    "question": "Wat is pseudonimisering?",
+    "answer": "Het vervangen van direct herleidbare gegevens door een code, zodat de data niet meer direct aan een persoon te koppelen is zonder extra informatie.",
+    "risk": "low",
+    "laws": "AVG Art. 4 lid 5"
+  },
+  {
+    "category": "Data & Techniek",
+    "question": "Moet een website van een praktijk een SSL-certificaat hebben?",
+    "answer": "Ja, zeker als er contactformulieren of afspraakmodules op staan waarbij persoonsgegevens worden ingevuld.",
+    "risk": "medium",
+    "laws": "AVG Art. 32"
+  },
+  {
+    "category": "Arbeid & Privacy",
+    "question": "Mag een zieke werknemer gevraagd worden naar zijn diagnose?",
+    "answer": "Nee, de werkgever mag alleen vragen naar de functionele beperkingen en de verwachte duur van het verzuim.",
+    "risk": "critical",
+    "laws": "AVG Art. 9 / Beleidsregels AP 'De zieke werknemer'"
+  },
+  {
+    "category": "Arbeid & Privacy",
+    "question": "Mag een praktijkhouder de mailbox van een vertrokken medewerker inzien?",
+    "answer": "Alleen onder strikte voorwaarden en mits er een protocol is. Privé-mails mogen nooit worden ingezien.",
+    "risk": "high",
+    "laws": "AVG Art. 6 lid 1f / Grondwet Art. 13"
+  },
+  {
+    "category": "Kwaliteit & Incidenten",
+    "question": "Moet een datalek gemeld worden aan de patiënt?",
+    "answer": "Alleen als het lek waarschijnlijk ongunstige gevolgen heeft voor de persoonlijke levenssfeer van de patiënt.",
+    "risk": "high",
+    "laws": "AVG Art. 34"
+  },
+  {
+    "category": "Kwaliteit & Incidenten",
+    "question": "Wat is de rol van de VIM (Veilig Incident Melden) commissie?",
+    "answer": "Het analyseren van fouten zonder dat de melder hiervoor tuchtrechtelijk wordt gestraft, ter verbetering van de kwaliteit.",
+    "risk": "low",
+    "laws": "Wkkgz"
+  },
+  {
+    "category": "Bewaartermijnen Specifiek",
+    "question": "Hoe lang moeten beelden van een bewakingscamera bewaard worden?",
+    "answer": "Maximaal 4 weken, tenzij er een incident is vastgelegd (dan tot afhandeling incident).",
+    "risk": "low",
+    "laws": "AVG / Richtsnoeren AP"
+  },
+  {
+    "category": "Bewaartermijnen Specifiek",
+    "question": "Bewaartermijn van sollicitatiegegevens?",
+    "answer": "Maximaal 4 weken na afloop van de procedure, of 1 jaar met toestemming van de sollicitant.",
+    "risk": "medium",
+    "laws": "AVG / Richtlijn AP"
+  },
+  {
+    "category": "Marketing & Communicatie",
+    "question": "Mag je een nieuwsbrief sturen naar alle patiënten?",
+    "answer": "Alleen met expliciete opt-in (toestemming), tenzij het gaat om essentiële informatie over de praktijkvoering (bijv. verhuizing).",
+    "risk": "medium",
+    "laws": "AVG Art. 7 / Telecommunicatiewet"
+  },
+  {
+    "category": "Marketing & Communicatie",
+    "question": "Mag een arts een patiënt opzoeken op social media?",
+    "answer": "In principe niet, tenzij dit noodzakelijk is voor de behandeling (zeer zeldzaam). Het schendt de professionele grens en privacy.",
+    "risk": "low",
+    "laws": "KNMG Handreiking social media"
+  },
+  {
+    "category": "Financieel & Administratie",
+    "question": "Mogen onbetaalde facturen direct naar een incassobureau?",
+    "answer": "Ja, maar de medische inhoud mag niet gedeeld worden. Alleen de NAW-gegevens en het verschuldigde bedrag.",
+    "risk": "medium",
+    "laws": "AVG / WGBO"
+  },
+  {
+    "category": "Overig",
+    "question": "Moet een papieren dossier in een afgesloten kast?",
+    "answer": "Ja, fysieke dossiers moeten beveiligd zijn tegen onbevoegde toegang en brand/waterschade.",
+    "risk": "high",
+    "laws": "AVG Art. 32"
+  },
+  {
+    "category": "Overig",
+    "question": "Wat is een DPIA?",
+    "answer": "Een Data Protection Impact Assessment; een onderzoek naar de privacyrisico's van een nieuwe gegevensverwerking.",
+    "risk": "medium",
+    "laws": "AVG Art. 35"
+  }
       ]
     }
   }
