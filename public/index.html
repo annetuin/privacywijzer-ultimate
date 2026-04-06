@@ -14,242 +14,133 @@
             --high: #f97316;
             --medium: #eab308;
             --low: #22c55e;
-            --footer-text: #64748b;
         }
 
         body {
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            font-family: 'Segoe UI', system-ui, sans-serif;
             background: radial-gradient(circle at top right, #1e293b, #0f172a);
             color: var(--text);
             padding: 20px;
             max-width: 1000px;
             margin: auto;
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
         }
 
-        header {
-            text-align: center;
-            padding: 40px 0;
-        }
+        header { text-align: center; padding: 40px 0; }
+        h1 { font-size: 3rem; margin-bottom: 10px; background: linear-gradient(to right, #38bdf8, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-            background: linear-gradient(to right, #38bdf8, #818cf8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: -1px;
-        }
+        .search-container { position: sticky; top: 20px; z-index: 100; backdrop-filter: blur(10px); padding: 10px; }
+        input { width: 100%; padding: 20px; font-size: 1.2rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); background: var(--card-bg); color: #fff; outline: none; }
 
-        .search-container {
-            position: sticky;
-            top: 20px;
-            z-index: 100;
-            backdrop-filter: blur(10px);
-            padding: 10px;
-            border-radius: 16px;
-        }
+        .quick-tags { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 15px; }
+        .tag-btn { background: rgba(56, 189, 248, 0.1); border: 1px solid var(--accent); color: var(--accent); padding: 8px 15px; border-radius: 20px; cursor: pointer; font-size: 0.85rem; }
+        .tag-btn:hover { background: var(--accent); color: #000; }
 
-        input {
-            width: 100%;
-            padding: 20px 25px;
-            font-size: 1.2rem;
-            border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.1);
-            background: var(--card-bg);
-            color: #fff;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            outline: none;
-        }
+        .result { background: var(--card-bg); padding: 30px; margin: 25px 0; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); }
+        .category-badge { font-size: 0.7rem; background: rgba(56, 189, 248, 0.1); color: var(--accent); padding: 4px 8px; border-radius: 4px; text-transform: uppercase; margin-bottom: 10px; display: inline-block; }
+        
+        .source-link { display: inline-block; margin-top: 15px; color: var(--accent); text-decoration: none; font-weight: 600; padding: 10px; border: 1px solid var(--accent); border-radius: 8px; }
+        .source-link:hover { background: rgba(56, 189, 248, 0.1); }
 
-        input:focus {
-            border-color: var(--accent);
-            box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
-            transform: translateY(-2px);
-        }
-
-        #results {
-            flex-grow: 1;
-        }
-
-        .result {
-            background: var(--card-bg);
-            backdrop-filter: blur(12px);
-            padding: 30px;
-            margin: 25px 0;
-            border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.05);
-            animation: fadeIn 0.5s ease-out forwards;
-            transition: transform 0.2s;
-        }
-
-        .result:hover {
-            transform: scale(1.01);
-            border-color: rgba(255,255,255,0.2);
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        h3 {
-            margin-top: 0;
-            color: var(--accent);
-            font-size: 1.4rem;
-            line-height: 1.4;
-        }
-
-        p {
-            line-height: 1.6;
-            color: #cbd5e1;
-            font-size: 1.1rem;
-        }
-
-        .meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 15px;
-        }
-
-        .laws {
-            font-family: 'Courier New', monospace;
-            font-size: 0.9rem;
-            color: #94a3b8;
-        }
-
-        .risk {
-            padding: 6px 14px;
-            border-radius: 8px;
-            font-size: 0.8rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .risk-critical { background: var(--critical); color: #fff; box-shadow: 0 0 15px rgba(239, 68, 68, 0.4); }
+        .risk { padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; }
+        .risk-critical { background: var(--critical); color: #fff; }
         .risk-high { background: var(--high); color: #fff; }
         .risk-medium { background: var(--medium); color: #000; }
         .risk-low { background: var(--low); color: #fff; }
 
-        .empty-state {
-            text-align: center;
-            padding: 100px 0;
-            color: #64748b;
-        }
-
-        footer {
-            margin-top: 50px;
-            padding: 40px 20px;
-            text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            color: var(--footer-text);
-        }
-
-        footer p {
-            font-size: 0.9rem;
-            margin-bottom: 8px;
-            color: var(--footer-text);
-        }
-
-        footer a {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 600;
-            transition: opacity 0.2s;
-        }
-
-        footer a:hover {
-            opacity: 0.8;
-            text-decoration: underline;
-        }
+        footer { text-align: center; margin-top: 50px; padding: 20px; border-top: 1px solid rgba(255,255,255,0.1); color: #64748b; }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Privacy Wijzer Zorg</h1>
-    <p>Database AVG, WGBO & Wet BIG - Direct opvraagbaar</p>
+    <h1>Privacy Wijzer Gehandicaptenzorg</h1>
+    <p>Simpele antwoorden op complexe privacyvragen</p>
 </header>
 
 <div class="search-container">
-    <input id="search" placeholder="Zoek op term (bijv. dossier, kind, politie)..." autocomplete="off">
-</div>
-
-<div id="results">
-    <div class="empty-state">Begin met typen om de database te doorzoeken...</div>
-</div>
-
-<footer>
-    <p>Deze applicatie verwerkt geen persoonsgegevens.</p>
-    <a href="javascript:void(0)" onclick="togglePrivacy()">Bekijk Privacyverklaring</a>
-</footer>
-
-<div id="privacyModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:1000; padding:20px;">
-    <div style="background:var(--bg); max-width:600px; margin:50px auto; padding:30px; border-radius:20px; border:1px solid var(--accent); color:var(--text);">
-        <h2>Privacyverklaring</h2>
-        <p><strong>Geen gegevensverwerking:</strong> Deze Privacy Wijzer is ontworpen met 'privacy by design'. Wij verzamelen, bewaren of delen geen persoonsgegevens van gebruikers of cliënten.</p>
-        <p><strong>Lokale verwerking:</strong> Alles wat je typt in de zoekbalk blijft in je eigen browser en wordt nooit naar een server verzonden.</p>
-        <button onclick="togglePrivacy()" style="background:var(--accent); border:none; padding:10px 20px; border-radius:10px; cursor:pointer; font-weight:bold; margin-top:20px;">Sluiten</button>
+    <input id="search" placeholder="Zoek op term (bijv. Wzd, dossier, foto)..." autocomplete="off">
+    <div class="quick-tags">
+        <button class="tag-btn" onclick="quickSearch('Wzd')">Zorg en dwang</button>
+        <button class="tag-btn" onclick="quickSearch('vertegenwoordiger')">Vertegenwoordiging</button>
+        <button class="tag-btn" onclick="quickSearch('foto')">WhatsApp & Foto's</button>
+        <button class="tag-btn" onclick="quickSearch('dossier')">Bewaartermijn</button>
     </div>
 </div>
 
+<div id="results"></div>
+
+<footer>
+    <p>Deze applicatie verwerkt geen persoonsgegevens.</p>
+    <a href="https://jouwdomein.nl/privacy" style="color:var(--accent); text-decoration:none;">Privacyverklaring</a>
+</footer>
+
 <script>
 const database = [
-    { "category": "Bewaartermijnen", "question": "Wat is de standaard dossiertermijn?", "answer": "Minimaal 20 jaar na de laatste behandeling.", "risk": "high", "laws": "WGBO 7:454" },
-    { "category": "Beroepsgeheim", "question": "Mag info naar de politie?", "answer": "Nee, beroepsgeheim is leidend. Alleen bij expliciete toestemming of noodtoestand.", "risk": "critical", "laws": "BIG Art. 88 / WGBO" },
-    { "category": "Minderjarigen", "question": "Zelfstandige beslissing vanaf welke leeftijd?", "answer": "Vanaf 16 jaar beslist een jongere volledig zelfstandig over zijn dossier.", "risk": "high", "laws": "WGBO 7:447" },
-    { "category": "Datalek", "question": "Wanneer melden bij de AP?", "answer": "Binnen 72 uur na ontdekking bij ernstige privacyrisico's.", "risk": "critical", "laws": "AVG Art. 33" },
-    { "category": "Inzage", "question": "Heeft patiënt recht op gratis kopie?", "answer": "Ja, de eerste kopie van het dossier moet kosteloos worden verstrekt.", "risk": "low", "laws": "AVG Art. 15 / WGBO" }
+    { 
+        "category": "Wet zorg en dwang (Wzd)", 
+        "question": "Mag ik een camera of sensor gebruiken in de kamer?", 
+        "answer": "Toezicht via camera's of sensoren in de gehandicaptenzorg valt onder de Wet zorg en dwang. Dit mag alleen als er een ernstig risico is voor de cliënt en dit is vastgelegd in het zorgplan na overleg met de gedragsdeskundige en de vertegenwoordiger.", 
+        "risk": "high", 
+        "laws": "Wzd / AVG",
+        "url": "https://www.dwangindezorg.nl/wzd/onvrijwillige-zorg/vormen"
+    },
+    { 
+        "category": "Communicatie", 
+        "question": "Mag ik foto's van cliënten delen via WhatsApp?", 
+        "answer": "Nee, de standaard WhatsApp is niet veilig genoeg voor cliëntgegevens. Gebruik alleen beveiligde apps die de organisatie heeft goedgekeurd en zorg dat je altijd toestemming hebt van de cliënt of de wettelijk vertegenwoordiger.", 
+        "risk": "critical", 
+        "laws": "AVG Artikel 32",
+        "url": "https://www.vgn.nl/artikel/handreiking-privacy-de-gehandicaptenzorg"
+    },
+    { 
+        "category": "Bewaartermijnen", 
+        "question": "Hoe lang bewaar ik het dossier van een cliënt?", 
+        "answer": "De wettelijke bewaartermijn is 20 jaar. Deze termijn gaat pas in na de laatste wijziging in het dossier of nadat de zorgovereenkomst officieel is gestopt.", 
+        "risk": "medium", 
+        "laws": "WGBO",
+        "url": "https://www.knmg.nl/advies-richtlijnen/dossier-bewaren"
+    }
 ];
 
 function displayResults(data) {
     const container = document.getElementById('results');
     if (data.length === 0) {
-        container.innerHTML = '<div class="empty-state">Geen resultaten gevonden voor deze zoekopdracht.</div>';
+        container.innerHTML = '<div style="text-align:center; padding:50px;">Geen resultaten gevonden.</div>';
         return;
     }
 
-    container.innerHTML = data.map((d, index) => `
-        <div class="result" style="animation-delay: ${index * 0.05}s">
+    container.innerHTML = data.map(d => `
+        <div class="result">
             <span class="category-badge">${d.category}</span>
             <h3>${d.question}</h3>
             <p>${d.answer}</p>
-            <div class="meta">
-                <span class="laws">Bron: <a href="${d.url}" target="_blank" style="color: #94a3b8; text-decoration: underline;">${d.laws}</a></span>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:20px;">
+                <span class="laws" style="font-size:0.8rem; color:#94a3b8;">Bron: ${d.laws}</span>
                 <span class="risk risk-${d.risk}">${d.risk}</span>
             </div>
+            <a href="${d.url}" target="_blank" class="source-link">🔗 Bekijk officiële bron</a>
         </div>
     `).join('');
+}
+
+function quickSearch(term) {
+    document.getElementById('search').value = term;
+    const event = new Event('input', { bubbles: true });
+    document.getElementById('search').dispatchEvent(event);
 }
 
 document.getElementById('search').oninput = e => {
     const val = e.target.value.toLowerCase();
     if (val.length < 2) {
-        document.getElementById('results').innerHTML = '<div class="empty-state">Begin met typen...</div>';
+        document.getElementById('results').innerHTML = '';
         return;
     }
-    
     const filtered = database.filter(d => 
-        d.question.toLowerCase().includes(val) || 
-        d.answer.toLowerCase().includes(val) ||
-        d.category.toLowerCase().includes(val)
+        d.question.toLowerCase().includes(val) || d.category.toLowerCase().includes(val)
     );
-    
     displayResults(filtered);
 };
-
-    function togglePrivacy() {
-    const modal = document.getElementById('privacyModal');
-    modal.style.display = (modal.style.display === 'none') ? 'block' : 'none';
-}
 </script>
-
 </body>
 </html>
