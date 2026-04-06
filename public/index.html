@@ -90,7 +90,7 @@
             color: var(--meta);
         }
 
-        .empty-state { padding: 20px 0; color: var(--meta); font-size: 0.9rem; }
+        .empty-state { padding: 10px 0; color: var(--meta); font-size: 0.9rem; border-bottom: 1px solid var(--border); margin-bottom: 20px; }
 
         .result { padding: 25px 0; border-bottom: 1px solid var(--border); }
         .category { font-size: 0.65rem; text-transform: uppercase; color: var(--meta); font-weight: 800; letter-spacing: 0.08em; }
@@ -126,9 +126,10 @@
     <header>
         <h1>Privacy Officer <span style="font-weight:300">Wijzer</span></h1>
         <div class="nav-group">
-            <button class="officer-btn" onclick="openModal('dpiaModal')">Nieuwe DPIA</button>
+            <button class="officer-btn" onclick="openModal('dpiaModal')">DPIA</button>
+            <button class="officer-btn" onclick="openModal('calcModal')">Calculator</button>
             <button class="officer-btn" onclick="openModal('datalekModal')">Datalek</button>
-            <button class="officer-btn" onclick="openModal('decisionModal')">Delen</button>
+            <button class="officer-btn" onclick="triggerReportMail()">Meld Incident</button>
         </div>
     </header>
 
@@ -139,7 +140,7 @@
             <button class="tag-btn" onclick="quickSearch('Wzd')">Wzd</button>
             <button class="tag-btn" onclick="quickSearch('foto')">WhatsApp</button>
             <button class="tag-btn" onclick="quickSearch('dossier')">Bewaartermijn</button>
-            <button class="tag-btn" onclick="quickSearch('DPIA')">DPIA Regels</button>
+            <button class="tag-btn" onclick="quickSearch('politie')">Politie</button>
         </div>
     </div>
 
@@ -148,50 +149,49 @@
     </div>
 
     <footer>
-        <p>Expert Tool v2026 • <a href="javascript:void(0)" onclick="openModal('privacyModal')" style="color:var(--meta)">Privacy & Wetgeving</a></p>
+        <p>Expert Dashboard v2026 • <a href="javascript:void(0)" onclick="openModal('privacyModal')" style="color:var(--meta)">AVG & Wetgeving</a></p>
     </footer>
+</div>
+
+<div id="calcModal" class="modal">
+    <div style="max-width: 600px; margin: 0 auto;">
+        <h2>Bewaartermijn Calculator</h2>
+        <div class="form-group">
+            <label>Datum einde zorg / laatste wijziging</label>
+            <input type="date" id="end-date" onchange="calculateDestruction()">
+        </div>
+        <div id="calc-result" class="decision-box" style="display:none;"></div>
+        <button onclick="closeModal('calcModal')" style="margin-top:20px; border:none; background:none; text-decoration:underline; cursor:pointer;">Sluiten</button>
+    </div>
 </div>
 
 <div id="dpiaModal" class="modal">
     <div style="max-width: 600px; margin: 0 auto;">
         <h2>DPIA Quick-Scan</h2>
-        <p style="font-size: 0.9rem; color: var(--meta);">Vul dit formulier in bij nieuwe projecten of apps.</p>
-        
         <div class="form-group">
-            <label>Naam Project / App</label>
-            <input type="text" id="dpia-name" placeholder="bijv. Slimme Sensoren Kamer 4">
+            <label>Project Naam</label>
+            <input type="text" id="dpia-name" placeholder="...">
         </div>
         <div class="form-group">
-            <label>Doel van de verwerking</label>
-            <textarea id="dpia-goal" placeholder="Waarom hebben we dit nodig?" rows="2"></textarea>
+            <label>Doel & Gegevens</label>
+            <textarea id="dpia-goal" rows="2"></textarea>
         </div>
-        <div class="form-group">
-            <label>Welke cliëntgegevens worden gebruikt?</label>
-            <textarea id="dpia-data" placeholder="Namen, medische gegevens, camerabeelden?" rows="2"></textarea>
-        </div>
-        <div class="form-group">
-            <label>Grootste Privacy Risico</label>
-            <textarea id="dpia-risk" placeholder="Wat kan er misgaan?" rows="2"></textarea>
-        </div>
-        
-        <button class="choice-btn" style="background: #000; color: #fff; width: 100%;" onclick="generateDPIA()">Genereer Samenvatting</button>
-        
+        <button class="choice-btn" style="background: #000; color: #fff; width: 100%;" onclick="generateDPIA()">Genereer</button>
         <div id="dpia-result" class="decision-box" style="display:none; white-space: pre-wrap; font-family: monospace; font-size: 0.85rem;"></div>
-        
         <button onclick="closeModal('dpiaModal')" style="margin-top:20px; border:none; background:none; text-decoration:underline; cursor:pointer;">Sluiten</button>
     </div>
 </div>
 
 <div id="datalekModal" class="modal"><div style="max-width:600px;margin:0 auto;"><h2>Datalek Check</h2><div id="datalekWizard"><div class="decision-box"><p>Dataverlies of onrechtmatige toegang?</p><div class="btn-group"><button class="choice-btn" onclick="nextDatalek('ja')">Ja</button><button class="choice-btn" onclick="nextDatalek('nee')">Nee</button></div></div></div><button onclick="closeModal('datalekModal')" style="margin-top:40px;border:none;background:none;text-decoration:underline;cursor:pointer;">Sluiten</button></div></div>
 <div id="decisionModal" class="modal"><div style="max-width:600px;margin:0 auto;"><h2>Delen Check</h2><div id="shareWizard"><div class="decision-box"><p>Expliciete toestemming?</p><div class="btn-group"><button class="choice-btn" onclick="nextShare('ja')">Ja</button><button class="choice-btn" onclick="nextShare('nee')">Nee</button></div></div></div><button onclick="closeModal('decisionModal')" style="margin-top:40px;border:none;background:none;text-decoration:underline;cursor:pointer;">Sluiten</button></div></div>
-<div id="privacyModal" class="modal"><div style="max-width:600px;margin:0 auto;"><h2>Privacy & Wetgeving</h2><p>Lokaal naslagwerk voor de Privacy Officer.</p><p><a href="https://autoriteitpersoonsgegevens.nl/wetten-en-regels/algemene-verordening-gegevensbescherming-avg" target="_blank">Bekijk de volledige AVG Tekst</a></p><button onclick="closeModal('privacyModal')" style="margin-top:40px;padding:10px 20px;background:#000;color:#fff;border:none;border-radius:4px;cursor:pointer;">Sluiten</button></div></div>
+<div id="privacyModal" class="modal"><div style="max-width:600px;margin:0 auto;"><h2>AVG & Wetgeving</h2><p>Lokaal dashboard. <a href="https://autoriteitpersoonsgegevens.nl/wetten-en-regels/algemene-verordening-gegevensbescherming-avg" target="_blank">Volledige AVG Tekst</a></p><button onclick="closeModal('privacyModal')" style="margin-top:40px;padding:10px 20px;background:#000;color:#fff;border:none;border-radius:4px;cursor:pointer;">Sluiten</button></div></div>
 
 <script>
 const database = [
-    { cat: "DPIA", q: "Wanneer is een DPIA verplicht?", a: "Bij verwerkingen met een hoog privacyrisico, zoals grootschalige medische gegevens of observatie van kwetsbare personen (cameratoezicht).", law: "AVG Art. 35", url: "https://autoriteitpersoonsgegevens.nl/onderwerpen/avg/data-protection-impact-assessment-dpia" },
     { cat: "Dossier", q: "Bewaartermijn dossier?", a: "Minimaal 20 jaar na laatste wijziging of stopzetting zorg.", law: "WGBO", url: "https://www.rijksoverheid.nl/onderwerpen/rechten-van-patient-en-cliënt/medisch-dossier" },
-    { cat: "Wzd", q: "Toezicht via techniek?", a: "Valt onder onvrijwillige zorg. Alleen bij ernstig risico en na opname in zorgplan.", law: "Wzd", url: "https://www.dwangindezorg.nl/wzd/onvrijwillige-zorg/vormen" },
-    { cat: "Politie", q: "Vragen van politie beantwoorden?", a: "Beroepsgeheim gaat voor. Alleen delen bij vordering OvJ of acute noodtoestand.", law: "WGBO", url: "https://www.knmg.nl/advies-richtlijnen/beroepsgeheim-en-politie-justitie" }
+    { cat: "Wzd", q: "Camera of sensor in kamer?", a: "Onvrijwillige zorg: alleen bij ernstig risico en na opname in zorgplan.", law: "Wzd", url: "https://www.dwangindezorg.nl/wzd/onvrijwillige-zorg/vormen" },
+    { cat: "Privacy", q: "Foto's op WhatsApp?", a: "Onveilig. Gebruik uitsluitend organisatie-apps (Siilo/ONS) met toestemming.", law: "AVG Art. 32", url: "https://www.vgn.nl/artikel/handreiking-privacy-de-gehandicaptenzorg" },
+    { cat: "Politie", q: "Vragen van politie?", a: "Beroepsgeheim gaat voor. Alleen delen bij vordering OvJ of noodtoestand.", law: "WGBO", url: "https://www.knmg.nl/advies-richtlijnen/beroepsgeheim-en-politie-justitie" }
 ];
 
 function handleSearch(query) {
@@ -199,27 +199,30 @@ function handleSearch(query) {
     const container = document.getElementById('results');
     if (term.length < 2) { container.innerHTML = '<div class="empty-state">Typ minimaal 2 letters om te zoeken...</div>'; return; }
     const filtered = database.filter(i => i.q.toLowerCase().includes(term) || i.a.toLowerCase().includes(term) || i.cat.toLowerCase().includes(term));
-    if (filtered.length === 0) { container.innerHTML = '<div class="empty-state">Geen hits gevonden.</div>'; return; }
+    if (filtered.length === 0) { container.innerHTML = '<div class="empty-state">Geen resultaten gevonden.</div>'; return; }
     container.innerHTML = filtered.map(i => `<div class="result"><div class="category">${i.cat}</div><h3>${i.q}</h3><p>${i.a}</p><div class="footer-card"><span style="color:var(--meta); font-size:0.75rem;">Bron: ${i.law}</span><a href="${i.url}" target="_blank" class="source-link">Open Bron</a></div></div>`).join('');
+}
+
+function calculateDestruction() {
+    const d = new Date(document.getElementById('end-date').value);
+    d.setFullYear(d.getFullYear() + 20);
+    const res = document.getElementById('calc-result');
+    res.style.display = 'block';
+    res.innerHTML = `Vernietigen op: <strong>${d.toLocaleDateString('nl-NL')}</strong><br><small>Grondslag: WGBO (20 jaar).</small>`;
+}
+
+function triggerReportMail() {
+    window.location.href = `mailto:jouw@email.nl?subject=Privacy%20Melding&body=Wat%20is%20er%20gebeurd:%0A%0AHoeveel%20cliënten:`;
 }
 
 function quickSearch(t) { document.getElementById('search').value = t; handleSearch(t); }
 document.getElementById('search').oninput = e => handleSearch(e.target.value);
-
 function openModal(id) { document.getElementById(id).style.display = 'block'; }
-function closeModal(id) { 
-    document.getElementById(id).style.display = 'none'; 
-    if(id === 'dpiaModal') document.getElementById('dpia-result').style.display = 'none';
-    resetWizards();
-}
+function closeModal(id) { document.getElementById(id).style.display = 'none'; resetWizards(); }
 
 function generateDPIA() {
-    const name = document.getElementById('dpia-name').value;
-    const goal = document.getElementById('dpia-goal').value;
-    const data = document.getElementById('dpia-data').value;
-    const risk = document.getElementById('dpia-risk').value;
     const res = document.getElementById('dpia-result');
-    res.innerText = `DPIA QUICK-SCAN\nDatum: ${new Date().toLocaleDateString()}\n\nProject: ${name}\nDoel: ${goal}\nGegevens: ${data}\nRisico: ${risk}\n\nStatus: Ter beoordeling door Privacy Officer.`;
+    res.innerText = `DPIA SCAN - ${new Date().toLocaleDateString()}\nProject: ${document.getElementById('dpia-name').value}\nStatus: Concept`;
     res.style.display = 'block';
 }
 
@@ -227,21 +230,13 @@ let dlStep = 1, shStep = 1;
 function nextDatalek(c) {
     const w = document.getElementById('datalekWizard');
     if (dlStep === 1) {
-        if (c === 'nee') { w.innerHTML = '<div class="decision-box">Geen datalek. Log intern.</div>'; }
+        if (c === 'nee') w.innerHTML = '<div class="decision-box">Geen datalek.</div>';
         else { dlStep = 2; w.innerHTML = '<div class="decision-box"><p>Hoog risico?</p><button class="choice-btn" onclick="nextDatalek(\'ja\')">Ja</button> <button class="choice-btn" onclick="nextDatalek(\'nee\')">Nee</button></div>'; }
-    } else if (dlStep === 2) { w.innerHTML = `<div class="decision-box">Meld binnen 72u bij AP.</div>`; }
-}
-function nextShare(c) {
-    const w = document.getElementById('shareWizard');
-    if (shStep === 1) {
-        if (c === 'ja') { w.innerHTML = '<div class="decision-box">Delen toegestaan. Loggen.</div>'; }
-        else { shStep = 2; w.innerHTML = '<div class="decision-box"><p>Acuut gevaar?</p><button class="choice-btn" onclick="nextShare(\'ja\')">Ja</button> <button class="choice-btn" onclick="nextShare(\'nee\')">Nee</button></div>'; }
-    } else if (shStep === 2) { w.innerHTML = `<div class="decision-box">${c==='ja'?'Delen toegestaan (Noodtoestand).':'NIET delen.'}</div>`; }
+    } else if (dlStep === 2) w.innerHTML = '<div class="decision-box">Meld binnen 72u bij AP.</div>';
 }
 function resetWizards() { 
     dlStep = 1; shStep = 1;
-    document.getElementById('datalekWizard').innerHTML = '<div class="decision-box"><p>Is er sprake van verlies of onrechtmatige toegang?</p><button class="choice-btn" onclick="nextDatalek(\'ja\')">Ja</button> <button class="choice-btn" onclick="nextDatalek(\'nee\')">Nee</button></div>';
-    document.getElementById('shareWizard').innerHTML = '<div class="decision-box"><p>Heeft de cliënt/vertegenwoordiger toestemming gegeven?</p><button class="choice-btn" onclick="nextShare(\'ja\')">Ja</button> <button class="choice-btn" onclick="nextShare(\'nee\')">Nee</button></div>';
+    document.getElementById('datalekWizard').innerHTML = '<div class="decision-box"><p>Dataverlies of onrechtmatige toegang?</p><button class="choice-btn" onclick="nextDatalek(\'ja\')">Ja</button> <button class="choice-btn" onclick="nextDatalek(\'nee\')">Nee</button></div>';
 }
 </script>
 </body>
