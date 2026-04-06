@@ -150,6 +150,87 @@ const db = [
         source: "VGN Model 2024", 
         risk: "Hoog" 
     }
+    // WET ZORG EN DWANG (Wzd) & VEILIGHEID
+    { 
+        cat: "Wzd", 
+        q: "Inzet van akoestisch toezicht (uitluisteren)?", 
+        a: "Akoestisch toezicht is onvrijwillige zorg. Het mag alleen als minder ingrijpende middelen niet volstaan om ernstig nadeel te voorkomen. Vereist registratie in zorgplan en instemming Wzd-functionaris.", 
+        law: "Wzd Art. 2.1", 
+        source: "VGN Handreiking Wzd", 
+        risk: "Hoog" 
+    },
+    { 
+        cat: "Wzd", 
+        q: "Digitale deurvergrendeling (leefcirkels)?", 
+        a: "Het beperken van de bewegingsvrijheid via elektronische sloten is een Wzd-maatregel. Privacy-impact: bewegingspatronen worden gelogd. DPIA is verplicht voor het systeem.", 
+        law: "Wzd / AVG Art. 35", 
+        source: "Dwangindezorg.nl", 
+        risk: "Hoog" 
+    },
+
+    // CLIËNTEN & VERTEGENWOORDIGERS
+    { 
+        cat: "Inzage", 
+        q: "Mag de cliëntenraad geanonimiseerde incidentmeldingen inzien?", 
+        a: "Ja, voor de uitoefening van hun taak (advisering over veiligheid) mag de CR geanonimiseerde rapportages inzien. Gegevens mogen nooit herleidbaar zijn naar individuele cliënten.", 
+        law: "Wmcz 2018", 
+        source: "VGN / KansPlus", 
+        risk: "Gemiddeld" 
+    },
+    { 
+        cat: "Toestemming", 
+        q: "WhatsApp-gebruik voor communicatie met familie?", 
+        a: "WhatsApp is onveilig voor medische data. Gebruik bij voorkeur een beveiligd sociaal netwerk of cliëntportaal. Indien familie eist: leg risico's uit en laat een 'vrijwaringsverklaring' tekenen.", 
+        law: "AVG Art. 32", 
+        source: "AP Richtlijn Zakelijk Appen", 
+        risk: "Hoog" 
+    },
+
+    // HR & VRIJWILLIGERS
+    { 
+        cat: "HR", 
+        q: "Privacy van vrijwilligers?", 
+        a: "Vrijwilligers vallen onder de AVG-bescherming. Je mag niet meer data vragen dan noodzakelijk (NAW, VOG-status). Geen medische dossiers van vrijwilligers aanleggen.", 
+        law: "AVG Artikel 5", 
+        source: "Autoriteit Persoonsgegevens", 
+        risk: "Laag" 
+    },
+    { 
+        cat: "HR", 
+        q: "Foto's van personeel op het 'smoelenboek'?", 
+        a: "Hiervoor is expliciete toestemming nodig. Werknemers mogen niet gedwongen worden. Intrekken van toestemming moet direct leiden tot verwijdering.", 
+        law: "AVG Artikel 7", 
+        source: "Beleidsregels AP", 
+        risk: "Gemiddeld" 
+    },
+
+    // EXTERNE PARTNERS & DATA-UITWISSELING
+    { 
+        cat: "Delen", 
+        q: "Gegevensuitwisseling met de huisarts (ketenzorg)?", 
+        a: "Toestemming is verondersteld als de huisarts de medebehandelaar is. Bij twijfel of gevoelige psychiatrische info: expliciete toestemming cliënt/vertegenwoordiger vragen.", 
+        law: "WGBO Art. 457", 
+        source: "KNMG Richtlijn", 
+        risk: "Gemiddeld" 
+    },
+    { 
+        cat: "Delen", 
+        q: "BSN in e-mailverkeer naar externe therapeuten?", 
+        a: "Alleen toegestaan via beveiligde e-mail (bijv. Zivver, ZorgMail). E-mailen van onversleutelde BSN's is een beveiligingsincident.", 
+        law: "NEN 7510 / AVG", 
+        source: "Autoriteit Persoonsgegevens", 
+        risk: "Hoog" 
+    },
+
+    // ALGEMENE COMPLIANCE
+    { 
+        cat: "Audit", 
+        q: "Hoe vaak moet het Verwerkingsregister gecontroleerd worden?", 
+        a: "Minimaal jaarlijks, of direct bij grote wijzigingen in software of werkproces. Het register is de basis van je verantwoordingsplicht.", 
+        law: "AVG Artikel 30", 
+        source: "Privacy Officer Handboek", 
+        risk: "Gemiddeld" 
+    }
 ];
 
 function handleSearch(val) {
