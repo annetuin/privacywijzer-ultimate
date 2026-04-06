@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-    <title>Privacy Wijzer</title>
+    <title>Privacy Wijzer — Gehandicaptenzorg</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
@@ -37,9 +37,20 @@
             position: sticky;
             top: 0;
             background: var(--bg);
-            padding: 10px 0 20px 0;
-            border-bottom: 1px solid var(--border);
+            padding: 10px 0 12px 0;
             margin-bottom: 20px;
+            z-index: 10;
+        }
+
+        /* De minimalistische regenbooglijn */
+        .search-container::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, #ef4444, #f97316, #eab308, #22c55e, #38bdf8, #a855f7);
         }
 
         input {
@@ -47,13 +58,9 @@
             padding: 12px 0;
             font-size: 1.1rem;
             border: none;
-            border-bottom: 2px solid var(--border);
             background: transparent;
             outline: none;
-            transition: border-color 0.2s;
         }
-
-        input:focus { border-color: var(--accent); }
 
         .quick-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 15px; }
         .tag-btn {
@@ -81,6 +88,18 @@
         .empty-state { text-align: center; padding: 100px 0; color: var(--meta); font-size: 0.9rem; }
 
         footer { margin-top: 100px; padding: 40px 0; border-top: 1px solid var(--border); font-size: 0.8rem; color: var(--meta); text-align: center; }
+        
+        /* Modal (Privacy venster) */
+        #privacyModal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(255,255,255,0.95);
+            z-index: 1000;
+            padding: 40px 20px;
+            overflow-y: auto;
+        }
     </style>
 </head>
 <body>
@@ -97,40 +116,64 @@
             <button class="tag-btn" onclick="quickSearch('Wzd')">Wzd</button>
             <button class="tag-btn" onclick="quickSearch('foto')">WhatsApp</button>
             <button class="tag-btn" onclick="quickSearch('dossier')">Bewaartermijn</button>
+            <button class="tag-btn" onclick="quickSearch('AVG')">AVG Tekst</button>
         </div>
     </div>
 
     <div id="results">
-        <div class="empty-state">Begin met typen (min. 2 tekens)</div>
+        <div class="empty-state">Typ minimaal 2 letters om te zoeken...</div>
     </div>
 
     <footer>
-        Geen gegevensverwerking • <a href="#" style="color:var(--meta)">Privacy</a>
+        Geen gegevensverwerking • <a href="javascript:void(0)" onclick="togglePrivacy()" style="color:var(--meta)">Privacyverklaring</a>
     </footer>
 </div>
 
+<div id="privacyModal">
+    <div style="max-width: 600px; margin: 0 auto;">
+        <h2 style="font-size: 1.5rem; margin-bottom: 20px;">Privacyverklaring</h2>
+        <p style="font-size: 1rem; line-height: 1.6; color: #3f3f46;">
+            <strong>Geen gegevensverwerking</strong><br>
+            Deze applicatie verzamelt, bewaart of deelt geen persoonsgegevens. Alles wat je in de zoekbalk typt, blijft in het geheugen van je eigen browser en wordt nooit naar een server verzonden.
+        </p>
+        <p style="font-size: 1rem; line-height: 1.6; color: #3f3f46;">
+            <strong>Gebruik van bronnen</strong><br>
+            De links in deze wijzer verwijzen naar officiële teksten op overheidswebsites of erkende zorginstanties. Wij raden aan om bij belangrijke juridische beslissingen altijd de actuele tekst op die websites te raadplegen.
+        </p>
+        <button onclick="togglePrivacy()" style="margin-top: 40px; padding: 10px 20px; border-radius: 4px; border: 1px solid #000; background: #000; color: #fff; cursor: pointer;">Sluiten</button>
+    </div>
+</div>
+
 <script>
+// Jouw database met gehandicaptenzorg focus
 const database = [
     { 
-        "category": "Wzd", 
+        "category": "Wet zorg en dwang", 
         "question": "Camera of sensor in de kamer?", 
-        "answer": "Toezicht via camera's of sensoren valt onder de Wet zorg en dwang. Dit mag alleen bij ernstig risico voor de cliënt en moet vastgelegd zijn in het zorgplan na overleg met de gedragsdeskundige en vertegenwoordiger.", 
+        "answer": "Toezicht via camera's of sensoren valt onder de Wet zorg en dwang (Wzd). Dit mag alleen bij ernstig risico voor de cliënt en moet vastgelegd zijn in het zorgplan na overleg met de gedragsdeskundige en vertegenwoordiger.", 
         "laws": "Wzd",
         "url": "https://www.dwangindezorg.nl/wzd/onvrijwillige-zorg/vormen"
     },
     { 
-        "category": "Privacy", 
+        "category": "Communicatie", 
         "question": "Foto's delen via WhatsApp?", 
-        "answer": "Standaard WhatsApp is niet veilig voor cliëntgegevens. Gebruik uitsluitend beveiligde organisatie-apps en zorg voor expliciete toestemming van de cliënt of vertegenwoordiger.", 
+        "answer": "Standaard WhatsApp is niet veilig genoeg voor cliëntgegevens. Gebruik uitsluitend beveiligde organisatie-apps en zorg altijd voor expliciete toestemming van de cliënt of de wettelijk vertegenwoordiger.", 
         "laws": "AVG Art. 32",
         "url": "https://www.vgn.nl/artikel/handreiking-privacy-de-gehandicaptenzorg"
     },
     { 
-        "category": "Dossier", 
-        "question": "Hoe lang bewaren?", 
-        "answer": "De wettelijke termijn is minimaal 20 jaar na de laatste wijziging of beëindiging van de zorgovereenkomst.", 
+        "category": "Dossiervorming", 
+        "question": "Hoe lang moet ik het dossier bewaren?", 
+        "answer": "De wettelijke termijn is minimaal 20 jaar na de laatste wijziging of beëindiging van de zorgovereenkomst. Bij cliënten in de gehandicaptenzorg is dit cruciaal voor de continuïteit van de zorg.", 
         "laws": "WGBO",
         "url": "https://www.knmg.nl/advies-richtlijnen/dossier-bewaren"
+    },
+    { 
+        "category": "Algemeen", 
+        "question": "Waar vind ik de volledige AVG tekst?", 
+        "answer": "De volledige tekst van de Algemene Verordening Gegevensbescherming (AVG) is online in te zien. Het bevat alle 99 artikelen en 173 overwegingen.", 
+        "laws": "AVG",
+        "url": "https://autoriteitpersoonsgegevens.nl/wetten-en-regels/algemene-verordening-gegevensbescherming-avg"
     }
 ];
 
@@ -164,6 +207,7 @@ function handleSearch(query) {
     const val = query.toLowerCase();
     const container = document.getElementById('results');
 
+    // Zoekactie start exact vanaf 2 letters
     if (val.length < 2) {
         container.innerHTML = '<div class="empty-state">Begin met typen...</div>';
         return;
@@ -172,10 +216,16 @@ function handleSearch(query) {
     const filtered = database.filter(d => 
         d.question.toLowerCase().includes(val) || 
         d.answer.toLowerCase().includes(val) ||
-        d.category.toLowerCase().includes(val)
+        d.category.toLowerCase().includes(val) ||
+        d.laws.toLowerCase().includes(val)
     );
     
     displayResults(filtered);
+}
+
+function togglePrivacy() {
+    const modal = document.getElementById('privacyModal');
+    modal.style.display = (modal.style.display === 'block') ? 'none' : 'block';
 }
 
 document.getElementById('search').oninput = e => handleSearch(e.target.value);
