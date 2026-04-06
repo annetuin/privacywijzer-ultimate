@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Privacy Officer Wijzer PRO - 2026</title>
+    <title>Privacy Officer Wijzer PRO - Expert Editie</title>
     <style>
         :root {
             --bg: #ffffff;
@@ -13,28 +13,37 @@
             --border: #e4e4e7;
             --meta: #71717a;
             --rainbow: linear-gradient(to right, #ef4444, #f97316, #eab308, #22c55e, #38bdf8, #a855f7);
+            --risk-low: #22c55e;
+            --risk-med: #f97316;
+            --risk-high: #ef4444;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--text); padding: 20px; display: flex; justify-content: center; line-height: 1.5; }
-        .container { max-width: 800px; width: 100%; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: var(--bg); color: var(--text); padding: 20px; display: flex; justify-content: center; line-height: 1.5; }
+        .container { max-width: 850px; width: 100%; }
         header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
         h1 { font-size: 1.1rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; }
         .nav-group { display: flex; gap: 6px; flex-wrap: wrap; }
         .officer-btn { background: var(--text); color: var(--bg); border: none; padding: 8px 12px; border-radius: 4px; font-size: 0.7rem; font-weight: 600; cursor: pointer; }
-        .search-area { position: sticky; top: 0; background: var(--bg); z-index: 100; padding-top: 10px; }
-        input { width: 100%; padding: 12px 0; font-size: 1.1rem; border: none; background: transparent; outline: none; border-bottom: 2px solid var(--border); margin-bottom: 10px; }
-        .rainbow-line { height: 2px; background: var(--rainbow); margin-bottom: 10px; }
-        .quick-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 15px; }
-        .tag-btn { background: var(--subtle); border: none; padding: 5px 10px; border-radius: 4px; font-size: 0.75rem; cursor: pointer; color: var(--meta); }
-        .result { padding: 25px 0; border-bottom: 1px solid var(--border); animation: fadeIn 0.3s; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        .category { font-size: 0.65rem; text-transform: uppercase; color: var(--meta); font-weight: 800; }
-        h3 { font-size: 1.1rem; margin: 8px 0; font-weight: 700; color: #000; }
-        .law-tag { font-size: 0.7rem; background: #eee; padding: 2px 6px; border-radius: 3px; font-weight: 600; }
+        
+        .search-area { position: sticky; top: 0; background: var(--bg); z-index: 100; padding-top: 10px; border-bottom: 1px solid var(--border); }
+        input { width: 100%; padding: 15px 0; font-size: 1.2rem; border: none; background: transparent; outline: none; font-weight: 600; }
+        .rainbow-line { height: 3px; background: var(--rainbow); margin-bottom: 10px; }
+        
+        .result { padding: 30px 0; border-bottom: 1px solid var(--border); }
+        .res-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
+        .category-tag { font-size: 0.65rem; text-transform: uppercase; color: var(--meta); font-weight: 800; letter-spacing: 0.05em; }
+        .risk-badge { font-size: 0.6rem; padding: 3px 8px; border-radius: 10px; color: white; font-weight: 700; text-transform: uppercase; }
+        
+        h3 { font-size: 1.2rem; margin-bottom: 10px; color: #000; line-height: 1.3; }
+        .answer { font-size: 1rem; color: #333; margin-bottom: 15px; border-left: 3px solid #eee; padding-left: 15px; }
+        
+        .res-footer { display: flex; gap: 15px; flex-wrap: wrap; margin-top: 15px; }
+        .footer-item { font-size: 0.75rem; background: var(--subtle); padding: 5px 10px; border-radius: 4px; color: #444; }
+        .footer-item strong { color: var(--accent); }
+
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg); z-index: 1000; padding: 40px 20px; overflow-y: auto; }
         .decision-box { background: var(--subtle); padding: 20px; border-radius: 8px; margin-top: 10px; border-left: 4px solid #000; }
-        footer { margin-top: 60px; padding: 20px; border-top: 1px solid var(--border); font-size: 0.7rem; text-align: center; color: var(--meta); }
-        textarea, select { width: 100%; padding: 10px; margin-top: 10px; border: 1px solid var(--border); border-radius: 4px; }
+        footer { margin-top: 60px; padding: 20px; font-size: 0.7rem; text-align: center; color: var(--meta); }
     </style>
 </head>
 <body>
@@ -43,8 +52,7 @@
     <header>
         <h1>Privacy Officer <span style="font-weight:300">Wijzer PRO</span></h1>
         <div class="nav-group">
-            <button class="officer-btn" onclick="openModal('linksModal')">VGN Bronnen</button>
-            <button class="officer-btn" onclick="openModal('vwoModal')">VWO Check</button>
+            <button class="officer-btn" onclick="openModal('consentModal')" style="background:#ef4444">Toestemming</button>
             <button class="officer-btn" onclick="openModal('dpiaModal')">DPIA Pro</button>
             <button class="officer-btn" onclick="openModal('calcModal')">Bewaartermijn</button>
             <button class="officer-btn" onclick="openModal('datalekModal')">Datalek</button>
@@ -52,154 +60,150 @@
     </header>
 
     <div class="search-area">
-        <input id="search" placeholder="Doorzoek 100+ privacy scenario's..." autocomplete="off">
+        <input id="search" placeholder="Zoek op onderwerp, wet (WGBO, Wzd) of artikel..." autocomplete="off">
         <div class="rainbow-line"></div>
-        <div class="quick-tags">
-            <button class="tag-btn" onclick="quickSearch('Wzd')">Wzd</button>
-            <button class="tag-btn" onclick="quickSearch('Inzage')">Inzage</button>
-            <button class="tag-btn" onclick="quickSearch('HR')">HR</button>
-            <button class="tag-btn" onclick="quickSearch('Datalek')">Datalek</button>
-            <button class="tag-btn" onclick="quickSearch('Foto')">Foto/Video</button>
-        </div>
+        <div style="font-size: 0.7rem; color: var(--meta); margin-bottom: 10px;">Suggesties: <strong>Art 28</strong>, <strong>Wilsonbekwaam</strong>, <strong>Camera</strong>, <strong>BSN</strong></div>
     </div>
 
     <div id="results">
-        <div style="padding:40px; text-align:center; color:var(--meta)">Begin met typen om de kennisbank te doorzoeken.</div>
+        <div style="padding:60px; text-align:center; color:var(--meta)">
+            Voer een zoekterm in om de database (Wet, Bron & Risico) te raadplegen.
+        </div>
     </div>
 
-    <footer>Expert Tooling v2026.4 • Gebaseerd op AVG, WGBO en Wzd.</footer>
+    <footer>Expert Tooling v2026.4 • April 2026 Update</footer>
 </div>
 
-<div id="linksModal" class="modal">
-    <div style="max-width:600px; margin:0 auto;">
-        <h2>VGN & Officiële Bronnen</h2>
-        <div class="decision-box">
-            <a href="https://www.vgn.nl/privacy" target="_blank">VGN Privacy Dossier</a><br><br>
-            <a href="https://www.vgn.nl/nieuws/model-toestemmingsformulier-herzien" target="_blank">Model Toestemming (2024)</a><br><br>
-            <a href="https://autoriteitpersoonsgegevens.nl" target="_blank">Autoriteit Persoonsgegevens</a>
-        </div>
-        <button onclick="closeModal('linksModal')" style="margin-top:20px;">Sluiten</button>
+<div id="consentModal" class="modal">
+    <div style="max-width:650px; margin:0 auto;">
+        <h2>Checklist Toestemming 2026</h2>
+        <div class="decision-box">Toetsing op basis van VGN Model en WGBO.</div>
+        <button class="officer-btn" onclick="closeModal('consentModal')" style="margin-top:20px; width:100%">Sluiten</button>
     </div>
 </div>
 
 <div id="dpiaModal" class="modal">
     <div style="max-width:600px; margin:0 auto;">
-        <h2>DPIA Professional Framework</h2>
-        <input type="text" id="dpia-name" placeholder="Naam project">
-        <textarea id="dpia-goal" placeholder="Doel van verwerking"></textarea>
-        <textarea id="dpia-risks" placeholder="Risico's en Maatregelen"></textarea>
-        <button onclick="generateDPIA()" style="padding:10px; background:#000; color:#fff; width:100%; margin-top:10px; border:none; cursor:pointer;">Genereer Rapport</button>
+        <h2>DPIA Concept Generator</h2>
+        <input type="text" id="dpia-name" placeholder="Projectnaam">
+        <button class="officer-btn" onclick="generateDPIA()" style="width:100%; margin-top:10px;">Genereer</button>
         <div id="dpia-result" class="decision-box" style="display:none; white-space:pre-wrap;"></div>
-        <button onclick="closeModal('dpiaModal')" style="margin-top:20px;">Sluiten</button>
-    </div>
-</div>
-
-<div id="calcModal" class="modal">
-    <div style="max-width:600px; margin:0 auto;">
-        <h2>Bewaartermijn Calculator</h2>
-        <select id="data-type">
-            <option value="20">Medisch Dossier (WGBO) - 20 jaar</option>
-            <option value="7">Fiscale Data - 7 jaar</option>
-            <option value="2">HR dossier (Algemeen) - 2 jaar</option>
-            <option value="0.08">Sollicitatie (4 weken)</option>
-        </select>
-        <input type="date" id="start-date">
-        <button onclick="calcDate()" style="margin-top:10px;">Bereken</button>
-        <div id="calc-out" class="decision-box" style="display:none;"></div>
-        <button onclick="closeModal('calcModal')" style="margin-top:20px;">Sluiten</button>
-    </div>
-</div>
-
-<div id="vwoModal" class="modal">
-    <div style="max-width:600px; margin:0 auto;">
-        <h2>VWO Snelcheck</h2>
-        <ul style="list-style:none; padding:10px;">
-            <li><input type="checkbox"> Art. 28 AVG vereisten aanwezig?</li>
-            <li><input type="checkbox"> Beveiligingsbijlage (Art. 32)?</li>
-            <li><input type="checkbox"> Meldplicht datalekken (< 48u)?</li>
-            <li><input type="checkbox"> Audit-recht opgenomen?</li>
-        </ul>
-        <button onclick="closeModal('vwoModal')">Sluiten</button>
-    </div>
-</div>
-
-<div id="datalekModal" class="modal">
-    <div style="max-width:600px; margin:0 auto;">
-        <h2>Datalek Beslisboom</h2>
-        <div id="dl-flow">
-            <p>Is er sprake van verlies of onbevoegde toegang?</p>
-            <button onclick="dlStep(2)">Ja</button> <button onclick="closeModal('datalekModal')">Nee</button>
-        </div>
-        <button onclick="closeModal('datalekModal')" style="margin-top:40px;">Sluiten</button>
+        <button class="officer-btn" onclick="closeModal('dpiaModal')" style="margin-top:20px;">Sluiten</button>
     </div>
 </div>
 
 <script>
 const db = [
-    // WZD & ZORG
-    { cat: "Wzd", q: "Camera op de kamer bij bewoners?", a: "Dit is onvrijwillige zorg. Alleen toegestaan als er ernstig nadeel is voor de cliënt of anderen, minder ingrijpende middelen niet werken en het is opgenomen in het zorgplan na multidisciplinair overleg.", law: "Wet zorg en dwang" },
-    { cat: "Wzd", q: "GPS-tracking bij dwalen?", a: "Wordt gezien als beperking van bewegingsvrijheid. Vereist stappenplan Wzd en periodieke evaluatie door de Wzd-functionaris.", law: "Wzd" },
-    { cat: "Inzage", q: "Recht op inzage nabestaanden?", a: "Nabestaanden hebben geen automatisch recht. Inzage kan alleen bij toestemming van de overledene (bij leven), bij een zwaarwegend belang of als een incidentmelding daartoe aanleiding geeft.", law: "WGBO" },
-    { cat: "Inzage", q: "Inzage door ouders van minderjarige (12-16j)?", a: "Zowel kind als ouders hebben recht op inzage, tenzij het kind hiertegen bezwaar maakt en dit in strijd is met het belang van het kind.", law: "WGBO" },
-    
-    // HR & MEDEWERKERS
-    { cat: "HR", q: "Kopie ID-bewijs bewaren?", a: "Verplicht voor werknemers (loonbelasting). Voor vrijwilligers/stagiairs is alleen een controle van het origineel en registratie van nummer/type toegestaan, geen kopie.", law: "Wet op de loonbelasting" },
-    { cat: "HR", q: "VOG bewaren in personeelsdossier?", a: "Ja, de geldigheid van de VOG moet aangetoond kunnen worden. Bewaren gedurende het dienstverband is toegestaan.", law: "AVG" },
-    { cat: "HR", q: "Mag ik weten waarom een medewerker ziek is?", a: "Nee. Alleen de bedrijfsarts mag medische details vragen. De werkgever mag alleen vragen naar de verwachte duur en functionele beperkingen.", law: "AVG / Beleidsregels AP" },
-    
-    // FOTO & VIDEO
-    { cat: "Foto", q: "Foto's op social media van cliënten?", a: "Strikte voorafgaande toestemming nodig. Voor wilsonbekwamen moet de wettelijk vertegenwoordiger schriftelijk akkoord gaan voor de specifieke uiting.", law: "AVG" },
-    { cat: "Foto", q: "Cameratoezicht in algemene ruimtes?", a: "Alleen toegestaan na een DPIA, met een gerechtvaardigd belang (veiligheid), na overleg met de OR en met duidelijke borden/stickers.", law: "AVG" },
-    
-    // DATALEKKEN
-    { cat: "Datalek", q: "Brief naar verkeerde cliënt gestuurd?", a: "Dit is een datalek. Beoordeel of er sprake is van gevoelige gegevens (BSN, diagnose). Indien ja: melden bij de AP binnen 72 uur.", law: "Art. 33 AVG" },
-    { cat: "Datalek", q: "Verloren USB-stick zonder encryptie?", a: "Hoog risico als er persoonsgegevens op staan. Melden bij AP én de betrokkenen zelf informeren.", law: "Art. 34 AVG" },
-    
-    // VWO & DERDEN
-    { cat: "VWO", q: "Softwareleverancier weigert VWO?", a: "Niet toegestaan. Als er persoonsgegevens worden verwerkt, is een VWO wettelijk verplicht onder Art. 28 AVG.", law: "Art. 28 AVG" },
-    { cat: "VWO", q: "Data buiten de EU (VS)?", a: "Alleen toegestaan onder strikte voorwaarden (Data Privacy Framework of Standard Contractual Clauses + Transfer Impact Assessment).", law: "Art. 44-46 AVG" }
+    { 
+        cat: "Toestemming", 
+        q: "Wie tekent bij wilsonbekwaamheid?", 
+        a: "De wettelijk vertegenwoordiger (mentor/curator). Bij ontbreken: partner of naaste familie.", 
+        law: "WGBO Art. 465", 
+        source: "VGN Handreiking Privacy", 
+        risk: "Hoog" 
+    },
+    { 
+        cat: "Wzd", 
+        q: "Cameratoezicht in de slaapkamer?", 
+        a: "Onvrijwillige zorg. Alleen bij ernstig nadeel en als minder ingrijpende middelen niet werken. Moet in zorgplan.", 
+        law: "Wzd Art. 2.1", 
+        source: "Dwangindezorg.nl", 
+        risk: "Zeer Hoog" 
+    },
+    { 
+        cat: "VWO", 
+        q: "Inhoud van de Verwerkersovereenkomst?", 
+        a: "Afspraken over onderwerp, duur, aard en doel van verwerking, beveiliging en datalek-termijn.", 
+        law: "AVG Artikel 28", 
+        source: "BoZ Model VWO", 
+        risk: "Gemiddeld" 
+    },
+    { 
+        cat: "Datalek", 
+        q: "BSN naar verkeerde ontvanger?", 
+        a: "Gezien de aard van de gegevens (BSN + zorginfo) is dit bijna altijd een meldplichtig lek bij de AP.", 
+        law: "AVG Artikel 33", 
+        source: "Autoriteit Persoonsgegevens", 
+        risk: "Hoog" 
+    },
+    { 
+        cat: "Inzage", 
+        q: "Recht op kopie dossier?", 
+        a: "Cliënt heeft recht op een gratis eerste kopie van het volledige dossier.", 
+        law: "WGBO Art. 456", 
+        source: "Rijksoverheid", 
+        risk: "Laag" 
+    },
+    { 
+        cat: "HR", 
+        q: "Kopie ID-bewijs werknemer?", 
+        a: "Verplicht voor loonbelasting. Mag niet voor ZZP'ers of vrijwilligers (alleen controle).", 
+        law: "Wet op de Loonbelasting", 
+        source: "Belastingdienst", 
+        risk: "Gemiddeld" 
+    },
+    { 
+        cat: "Marketing", 
+        q: "Foto's cliënten op de website?", 
+        a: "Expliciete, specifieke toestemming nodig. Vooraf informeren over intrekbaarheid.", 
+        law: "AVG Artikel 7", 
+        source: "VGN Model 2024", 
+        risk: "Hoog" 
+    }
 ];
 
 function handleSearch(val) {
-    const term = val.toLowerCase();
+    const term = val.toLowerCase().trim();
     const resDiv = document.getElementById('results');
-    if(term.length < 2) { resDiv.innerHTML = '<div style="padding:40px; text-align:center; color:var(--meta)">Typ minimaal 2 letters...</div>'; return; }
     
-    const filtered = db.filter(i => i.q.toLowerCase().includes(term) || i.cat.toLowerCase().includes(term) || i.a.toLowerCase().includes(term));
+    if(term.length < 2) { 
+        resDiv.innerHTML = '<div style="padding:60px; text-align:center; color:var(--meta)">Voer een zoekterm in om de database te raadplegen.</div>'; 
+        return; 
+    }
     
-    resDiv.innerHTML = filtered.length ? filtered.map(i => `
-        <div class="result">
-            <div class="category">${i.cat} <span class="law-tag">${i.law}</span></div>
-            <h3>${i.q}</h3>
-            <p>${i.a}</p>
-        </div>
-    `).join('') : '<div style="padding:40px; text-align:center;">Geen match gevonden.</div>';
+    const filtered = db.filter(i => 
+        i.q.toLowerCase().includes(term) || 
+        i.cat.toLowerCase().includes(term) || 
+        i.a.toLowerCase().includes(term) || 
+        i.law.toLowerCase().includes(term) || 
+        i.source.toLowerCase().includes(term)
+    );
+    
+    if(filtered.length === 0) {
+        resDiv.innerHTML = '<div style="padding:60px; text-align:center;">Geen resultaten gevonden voor deze term of wet.</div>';
+        return;
+    }
+
+    resDiv.innerHTML = filtered.map(i => {
+        let riskColor = "var(--risk-low)";
+        if(i.risk === "Gemiddeld") riskColor = "var(--risk-med)";
+        if(i.risk === "Hoog" || i.risk === "Zeer Hoog") riskColor = "var(--risk-high)";
+
+        return `
+            <div class="result">
+                <div class="res-header">
+                    <span class="category-tag">${i.cat}</span>
+                    <span class="risk-badge" style="background:${riskColor}">Risico: ${i.risk}</span>
+                </div>
+                <h3>${i.q}</h3>
+                <div class="answer">${i.a}</div>
+                <div class="res-footer">
+                    <div class="footer-item"><strong>Wet:</strong> ${i.law}</div>
+                    <div class="footer-item"><strong>Bron:</strong> ${i.source}</div>
+                </div>
+            </div>
+        `;
+    }).join('');
 }
 
-function quickSearch(t) { document.getElementById('search').value = t; handleSearch(t); }
 document.getElementById('search').oninput = (e) => handleSearch(e.target.value);
-
 function openModal(id) { document.getElementById(id).style.display = 'block'; }
 function closeModal(id) { document.getElementById(id).style.display = 'none'; }
-
-function calcDate() {
-    const years = parseFloat(document.getElementById('data-type').value);
-    const date = new Date(document.getElementById('start-date').value);
-    if(isNaN(date)) return;
-    date.setFullYear(date.getFullYear() + Math.floor(years));
-    if(years < 1) date.setMonth(date.getMonth() + 1);
-    document.getElementById('calc-out').style.display = 'block';
-    document.getElementById('calc-out').innerHTML = "Vernietigen op: <strong>" + date.toLocaleDateString('nl-NL') + "</strong>";
-}
-
 function generateDPIA() {
+    const name = document.getElementById('dpia-name').value || "Naamloos";
     const out = document.getElementById('dpia-result');
     out.style.display = 'block';
-    out.innerText = "DPIA RAPPORT - CONCEPT\nProject: " + document.getElementById('dpia-name').value + "\nStatus: Beoordeling noodzakelijk\nDatum: " + new Date().toLocaleDateString();
-}
-
-function dlStep(s) {
-    document.getElementById('dl-flow').innerHTML = "<div class='decision-box'><strong>CONCLUSIE:</strong> Meld dit lek binnen 72u bij de AP en documenteer in het incidentenregister.</div>";
+    out.innerText = `DPIA CONCEPT: ${name}\nDatum: ${new Date().toLocaleDateString()}\nFocus: Privacy-by-design & Risicobeperking.`;
 }
 </script>
 </body>
