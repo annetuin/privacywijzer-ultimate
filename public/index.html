@@ -73,13 +73,13 @@
     </header>
 
     <div class="search-area">
-        <input id="search" placeholder="Doorzoek wet, bron of onderwerp..." autocomplete="off">
+        <input id="search" placeholder="Doorzoek 60+ scenario's, wetten of bronnen..." autocomplete="off">
         <div class="rainbow-line"></div>
     </div>
 
     <div id="results">
         <div style="padding:60px; text-align:center; color:var(--meta)">
-            Raadpleeg de expert-database voor juridische onderbouwing en risico-analyses.
+            Voer een zoekterm in om de expert-database te raadplegen.
         </div>
     </div>
 
@@ -92,103 +92,75 @@
 <div id="roleModal" class="modal">
     <div style="max-width:800px; margin:0 auto;">
         <h2>Functieprofiel: Privacy Officer</h2>
-        <p style="color:var(--meta); font-size:0.85rem; margin-bottom:20px;">Positionering: Operationeel expert en strategisch adviseur (First Line of Defense / Support).</p>
-        
         <div class="form-section">
-            <h4>Resultaatgebieden & Taken</h4>
             <div class="role-grid">
                 <div class="role-card">
                     <h5>Strategisch & Advies</h5>
                     <ul>
-                        <li>Begeleiden van complexe DPIA's (bijv. Domotica/Wzd).</li>
-                        <li>Adviseren over Privacy-by-Design bij nieuwe ICT.</li>
-                        <li>Sparringpartner voor de Functionaris Gegevensbescherming (FG).</li>
+                        <li>DPIA's begeleiden (Domotica/Wzd).</li>
+                        <li>Advies Privacy-by-Design.</li>
+                        <li>Sparringpartner FG.</li>
                     </ul>
                 </div>
                 <div class="role-card">
-                    <h5>Operationeel & Beheer</h5>
+                    <h5>Operationeel</h5>
                     <ul>
-                        <li>Beheer Verwerkingsregister en VWO's.</li>
-                        <li>Ondersteunen bij rechten van betrokkenen.</li>
-                        <li>Triage en registratie van datalekken.</li>
-                    </ul>
-                </div>
-                <div class="role-card">
-                    <h5>Bewustwording</h5>
-                    <ul>
-                        <li>Vertaalslag wetgeving naar zorgpraktijk.</li>
-                        <li>Verzorgen van trainingen voor zorgteams.</li>
-                        <li>Privacy-audits uitvoeren op locaties.</li>
+                        <li>Beheer Verwerkingsregister.</li>
+                        <li>Triage datalekken.</li>
+                        <li>VWO beoordelingen.</li>
                     </ul>
                 </div>
             </div>
         </div>
-
-        <div class="form-section">
-            <h4>Verantwoordelijkheid (De Grens)</h4>
-            <div class="decision-box" style="border-left-color: var(--risk-high)">
-                <p><strong>De Privacy Officer adviseert, de directie/bestuur beslist.</strong></p>
-                <ul style="font-size:0.85rem; margin-top:10px; padding-left:20px;">
-                    <li>Jij bent niet juridisch aansprakelijk voor incidenten (dat is de rechtspersoon).</li>
-                    <li>Jij accepteert geen risico's; dat doet de proceseigenaar/bestuurder.</li>
-                    <li>Jij voert geen technische IT-security uit (bijv. firewalls instellen).</li>
-                </ul>
-            </div>
+        <div class="decision-box" style="border-left-color: var(--risk-high)">
+            <p><strong>De Grens:</strong> De PO adviseert, de directie beslist. Jij bent niet juridisch aansprakelijk voor incidenten.</p>
         </div>
-
-        <button class="officer-btn" onclick="closeModal('roleModal')" style="width:100%; padding:15px; background:#000; color:#fff;">Terug naar Dashboard</button>
+        <button class="officer-btn" onclick="closeModal('roleModal')" style="width:100%; padding:15px; background:#000; color:#fff; margin-top:20px;">Terug</button>
     </div>
 </div>
 
 <div id="dpiaModal" class="modal">
     <div style="max-width:750px; margin:0 auto;">
-        <h2>DPIA Expert Framework (Art. 35)</h2>
+        <h2>DPIA Expert Framework</h2>
         <div class="form-section">
-            <h4>1. Pre-Scan (Is een DPIA verplicht?)</h4>
-            <div class="check-item"><input type="checkbox" id="crit1"> <span>Gezondheidsgegevens (Bijzondere gegevens)?</span></div>
-            <div class="check-item"><input type="checkbox" id="crit2"> <span>Kwetsbare betrokkenen (Cliënten/Wilsonbekwamen)?</span></div>
-            <div class="check-item"><input type="checkbox" id="crit3"> <span>Grootschalige verwerking of monitoring?</span></div>
-        </div>
-        <div class="form-section">
-            <h4>2. Projectomschrijving & Risico</h4>
-            <input type="text" id="dpia-name" placeholder="Naam project/systeem">
-            <textarea id="dpia-goal" placeholder="Doelbinding: Waarom doen we dit?"></textarea>
+            <h4>Analyse</h4>
+            <input type="text" id="dpia-name" placeholder="Naam project">
+            <textarea id="dpia-goal" placeholder="Doelbinding & Noodzaak"></textarea>
             <select id="risk-impact">
                 <option value="Laag">Impact: Laag</option>
-                <option value="Middel">Impact: Middel (Nadeel voor cliënt)</option>
-                <option value="Hoog">Impact: Hoog (BSN lek / Ernstig nadeel)</option>
+                <option value="Middel">Impact: Middel</option>
+                <option value="Hoog">Impact: Hoog</option>
             </select>
-            <textarea id="dpia-mitigation" placeholder="Maatregelen (MFA, VWO, Encryptie, Autorisaties)"></textarea>
+            <textarea id="dpia-mitigation" placeholder="Maatregelen (MFA, VWO, etc.)"></textarea>
         </div>
-        <button class="officer-btn" onclick="generateDPIA()" style="width:100%; background:#000; color:#fff; padding:15px;">Analyse Rapporteren</button>
+        <button class="officer-btn" onclick="generateDPIA()" style="width:100%; background:#000; color:#fff; padding:15px;">Genereer Rapport</button>
         <div id="dpia-result" class="decision-box" style="display:none; white-space:pre-wrap; font-family:monospace; font-size:0.8rem;"></div>
-        <button class="officer-btn" onclick="closeModal('dpiaModal')" style="margin-top:20px; background:none; color:#000; text-decoration:underline;">Sluiten</button>
+        <button class="officer-btn" onclick="closeModal('dpiaModal')" style="margin-top:20px;">Sluiten</button>
     </div>
 </div>
 
 <div id="datalekModal" class="modal">
     <div style="max-width:650px; margin:0 auto;">
-        <h2>Datalek Triage Wizard</h2>
+        <h2>Datalek Wizard</h2>
         <div id="dl-wizard">
             <div class="decision-box">
-                <p>Is er sprake van verlies van data of ongeoorloofde toegang tot persoonsgegevens?</p>
+                <p>Is er sprake van verlies van data of ongeoorloofde toegang?</p>
                 <div style="margin-top:20px;">
                     <button class="officer-btn" style="background:#ef4444" onclick="dlStep(2)">Ja</button>
                     <button class="officer-btn" style="background:#22c55e" onclick="closeModal('datalekModal')">Nee</button>
                 </div>
             </div>
         </div>
-        <button onclick="closeModal('datalekModal')" style="margin-top:40px; text-decoration:underline; border:none; background:none; cursor:pointer;">Annuleren</button>
+        <button onclick="closeModal('datalekModal')" style="margin-top:40px;">Annuleren</button>
     </div>
 </div>
 
 <div id="consentModal" class="modal">
     <div style="max-width:650px; margin:0 auto;">
-        <h2>Toestemming Checklist (VGN 2024)</h2>
-        <div class="check-item"><input type="checkbox"> <span>Wilsbekwaamheid getoetst conform WGBO?</span></div>
-        <div class="check-item"><input type="checkbox"> <span>VGN Model Toestemming (Okt 2024) gebruikt?</span></div>
-        <div class="check-item"><input type="checkbox"> <span>Specifieke doelen apart aangevinkt (niet gebundeld)?</span></div>
-        <div class="check-item"><input type="checkbox"> <span>Informatie over intrekken verstrekt?</span></div>
+        <h2>Toestemming Checklist (2024)</h2>
+        <div class="check-item"><input type="checkbox"> <span>Wilsbekwaamheid getoetst?</span></div>
+        <div class="check-item"><input type="checkbox"> <span>VGN Model gebruikt?</span></div>
+        <div class="check-item"><input type="checkbox"> <span>Doelen apart aangevinkt?</span></div>
         <button class="officer-btn" onclick="closeModal('consentModal')" style="width:100%; margin-top:20px;">Sluiten</button>
     </div>
 </div>
@@ -197,13 +169,12 @@
     <div style="max-width:600px; margin:0 auto;">
         <h2>Bewaartermijn Calculator</h2>
         <select id="calc-type">
-            <option value="20">Medisch Dossier (WGBO) - 20 jaar</option>
-            <option value="7">Fiscale Data - 7 jaar</option>
-            <option value="2">HR dossier - 2 jaar</option>
-            <option value="0.08">Sollicitatie - 4 weken</option>
+            <option value="20">Medisch Dossier - 20j</option>
+            <option value="7">Fiscaal - 7j</option>
+            <option value="2">HR - 2j</option>
         </select>
         <input type="date" id="calc-date">
-        <button class="officer-btn" onclick="runCalc()" style="width:100%; margin-top:10px;">Bereken Vernietiging</button>
+        <button class="officer-btn" onclick="runCalc()" style="width:100%; margin-top:10px;">Bereken</button>
         <div id="calc-out" class="decision-box" style="display:none;"></div>
         <button class="officer-btn" onclick="closeModal('calcModal')" style="margin-top:20px;">Sluiten</button>
     </div>
@@ -215,10 +186,12 @@ const db = [
     { cat: "Wzd", q: "Akoestisch uitluisteren/akoestisch toezicht?", a: "Onvrijwillige zorg. Alleen toegestaan als minder ingrijpende middelen niet werken en veiligheid in het geding is. Registratie in zorgplan vereist.", law: "Wzd Art. 2.1", source: "VGN Handreiking", risk: "Zeer Hoog" },
     { cat: "Toestemming", q: "Wie tekent bij wilsonbekwaamheid?", a: "Wettelijk vertegenwoordiger (mentor/curator). Bij ontbreken: partner of naaste familie.", law: "WGBO Art. 465", source: "KNMG", risk: "Hoog" },
     { cat: "Datalek", q: "BSN naar verkeerde ontvanger?", a: "Gezien de aard (BSN + zorginfo) is dit vrijwel altijd een meldplichtig lek bij de AP (binnen 72u).", law: "AVG Art. 33", source: "AP", risk: "Hoog" },
-    { cat: "HR", q: "Kopie ID-bewijs bewaren?", a: "Verplicht voor medewerkers op de loonlijst. Mag niet voor vrijwilligers of ZZP'ers (alleen controle/noteren nummer).", law: "Wet op de loonbelasting", source: "Belastingdienst", risk: "Gemiddeld" },
-    { cat: "Inzage", q: "Recht op inzage nabestaanden?", a: "Geen automatisch recht. Alleen bij toestemming bij leven, zwaarwegend belang of incidentenonderzoek.", law: "WGBO Art. 457", source: "KNMG", risk: "Gemiddeld" },
-    { cat: "VWO", q: "Softwareleverancier in de zorg?", a: "Verwerkersovereenkomst verplicht onder Art. 28 AVG. Gebruik bij voorkeur BoZ model.", law: "AVG Artikel 28", source: "BoZ Model", risk: "Gemiddeld" }
-// --- WET ZORG EN DWANG (Wzd) & DOMOTICA ---
+    { cat: "HR", q: "Kopie ID-bewijs bewaren?", a: "Verplicht voor medewerkers op de loonlijst. Mag niet voor vrijwilligers of ZZP'ers.", law: "Wet op de loonbelasting", source: "Belastingdienst", risk: "Gemiddeld" },
+    { cat: "Inzage", q: "Recht op inzage nabestaanden?", a: "Geen automatisch recht. Alleen bij toestemming bij leven of zwaarwegend belang.", law: "WGBO Art. 457", source: "KNMG", risk: "Gemiddeld" },
+    { cat: "Wzd", q: "Digitale deurvergrendeling (leefcirkels)?", a: "Beperking bewegingsvrijheid. Vereist Wzd-stappenplan en registratie in zorgplan.", law: "Wzd / Art. 35 AVG", source: "Dwangindezorg.nl", risk: "Hoog" },
+    { cat: "Wzd", q: "Gebruik van GPS-trackers bij dwalen?", a: "Onvrijwillige zorg. Periodieke evaluatie door Wzd-functionaris nodig.", law: "Wzd", source: "VGN", risk: "Hoog" },
+    { cat: "Wzd", q: "Inzet van slimme sensoren (valdetectie)?", a: "Privacy-inbreuk. Toestemming of opname in zorgplan bij onvrijwillige zorg.", law: "Wzd / Art. 25 AVG", source: "Vilans", risk: "Gemiddeld" },
+    // --- WET ZORG EN DWANG (Wzd) & DOMOTICA ---
     { cat: "Wzd", q: "Digitale deurvergrendeling (leefcirkels)?", a: "Beperking bewegingsvrijheid. Vereist Wzd-stappenplan en registratie in zorgplan. DPIA op systeem verplicht.", law: "Wzd / Art. 35 AVG", source: "Dwangindezorg.nl", risk: "Hoog" },
     { cat: "Wzd", q: "Gebruik van GPS-trackers bij dwalen?", a: "Onvrijwillige zorg. Alleen bij ernstig nadeel en als alternatieven niet werken. Periodieke evaluatie door Wzd-functionaris nodig.", law: "Wzd", source: "VGN", risk: "Hoog" },
     { cat: "Wzd", q: "Inzet van slimme sensoren (valdetectie)?", a: "Privacy-inbreuk. Toestemming nodig of opname in zorgplan bij onvrijwillige zorg. Privacy-by-design essentieel.", law: "Wzd / Art. 25 AVG", source: "Vilans", risk: "Gemiddeld" },
@@ -285,16 +258,18 @@ const db = [
     { cat: "Inzage", q: "Inzageverzoek via e-mail?", a: "Geldig, maar eerst identiteit van de verzoeker deugdelijk vaststellen.", law: "Art. 12 AVG", source: "AP", risk: "Gemiddeld" },
     { cat: "Marketing", q: "Relatiegeschenk naar vertegenwoordigers?", a: "Alleen als zij hiervoor toestemming hebben gegeven (opt-in).", law: "Telecommunicatiewet", source: "ACM", risk: "Laag" },
     { cat: "Audit", q: "Hoe bewijs ik compliance?", a: "Door logging, register, beleidstukken en getekende VWO's (Accountability).", law: "Art. 5 lid 2 AVG", source: "AP", risk: "Hoog" }
+    { cat: "Toestemming", q: "Verschil tussen toestemming voor zorg en data?", a: "WGBO is voor behandeling. AVG is voor extra zaken (foto's/onderzoek).", law: "WGBO vs AVG", source: "VGN", risk: "Gemiddeld" },
+    { cat: "Datalek", q: "Diefstal van een onbeveiligde laptop?", a: "Hoog risico. Melden bij AP én bij alle betrokkenen.", law: "Art. 34 AVG", source: "AP", risk: "Zeer Hoog" },
+    { cat: "HR", q: "Medische gegevens van zieke medewerker?", a: "Verboden te registreren door werkgever. Alleen de bedrijfsarts mag dit.", law: "AVG", source: "AP", risk: "Zeer Hoog" },
+    { cat: "Zorg", q: "Mag een cliënt zijn eigen dossier inzien?", a: "Ja, altijd recht op inzage in het eigen dossier, eventueel met begeleiding.", law: "WGBO", source: "VGN", risk: "Laag" },
+    { cat: "Zorg", q: "Mogen we BSN gebruiken op maaltijdlijsten?", a: "Nee. BSN is niet nodig voor maaltijdverstrekking. Gebruik kamernummer.", law: "Art. 46 UAVG", source: "AP", risk: "Gemiddeld" },
+    { cat: "Audit", q: "Hoe bewijs ik compliance?", a: "Door logging, register, beleid en getekende VWO's (Accountability).", law: "Art. 5 lid 2 AVG", source: "AP", risk: "Hoog" }
 ];
 
-// MODAL LOGICA
+// JS LOGICA
 function openModal(id) { document.getElementById(id).style.display = 'block'; }
-function closeModal(id) { 
-    document.getElementById(id).style.display = 'none'; 
-    if(id === 'datalekModal') resetDatalek(); 
-}
+function closeModal(id) { document.getElementById(id).style.display = 'none'; }
 
-// ZOEKFUNCTIE
 function handleSearch(val) {
     const term = val.toLowerCase().trim();
     const resDiv = document.getElementById('results');
@@ -305,12 +280,11 @@ function handleSearch(val) {
     const filtered = db.filter(i => 
         i.q.toLowerCase().includes(term) || 
         i.cat.toLowerCase().includes(term) || 
-        i.law.toLowerCase().includes(term) ||
         i.a.toLowerCase().includes(term)
     );
     
     if(filtered.length === 0) {
-        resDiv.innerHTML = '<div style="padding:60px; text-align:center;">Geen resultaten gevonden voor deze term of wet.</div>';
+        resDiv.innerHTML = '<div style="padding:60px; text-align:center;">Geen resultaten gevonden.</div>';
         return;
     }
 
@@ -326,50 +300,30 @@ function handleSearch(val) {
         </div>
     `).join('');
 }
+
 document.getElementById('search').oninput = (e) => handleSearch(e.target.value);
 
-function quickSearch(t) { document.getElementById('search').value = t; handleSearch(t); }
-
-// DPIA GENERATOR
 function generateDPIA() {
     const name = document.getElementById('dpia-name').value || "Naamloos";
-    const goal = document.getElementById('dpia-goal').value || "Niet ingevuld";
-    const mit = document.getElementById('dpia-mitigation').value || "Geen specifieke maatregelen";
     const res = document.getElementById('dpia-result');
     res.style.display = 'block';
-    res.innerText = `DPIA CONCEPT: ${name}\nDatum: ${new Date().toLocaleDateString('nl-NL')}\n\nDoel: ${goal}\nMaatregelen: ${mit}\n\nAdvies Privacy Officer: Beoordeling door FG vereist voor risico-acceptatie.`;
+    res.innerText = `DPIA CONCEPT: ${name}\nDatum: ${new Date().toLocaleDateString()}\nAdvies PO: Beoordeling FG vereist.`;
 }
 
-// CALCULATOR
 function runCalc() {
-    const years = parseFloat(document.getElementById('calc-type').value);
-    const inputDate = document.getElementById('calc-date').value;
-    if(!inputDate) return;
-    const date = new Date(inputDate);
-    date.setFullYear(date.getFullYear() + Math.floor(years));
-    if(years < 1) date.setMonth(date.getMonth() + 1);
+    const years = parseInt(document.getElementById('calc-type').value);
+    const date = new Date(document.getElementById('calc-date').value);
+    if(isNaN(date)) return;
+    date.setFullYear(date.getFullYear() + years);
     const out = document.getElementById('calc-out');
     out.style.display = 'block';
-    out.innerHTML = `Uiterste vernietigingsdatum: <strong>${date.toLocaleDateString('nl-NL')}</strong>`;
+    out.innerHTML = `Vernietiging op: <strong>${date.toLocaleDateString('nl-NL')}</strong>`;
 }
 
-// DATALEK WIZARD
 function dlStep(s) {
-    const w = document.getElementById('dl-wizard');
-    w.innerHTML = `
-        <div class="decision-box" style="border-left-color:var(--risk-high)">
-            <p><strong>CONCLUSIE: MELDPLICHTIG</strong></p>
-            <p style="font-size:0.85rem; margin-top:10px;">In de zorgsector is dit incident (Gezondheidsdata/BSN) vrijwel altijd meldplichtig bij de AP binnen 72 uur. Documenteer direct in het incidentenregister.</p>
-        </div>`;
-}
-function resetDatalek() {
     document.getElementById('dl-wizard').innerHTML = `
-        <div class="decision-box">
-            <p>Is er sprake van verlies van data of ongeoorloofde toegang tot persoonsgegevens?</p>
-            <div style="margin-top:20px;">
-                <button class="officer-btn" style="background:#ef4444" onclick="dlStep(2)">Ja</button>
-                <button class="officer-btn" style="background:#22c55e" onclick="closeModal('datalekModal')">Nee</button>
-            </div>
+        <div class="decision-box" style="border-left-color:var(--risk-high)">
+            <p><strong>MELDPLICHTIG:</strong> Meld binnen 72u bij de AP.</p>
         </div>`;
 }
 </script>
