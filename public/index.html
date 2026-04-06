@@ -2,8 +2,8 @@
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
-    <title>Privacy Officer Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Privacy Officer Dashboard - VGN/AVG Wijzer</title>
     <style>
         :root {
             --bg: #ffffff;
@@ -13,90 +13,69 @@
             --border: #e4e4e7;
             --meta: #71717a;
             --rainbow: linear-gradient(to right, #ef4444, #f97316, #eab308, #22c55e, #38bdf8, #a855f7);
+            --success: #22c55e;
+            --error: #ef4444;
         }
 
-        * { box-sizing: border-box; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
-            font-family: -apple-system, system-ui, sans-serif;
-            background-color: var(--bg);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: var(--bg);
             color: var(--text);
-            margin: 0;
             padding: 20px;
             display: flex;
             justify-content: center;
+            line-height: 1.5;
         }
 
-        .container { width: 100%; max-width: 700px; }
+        .container { max-width: 700px; width: 100%; }
 
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-            gap: 10px;
+        header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            flex-wrap: wrap; 
+            gap: 10px; 
+            margin-bottom: 20px; 
         }
 
-        h1 {
-            font-size: 1.1rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin: 0;
-        }
+        h1 { font-size: 1.1rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; margin: 0; }
+        h1 span { font-weight: 300; }
 
-        .nav-group {
-            display: flex;
-            gap: 6px;
-            flex-wrap: wrap;
-        }
-
+        .nav-group { display: flex; gap: 6px; flex-wrap: wrap; }
+        
         .officer-btn {
             background: var(--text);
             color: var(--bg);
             border: none;
-            padding: 6px 12px;
+            padding: 8px 12px;
             border-radius: 4px;
             font-size: 0.7rem;
             font-weight: 600;
             cursor: pointer;
+            transition: opacity 0.2s;
         }
+        .officer-btn:hover { opacity: 0.9; }
 
-        .search-area {
-            position: sticky;
-            top: 0;
-            background: var(--bg);
-            z-index: 100;
-            padding-top: 10px;
-        }
-
+        .search-area { position: sticky; top: 0; background: var(--bg); z-index: 100; padding-top: 10px; }
+        
         input, textarea, select {
             width: 100%;
             padding: 12px 0;
-            font-size: 1.1rem;
+            font-size: 1rem;
             border: none;
             background: transparent;
             outline: none;
-            font-weight: 500;
             border-bottom: 1px solid var(--border);
             margin-bottom: 10px;
+            font-family: inherit;
         }
 
-        .rainbow-line {
-            width: 100%;
-            height: 2px;
-            background: var(--rainbow);
-            margin-bottom: 10px;
-        }
+        .rainbow-line { height: 2px; background: var(--rainbow); margin-bottom: 10px; }
 
-        .quick-tags {
-            display: flex;
-            gap: 6px;
-            flex-wrap: wrap;
-            margin-bottom: 15px;
-        }
-
+        .quick-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 15px; }
+        
         .tag-btn {
             background: var(--subtle);
             border: none;
@@ -107,168 +86,63 @@
             color: var(--meta);
         }
 
-        .empty-state {
-            padding: 10px 0;
-            color: var(--meta);
-            font-size: 0.9rem;
-            border-bottom: 1px solid var(--border);
-            margin-bottom: 20px;
-        }
+        .result { padding: 25px 0; border-bottom: 1px solid var(--border); animation: fadeIn 0.3s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
 
-        .result {
-            padding: 25px 0;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .category {
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            color: var(--meta);
-            font-weight: 800;
-            letter-spacing: 0.08em;
-        }
-
-        h3 {
-            font-size: 1.15rem;
-            margin: 8px 0;
-            font-weight: 700;
-        }
+        .category { font-size: 0.65rem; text-transform: uppercase; color: var(--meta); font-weight: 800; letter-spacing: 0.08em; }
+        h3 { font-size: 1.15rem; margin: 8px 0; font-weight: 700; }
+        .result p { font-size: 0.95rem; color: #444; margin-bottom: 12px; }
+        .result a { color: var(--accent); font-weight: 700; text-decoration: none; border-bottom: 1px solid var(--accent); font-size: 0.8rem; }
 
         .modal {
             display: none;
             position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             background: var(--bg);
             z-index: 1000;
             padding: 40px 20px;
             overflow-y: auto;
         }
 
-        .modal-content {
-            max-width: 600px;
-            margin: 0 auto;
-        }
+        .modal-content { max-width: 600px; margin: 0 auto; }
+        .form-section { margin-bottom: 30px; border-top: 2px solid var(--subtle); padding-top: 15px; }
+        .form-section h4 { text-transform: uppercase; font-size: 0.8rem; color: var(--meta); margin-bottom: 15px; }
 
-        .form-section {
-            margin-bottom: 30px;
-            border-top: 2px solid var(--subtle);
-            padding-top: 15px;
-        }
+        .decision-box { background: var(--subtle); padding: 20px; border-radius: 8px; margin-top: 10px; border-left: 4px solid var(--accent); }
+        .choice-btn { padding: 10px 15px; border: 1px solid var(--border); background: white; border-radius: 4px; cursor: pointer; font-weight: 600; margin-right: 5px; margin-bottom: 5px; }
+        .choice-btn.primary { background: var(--accent); color: white; border: none; }
 
-        .form-section h4 {
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            color: var(--meta);
-            margin-bottom: 15px;
-        }
+        .link-item { display: block; padding: 15px; border-bottom: 1px solid var(--border); text-decoration: none; color: var(--text); }
+        .link-item span { display: block; font-size: 0.8rem; color: var(--meta); margin-top: 4px; }
 
-        .link-item {
-            display: block;
-            padding: 15px;
-            border-bottom: 1px solid var(--border);
-            text-decoration: none;
-            color: var(--text);
-        }
+        footer { margin-top: 60px; padding: 30px 0; border-top: 1px solid var(--border); font-size: 0.75rem; color: var(--meta); text-align: center; }
 
-        .link-item:hover {
-            background: var(--subtle);
-        }
-
-        .link-item span {
-            display: block;
-            font-size: 0.8rem;
-            color: var(--meta);
-            margin-top: 4px;
-        }
-
-        .decision-box {
-            background: var(--subtle);
-            padding: 20px;
-            border-radius: 8px;
-            margin-top: 10px;
-            border-left: 4px solid var(--accent);
-        }
-
-        .btn-group {
-            display: flex;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .choice-btn {
-            padding: 10px 15px;
-            border: 1px solid var(--border);
-            background: white;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: 600;
-        }
-
-        .action-bar {
-            display: flex;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .share-btn {
-            background: #eab308;
-            color: #000;
-            border: none;
-            padding: 8px 12px;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            cursor: pointer;
-        }
-
-        .check-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            margin-bottom: 10px;
-            font-size: 0.9rem;
-        }
-
-        .check-item input {
-            width: auto;
-            margin-top: 4px;
-            border-bottom: none;
-        }
-
-        footer {
-            margin-top: 60px;
-            padding: 30px 0;
-            border-top: 1px solid var(--border);
-            font-size: 0.75rem;
-            color: var(--meta);
-            text-align: center;
-        }
+        .check-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; font-size: 0.9rem; }
+        .check-item input { width: auto; margin: 5px 0 0 0; }
     </style>
 </head>
 <body>
 
 <div class="container">
     <header>
-        <h1>Privacy Officer <span style="font-weight: 300;">Wijzer</span></h1>
+        <h1>Privacy Officer <span>Wijzer</span></h1>
         <div class="nav-group">
-            <button class="officer-btn" aria-label="Bronnen bekijken" onclick="openModal('linksModal')">Bronnen</button>
-            <button class="officer-btn" aria-label="VWO checklist tonen" onclick="openModal('vwoModal')">Verwerkers (VWO)</button>
-            <button class="officer-btn" aria-label="DPIA Pro openen" onclick="openModal('dpiaModal')">DPIA Pro</button>
-            <button class="officer-btn" aria-label="Bewaartermijn calculator" onclick="openModal('calcModal')">Calculator</button>
-            <button class="officer-btn" aria-label="Datalek wizard" onclick="openModal('datalekModal')">Datalek</button>
-            <button class="officer-btn" aria-label="Privacy incident melden" onclick="triggerReportMail()">Meld Incident</button>
+            <button class="officer-btn" onclick="openModal('linksModal')">Bronnen</button>
+            <button class="officer-btn" onclick="openModal('vwoModal')">VWO</button>
+            <button class="officer-btn" onclick="openModal('dpiaModal')">DPIA Pro</button>
+            <button class="officer-btn" onclick="openModal('calcModal')">Calculator</button>
+            <button class="officer-btn" onclick="openModal('datalekModal')">Datalek</button>
         </div>
     </header>
 
     <div class="search-area">
-        <input id="search" placeholder="Zoek onderwerp..." autocomplete="off" aria-label="Zoekveld">
+        <input id="search" placeholder="Zoek op onderwerp (bijv. Wzd, dossier, VGN)..." autocomplete="off">
         <div class="rainbow-line"></div>
         <div class="quick-tags">
             <button class="tag-btn" onclick="quickSearch('Wzd')">Wzd</button>
             <button class="tag-btn" onclick="quickSearch('VGN')">VGN</button>
             <button class="tag-btn" onclick="quickSearch('dossier')">Bewaartermijn</button>
-            <button class="tag-btn" onclick="quickSearch('vwo')">VWO</button>
+            <button class="tag-btn" onclick="quickSearch('HR')">Personeel</button>
         </div>
     </div>
 
@@ -277,92 +151,80 @@
     </div>
 
     <footer>
-        <p>Expert Dashboard v2026 • <a href="javascript:void(0)" onclick="openModal('privacyModal')" style="color:var(--meta)">AVG & Wetgeving</a></p>
+        <p>Expert Dashboard v2026 • Geoptimaliseerd voor de Gehandicaptenzorg</p>
     </footer>
 </div>
 
-<!-- VWO checklist modal -->
-<div id="vwoModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="vwo-title">
+<div id="dpiaModal" class="modal">
     <div class="modal-content">
-        <h2 id="vwo-title">Checklist Verwerkersovereenkomst (VWO)</h2>
+        <h2>DPIA Professional Framework</h2>
+        <p style="color:var(--meta); font-size: 0.9rem; margin-bottom: 20px;">Effectbeoordeling conform Art. 35 AVG.</p>
         <div class="form-section">
-            <div class="check-item"><input type="checkbox"> <span>Onderwerp, duur, aard en doel gedefinieerd.</span></div>
-            <div class="check-item"><input type="checkbox"> <span>Soort persoonsgegevens en categorieën betrokkenen vermeld.</span></div>
-            <div class="check-item"><input type="checkbox"> <span>Beveiligingsmaatregelen (Art. 32) beschreven.</span></div>
-            <div class="check-item"><input type="checkbox"> <span>Bijstand bij datalekken en rechten van betrokkenen.</span></div>
-            <div class="check-item"><input type="checkbox"> <span>Audit‑recht en vernietiging na afloop.</span></div>
+            <h4>Analyse Details</h4>
+            <input type="text" id="dpia-name" placeholder="Naam van de verwerking">
+            <textarea id="dpia-goal" placeholder="Doel en noodzaak (Waarom doen we dit?)"></textarea>
+            <textarea id="dpia-data" placeholder="Welke gegevens en wie zijn de betrokkenen?"></textarea>
+            <textarea id="dpia-mitigation" placeholder="Maatregelen om risico's te beperken"></textarea>
         </div>
-        <div class="decision-box">
-            Gebruik de <a href="https://www.vgn.nl/nieuws/boz-modelverwerkersovereenkomst-vernieuwd" target="_blank">BoZ modelverwerkersovereenkomst</a>.
-        </div>
-        <button onclick="closeModal('vwoModal')" style="margin-top:40px; border:none; background:none; text-decoration:underline; cursor:pointer;">Terug</button>
-    </div>
-</div>
-
-<!-- DPIA modal -->
-<div id="dpiaModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="dpia-title">
-    <div class="modal-content">
-        <h2 id="dpia-title">DPIA Professional Framework</h2>
-        <div class="form-section">
-            <h4>Analyse</h4>
-            <input type="text" id="dpia-name" placeholder="Naam verwerking">
-            <textarea id="dpia-goal" placeholder="Doel van de verwerking"></textarea>
-            <textarea id="dpia-sub" placeholder="Subsidiariteit check"></textarea>
-            <textarea id="dpia-data" placeholder="Welke gegevens?"></textarea>
-            <select id="dpia-target">
-                <option value="Regulier">Betrokkenen: Regulier</option>
-                <option value="Cliënten">Betrokkenen: Kwetsbaar (Cliënten)</option>
-            </select>
-            <textarea id="dpia-risks" placeholder="Risico's"></textarea>
-            <textarea id="dpia-mitigation" placeholder="Maatregelen"></textarea>
-        </div>
-        <button class="choice-btn" style="background:#000; color:#fff; width:100;" onclick="generateDPIA()">Analyse Voltooien</button>
+        <button class="choice-btn primary" onclick="generateDPIA()">Analyse Voltooien</button>
         <div id="dpia-result-container" style="display:none; margin-top:20px;">
-            <div id="dpia-result" class="decision-box" style="white-space: pre-wrap; font-family:monospace; font-size:0.8rem;"></div>
-            <div class="action-bar">
-                <button class="share-btn" onclick="copyDPIA()">Kopieer</button>
-                <button class="share-btn" style="background:#38bdf8;" onclick="mailDPIA()">Mail Rapport</button>
-            </div>
+            <div id="dpia-result" class="decision-box" style="white-space: pre-wrap; font-family: monospace; font-size: 0.8rem;"></div>
+            <button class="choice-btn" onclick="copyDPIA()">Kopieer Tekst</button>
         </div>
-        <button onclick="closeModal('dpiaModal')" style="margin-top:40px; border:none; background:none; text-decoration:underline; cursor:pointer;">Terug</button>
+        <button onclick="closeModal('dpiaModal')" style="display:block; margin-top:40px; border:none; background:none; text-decoration:underline; cursor:pointer;">Terug</button>
     </div>
 </div>
 
-<!-- Essential sources modal -->
-<div id="linksModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="links-title">
+<div id="vwoModal" class="modal">
     <div class="modal-content">
-        <h2 id="links-title">Essentiële Bronnen</h2>
-        <a href="https://www.vgn.nl/privacy" target="_blank" class="link-item">VGN Privacy Dossier</a>
-        <a href="https://www.vgn.nl/nieuws/model-toestemmingsformulier-herzien" target="_blank" class="link-item">Model Toestemming (2024)</a>
-        <a href="https://autoriteitpersoonsgegevens.nl/nl" target="_blank" class="link-item">Autoriteit Persoonsgegevens</a>
-        <button onclick="closeModal('linksModal')" style="margin-top:20px; border:none; background:none; text-decoration:underline; cursor:pointer;">Sluiten</button>
+        <h2>VWO Checklist (BoZ-standaard)</h2>
+        <div class="form-section">
+            <div class="check-item"><input type="checkbox"> <span>Beschrijving verwerking en categorieën gegevens aanwezig?</span></div>
+            <div class="check-item"><input type="checkbox"> <span>Instructie-clausule en geheimhoudingsplicht opgenomen?</span></div>
+            <div class="check-item"><input type="checkbox"> <span>Beveiligingsmaatregelen (Art. 32) specifiek benoemd?</span></div>
+            <div class="check-item"><input type="checkbox"> <span>Meldplicht datalekken binnen 24-48 uur?</span></div>
+            <div class="check-item"><input type="checkbox"> <span>Recht op audit/controle door zorginstelling?</span></div>
+            <div class="check-item"><input type="checkbox"> <span>Afspraak over data-vernietiging na afloop?</span></div>
+        </div>
+        <div class="decision-box">Tip: Gebruik altijd de <a href="https://www.vgn.nl/nieuws/boz-modelverwerkersovereenkomst-vernieuwd" target="_blank">BoZ Modelovereenkomst</a>.</div>
+        <button onclick="closeModal('vwoModal')" style="margin-top:40px; border:none; background:none; text-decoration:underline; cursor:pointer;">Sluiten</button>
     </div>
 </div>
 
-<!-- Bewaartermijn calculator modal -->
-<div id="calcModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="calc-title">
+<div id="linksModal" class="modal">
     <div class="modal-content">
-        <h2 id="calc-title">Bewaartermijn Calculator</h2>
+        <h2>VGN Bronnen & Modellen</h2>
+        <a href="https://www.vgn.nl/privacy" target="_blank" class="link-item">VGN Privacy Dossier<span>Centraal punt gehandicaptenzorg</span></a>
+        <a href="https://www.vgn.nl/nieuws/model-toestemmingsformulier-herzien" target="_blank" class="link-item">Model Toestemming (2024)<span>Herziene versie</span></a>
+        <a href="https://www.vgn.nl/nieuws/model-privacyreglement-herzien" target="_blank" class="link-item">Model Privacyreglement (2024)<span>Geactualiseerd</span></a>
+        <a href="https://www.vgn.nl/nieuws/boz-modelverwerkersovereenkomst-vernieuwd" target="_blank" class="link-item">BoZ Model VWO<span>Landelijke zorgstandaard</span></a>
+        <button onclick="closeModal('linksModal')" style="margin-top:40px; border:none; background:none; text-decoration:underline; cursor:pointer;">Sluiten</button>
+    </div>
+</div>
+
+<div id="calcModal" class="modal">
+    <div class="modal-content">
+        <h2>Bewaartermijn Calculator</h2>
         <select id="data-type" onchange="calculateDestruction()">
-            <option value="">Selecteer type…</option>
-            <option value="wgbo">Cliëntdossier (WGBO) – 20 jaar</option>
-            <option value="hr-basis">Personeelsdossier – 2 jaar</option>
-            <option value="hr-fiscaal">Fiscaal – 7 jaar</option>
+            <option value="">Selecteer type gegevens...</option>
+            <option value="wgbo">Cliëntdossier (WGBO) - 20 jaar</option>
+            <option value="hr-basis">Personeelsdossier - 2 jaar</option>
+            <option value="hr-fiscaal">Fiscaal - 7 jaar</option>
+            <option value="solli">Sollicitatie - 4 weken</option>
         </select>
         <input type="date" id="end-date" onchange="calculateDestruction()">
         <div id="calc-result" class="decision-box" style="display:none;"></div>
-        <button onclick="closeModal('calcModal')" style="margin-top:20px; border:none; background:none; text-decoration:underline; cursor:pointer;">Sluiten</button>
+        <button onclick="closeModal('calcModal')" style="margin-top:40px; border:none; background:none; text-decoration:underline; cursor:pointer;">Sluiten</button>
     </div>
 </div>
 
-<!-- Datalek wizard modal -->
-<div id="datalekModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="datalek-title">
+<div id="datalekModal" class="modal">
     <div class="modal-content">
-        <h2 id="datalek-title">Datalek Wizard</h2>
+        <h2>Datalek Wizard</h2>
         <div id="datalekWizard">
             <div class="decision-box">
-                <p>Is er sprake van ongeautoriseerde toegang of verlies van data?</p>
-                <div class="btn-group">
+                <p>Is er sprake van ongeautoriseerde toegang, verlies of wijziging van persoonsgegevens?</p>
+                <div style="margin-top:15px;">
                     <button class="choice-btn" onclick="nextDatalek('ja')">Ja</button>
                     <button class="choice-btn" onclick="nextDatalek('nee')">Nee</button>
                 </div>
@@ -372,34 +234,86 @@
     </div>
 </div>
 
-<!-- GDPR & legislation modal -->
-<div id="privacyModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="privacy-title">
-    <div class="modal-content">
-        <h2 id="privacy-title">AVG & Wetgeving</h2>
-        <p>Lokaal dashboard v2026.</p>
-        <button onclick="closeModal('privacyModal')" style="margin-top:40px; border:none; background:none; text-decoration:underline; cursor:pointer;">Sluiten</button>
-    </div>
-</div>
-
 <script>
-    // Database voor zoekfunctie
     const database = [
-        { cat: "VWO", q: "Moet elke leverancier een VWO?", a: "Ja, zodra een externe partij persoonsgegevens verwerkt in jouw opdracht.", law: "Art. 28 AVG", url: "https://www.vgn.nl/nieuws/boz-modelverwerkersovereenkomst-vernieuwd" },
-        { cat: "Dossier", q: "Bewaartermijn cliënt?", a: "20 jaar na einde zorgverlening.", law: "WGBO", url: "https://www.rijksoverheid.nl" },
-        { cat: "Wzd", q: "Camera op de kamer?", a: "Alleen bij ernstig risico en na opname in het zorgplan.", law: "Wzd", url: "https://www.dwangindezorg.nl" }
+        { cat: "Wzd", q: "Camera of sensoren op de kamer?", a: "Onvrijwillige zorg: Dit mag alleen als er ernstig nadeel is en het in het zorgplan staat (stappenplan doorlopen).", law: "Wzd", url: "https://www.dwangindezorg.nl/wzd" },
+        { cat: "Dossier", q: "Bewaartermijn cliëntdossier?", a: "Minimaal 20 jaar na laatste wijziging of einde zorgverlening.", law: "WGBO", url: "https://www.vgn.nl/privacy" },
+        { cat: "VGN", q: "Model Toestemmingsformulier 2024?", a: "VGN heeft in okt 2024 nieuwe modellen gepubliceerd voor toestemming en privacyreglementen.", law: "VGN", url: "https://www.vgn.nl/nieuws/model-toestemmingsformulier-herzien" },
+        { cat: "HR", q: "Bewaartermijn personeelsdossier?", a: "Standaard 2 jaar na uitdiensttreding. Fiscale gegevens 7 jaar.", law: "AVG/Fiscaal", url: "https://autoriteitpersoonsgegevens.nl/nl/onderwerpen/werk-en-uitkering/personeelsdossier" },
+        { cat: "VWO", q: "Wanneer is een VWO nodig?", a: "Zodra een derde partij persoonsgegevens verwerkt in opdracht van de zorginstelling (SaaS, hosting, extern archief).", law: "Art. 28 AVG", url: "https://www.vgn.nl/nieuws/boz-modelverwerkersovereenkomst-vernieuwd" }
     ];
 
-    // Open/sluit modals
-    function openModal(id) { document.getElementById(id).style.display = 'block'; }
-    function closeModal(id) { document.getElementById(id).style.display = 'none'; }
-
-    // Zoekfunctie
     function handleSearch(query) {
         const term = query.toLowerCase().trim();
         const container = document.getElementById('results');
-        if (term.length < 2) {
-            container.innerHTML = '<div class="empty-state">Typ minimaal 2 letters...</div>';
-            return;
+        if (term.length < 2) { 
+            container.innerHTML = '<div class="empty-state">Typ minimaal 2 letters om te zoeken...</div>'; 
+            return; 
         }
-        const filtered = database.filter(i =>
-            i
+        const filtered = database.filter(i => i.q.toLowerCase().includes(term) || i.a.toLowerCase().includes(term) || i.cat.toLowerCase().includes(term));
+        if (filtered.length === 0) {
+            container.innerHTML = '<div class="empty-state">Geen resultaten gevonden.</div>';
+        } else {
+            container.innerHTML = filtered.map(i => `
+                <div class="result">
+                    <div class="category">${i.cat}</div>
+                    <h3>${i.q}</h3>
+                    <p>${i.a}</p>
+                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                        <span style="color:var(--meta); font-size:0.7rem;">Bron: ${i.law}</span>
+                        <a href="${i.url}" target="_blank">Open Bron</a>
+                    </div>
+                </div>`).join('');
+        }
+    }
+
+    function calculateDestruction() {
+        const type = document.getElementById('data-type').value;
+        const inputDate = document.getElementById('end-date').value;
+        const res = document.getElementById('calc-result');
+        if (!type || !inputDate) return;
+        let d = new Date(inputDate);
+        if(type === "wgbo") d.setFullYear(d.getFullYear() + 20);
+        else if(type === "hr-basis") d.setFullYear(d.getFullYear() + 2);
+        else if(type === "hr-fiscaal") d.setFullYear(d.getFullYear() + 7);
+        else if(type === "solli") d.setDate(d.getDate() + 28);
+        res.style.display = 'block';
+        res.innerHTML = `Uiterste vernietigingsdatum: <strong>${d.toLocaleDateString('nl-NL')}</strong>`;
+    }
+
+    function generateDPIA() {
+        const name = document.getElementById('dpia-name').value || "Project";
+        const goal = document.getElementById('dpia-goal').value;
+        const reportText = `DPIA CONCEPT - ${new Date().toLocaleDateString()}\n-------------------\nPROJECT: ${name}\nDOEL: ${goal}\nSTATUS: In Behandeling.`;
+        document.getElementById('dpia-result').innerText = reportText;
+        document.getElementById('dpia-result-container').style.display = 'block';
+    }
+
+    function copyDPIA() {
+        const text = document.getElementById('dpia-result').innerText;
+        navigator.clipboard.writeText(text).then(() => alert("Gekopieerd!"));
+    }
+
+    let dlStep = 1;
+    function nextDatalek(c) {
+        const w = document.getElementById('datalekWizard');
+        if (dlStep === 1) {
+            if (c === 'nee') {
+                w.innerHTML = '<div class="decision-box">Geen datalek. Geen verdere actie nodig.</div>';
+            } else {
+                dlStep = 2;
+                w.innerHTML = '<div class="decision-box"><p>Is er een (hoog) risico voor de rechten en vrijheden van betrokkenen?</p><div style="margin-top:15px;"><button class="choice-btn" onclick="nextDatalek(\'ja\')">Ja</button><button class="choice-btn" onclick="nextDatalek(\'nee\')">Nee</button></div></div>';
+            }
+        } else {
+            w.innerHTML = '<div class="decision-box"><strong>ACTIE:</strong> Meld het lek binnen 72 uur bij de Autoriteit Persoonsgegevens en documenteer intern.</div>';
+        }
+    }
+
+    function quickSearch(t) { document.getElementById('search').value = t; handleSearch(t); }
+    document.getElementById('search').oninput = e => handleSearch(e.target.value);
+    function openModal(id) { document.getElementById(id).style.display = 'block'; }
+    function closeModal(id) { document.getElementById(id).style.display = 'none'; dlStep = 1; }
+</script>
+
+</body>
+</html>
